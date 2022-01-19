@@ -91,7 +91,15 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Install AGW</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#install-access-gateway-on-ubuntu-bare-metal">Install Access Gateway on Ubuntu (Bare Metal)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#deployment">Deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deployment">Deployment</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#create-boot-usb-stick-and-install-ubuntu-on-your-agw-host">1. Create boot USB stick and install Ubuntu on your AGW host</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#deploy-magma-on-the-agw-host">2. Deploy magma on the AGW_HOST</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#run-agw-installation">Run AGW installation</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#post-install-check">Post Install Check</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -199,10 +207,47 @@
 </div>
 <div class="section" id="deploy-magma-on-the-agw-host">
 <h3>2. Deploy magma on the AGW_HOST<a class="headerlink" href="#deploy-magma-on-the-agw-host" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="run-agw-installation">
+<h4>Run AGW installation<a class="headerlink" href="#run-agw-installation" title="Permalink to this headline">¶</a></h4>
+<p>To install on server with DHCP configured SGi interface.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo su
 wget https://raw.githubusercontent.com/magma/magma/v1.6/lte/gateway/deploy/agw_install_ubuntu.sh
 bash agw_install_ubuntu.sh
 </pre></div>
+</div>
+<p>To Install on server with statically allocated SGi interface. Fow example: SGi has 1.1.1.1/24 IP and upstream router IP is 1.1.1.200</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo su
+wget https://raw.githubusercontent.com/magma/magma/v1.6/lte/gateway/deploy/agw_install_ubuntu.sh
+bash agw_install_ubuntu.sh <span class="m">1</span>.1.1.1/24 <span class="m">1</span>.1.1.200
+</pre></div>
+</div>
+<p>The script will run a pre-check script that will prompt you what will change on your machine. If you’re okay with those changes reply <code class="docutils literal notranslate"><span class="pre">yes</span></code> and magma will be installed. If <code class="docutils literal notranslate"><span class="pre">no</span></code> is replied It will stop the installation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>- Check if Ubuntu is installed
+Ubuntu is installed
+- Check for magma user
+magma user is not Installed
+- Check if both interfaces are named eth0 and eth1
+Interfaces will be renamed to eth0 and eth1
+eth0 will be set to dhcp and eth1 10.0.2.1
+Do you accept those modifications and want to proceed with magma installation?(y/n)
+Please answer yes or no.
+</pre></div>
+</div>
+<p>The machine will reboot but It’s not finished yet, the script is still running in the background. You can follow the output there</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo journalctl -fu agw_installation
+</pre></div>
+</div>
+<p>When you see “AGW installation is done.” It means that your AGW installation is done, you can make sure magma is running by executing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo service magma@* status
+</pre></div>
+</div>
+</div>
+<div class="section" id="post-install-check">
+<h4>Post Install Check<a class="headerlink" href="#post-install-check" title="Permalink to this headline">¶</a></h4>
+<p>Make sure you have <code class="docutils literal notranslate"><span class="pre">control_proxy.yml</span></code> file in directory /var/opt/magma/configs/ before running post install script.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash /root/agw_post_install_ubuntu.sh
+</pre></div>
+</div>
 </div>
 </div>
 </div>

@@ -1,5 +1,5 @@
 Access Gateway
-==============
+**************
 
 .. toctree::
    :maxdepth: 10
