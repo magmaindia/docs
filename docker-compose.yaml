@@ -41,7 +41,12 @@ services:
           'github_repo': 'docs',
           'github_version': 'master/docs/'
         }
+
         html_logo = "_static/magma-logo.svg"
+
+        html_theme_options = {
+          'navigation_depth': 10
+        }
         EOF
 
         cp -r ../docs/* .

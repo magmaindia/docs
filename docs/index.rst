@@ -1,5 +1,5 @@
 Magma Documentation!
-====================
+********************
 
 .. toctree::
    :maxdepth: 10
