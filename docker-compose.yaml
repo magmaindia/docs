@@ -20,6 +20,14 @@ services:
           --release "0.1.0" \
           --language "en" \
           --ext-autodoc \
+          --ext-doctest \
+          --ext-intersphinx \
+          --ext-todo \
+          --ext-coverage \
+          --ext-imgmath \
+          --ext-mathjax \
+          --ext-ifconfig \
+          --ext-viewcode \
           --ext-githubpages
 
         sed -i 's/alabaster/sphinx_rtd_theme/' conf.py
