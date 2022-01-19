@@ -32,6 +32,16 @@ services:
 
         sed -i 's/alabaster/sphinx_rtd_theme/' conf.py
 
+        cat << EOF >> conf.py
+
+        html_context = {
+          'display_github': True,
+          'github_user': 'magmaindia',
+          'github_repo': 'docs',
+          'github_version': 'master/docs/'
+        }
+        EOF
+
         cp -r ../docs/* .
         make html
         echo "docs.magmaindia.org" > _build/html/CNAME
