@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Install AGW &mdash; Magma Documentation 0.1.0 documentation</title>
+  <title>Access Gateway &mdash; Magma Documentation 0.1.0 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Help" href="../help.html" />
-    <link rel="prev" title="Deploy Magma" href="index.html" /> 
+    <link rel="prev" title="Deploy" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,8 +86,16 @@
             
               <p class="caption"><span class="caption-text">General</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Deploy Magma</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Install AGW</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Deploy</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Access Gateway</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-agw">Install AGW</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-access-gateway-on-ubuntu-bare-metal">Install Access Gateway on Ubuntu (Bare Metal)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deploy-magma-on-the-agw-host">Deploy magma on the AGW_HOST</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../help.html">Help</a></li>
@@ -139,9 +147,9 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">Deploy Magma</a> &raquo;</li>
+          <li><a href="index.html">Deploy</a> &raquo;</li>
         
-      <li>Install AGW</li>
+      <li>Access Gateway</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -162,13 +170,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="install-agw">
-<h1>Install AGW<a class="headerlink" href="#install-agw" title="Permalink to this headline">¶</a></h1>
-<p>Install AGW</p>
+  <div class="section" id="access-gateway">
+<h1>Access Gateway<a class="headerlink" href="#access-gateway" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-agw">
+<h2>Install AGW<a class="headerlink" href="#install-agw" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-access-gateway-on-ubuntu-bare-metal">
+<h3>Install Access Gateway on Ubuntu (Bare Metal)<a class="headerlink" href="#install-access-gateway-on-ubuntu-bare-metal" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<p>To setup a Magma Access Gateway, you will need a machine that satisfies the following requirements:</p>
+<ul class="simple">
+<li><p>AGW_HOST: 64bit-X86 machine, baremetal strongly recommended (not virtualized). You will need two ethernet ports. We use <code class="docutils literal notranslate"><span class="pre">enp1s0</span></code> and <code class="docutils literal notranslate"><span class="pre">enp2s0</span></code> in this guide. They might have different names on your hardware so just replace <code class="docutils literal notranslate"><span class="pre">enp1s0</span></code> and <code class="docutils literal notranslate"><span class="pre">enp2s0</span></code> with your current interfaces name in this guideline. One port is for the SGi interface (default: <code class="docutils literal notranslate"><span class="pre">enp1s0</span></code>) and one for the S1 interface (default: <code class="docutils literal notranslate"><span class="pre">enp2s0</span></code>). Note that the <code class="docutils literal notranslate"><span class="pre">agw_install_ubuntu.sh</span></code> script will rename the <code class="docutils literal notranslate"><span class="pre">enp1s0</span></code> interface to <code class="docutils literal notranslate"><span class="pre">eth0</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="deploy-magma-on-the-agw-host">
+<h3>Deploy magma on the AGW_HOST<a class="headerlink" href="#deploy-magma-on-the-agw-host" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo su
 wget https://raw.githubusercontent.com/magma/magma/v1.6/lte/gateway/deploy/agw_install_ubuntu.sh
 bash agw_install_ubuntu.sh
 </pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -179,7 +202,7 @@ bash agw_install_ubuntu.sh
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Deploy Magma" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Deploy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
