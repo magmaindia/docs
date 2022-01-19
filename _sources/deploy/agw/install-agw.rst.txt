@@ -4,6 +4,9 @@ Install AGW
 Install Access Gateway on Ubuntu (Bare Metal)
 =============================================
 
+.. note::
+   Debian-based AGW deployments are no longer supported as of v1.6. If you want to install to Debian, refer to v1.5 of the documentation.
+
 Prerequisites
 =============
 
