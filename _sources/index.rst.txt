@@ -2,7 +2,7 @@ Magma Documentation!
 ====================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 10
    :caption: General
    :name: sec-general
 
