@@ -46,5 +46,9 @@ services:
 
         cp -r ../docs/* .
         cp -r ../static/* _static/
+
         make html
+
+        sed -i 's/2980B9/5500a6/g' _build/html/_static/css/theme.css
+
         echo "docs.magmaindia.org" > _build/html/CNAME
