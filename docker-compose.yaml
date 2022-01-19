@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  build:
+    image: python
+    working_dir: /var/opt/build/
+    volumes:
+      - "./build/:/var/opt/build/"
+      - "./docs/:/var/opt/docs/"
+    command:
+      - bash
+      - -c
+      - |
+        apt update
+        apt install -y python3-sphinx python3-sphinx-rtd-theme
+
+        sphinx-quickstart \
+          --no-sep \
+          --project "Magma India Documentation" \
+          --author "Magma India" \
+          --release "0.1.0" \
+          --language "en" \
+          --ext-autodoc \
+          --ext-githubpages
+
+        sed -i 's/alabaster/sphinx_rtd_theme/' conf.py
+
+        cp -r ../docs/* .
+        make html
+        echo "docs.magmaindia.org" > _build/html/CNAME
