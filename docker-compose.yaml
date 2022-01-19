@@ -5,6 +5,7 @@ services:
     working_dir: /var/opt/build/
     volumes:
       - "./build/:/var/opt/build/"
+      - "./static/:/var/opt/static/"
       - "./docs/:/var/opt/docs/"
     command:
       - bash
@@ -40,8 +41,10 @@ services:
           'github_repo': 'docs',
           'github_version': 'master/docs/'
         }
+        html_logo = "_static/magma-logo.svg"
         EOF
 
         cp -r ../docs/* .
+        cp -r ../static/* _static/
         make html
         echo "docs.magmaindia.org" > _build/html/CNAME
