@@ -1,5 +1,5 @@
-Welcome to Test Project's documentation!
-========================================
+Magma Documentation!
+====================
 
 .. toctree::
    :maxdepth: 2
