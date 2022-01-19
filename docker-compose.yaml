@@ -15,7 +15,7 @@ services:
 
         sphinx-quickstart \
           --no-sep \
-          --project "Magma India Documentation" \
+          --project "Magma Documentation" \
           --author "Magma India" \
           --release "0.1.0" \
           --language "en" \
