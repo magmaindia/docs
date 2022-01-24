@@ -23,14 +23,14 @@ Visit your NMS at something like: ``https://orgdomain.nms.orc8r.yourdomain.com``
 This assumes that you have already created and deployed the Magma AGW and Orchestrator including an organizational subdomain. Visit your NMS at something like: https://orgdomain.nms.orc8r.yourdomain.com
 Then go to Traffic -> APNs -> Create New APN
 
-.. image:: /docs/magma-virtual-lab /installation/photos/new-apns.png
+.. image:: photos/new-apns.png
   :width: 400
   :alt: Alternative text
 
 Create an APN plan with an id of ``default``.
 Then, go to the Network tab and edit the EPC section:
 
-.. image:: /docs/magma-virtual-lab /installation/photos/network.png
+.. image:: photos/network.png
   :width: 400
   :alt: Alternative text
 
@@ -40,13 +40,13 @@ In this window change the MCC, MNC and TAC to the following:
 - TAC -> 7
 Next, upload the subscribers.csv IMSI list in this repository to your NMS UEs under Subscriber -> Config -> Add Subscriber:
 
-.. image:: /docs/magma-virtual-lab /installation/photos/new-apns.png
+.. image:: photos/new-apns.png
   :width: 400
   :alt: Alternative text
 
 Then press the upload button, select the file, and save it afterward:
 
-.. image:: /docs/magma-virtual-lab /installation/photos/upload-and-save.png
+.. image:: photos/upload-and-save.png
   :width: 400
   :alt: Alternative text
 

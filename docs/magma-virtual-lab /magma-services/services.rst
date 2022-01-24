@@ -1,7 +1,7 @@
 Magma Services
 **************
 
-.. image:: /docs/magma-virtual-lab /magma-services/photos/services.png
+.. image:: photos/service.png
   :width: 600
   :alt: Alternative text
 
@@ -96,7 +96,7 @@ Flows: AGW configures flows primarily via pipelineD. First table is configured b
 
 ``Bridges & Interfaces``
 
-.. image:: /docs/magma-virtual-lab /magma-services/photos/bridges-interface.png
+.. image:: photos/bridges-interface.png
   :width: 600
   :alt: Alternative text
 

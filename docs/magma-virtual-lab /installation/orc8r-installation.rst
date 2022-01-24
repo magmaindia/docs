@@ -1,6 +1,8 @@
 Installation of Orchestrator with one IP instead of five
 ********************************************************
 
+Video by Nitin Rajput ``https://youtu.be/P_FRK38nkJI``
+
 First, clone this repo ``https://github.com/ShubhamTatvamasi/magma-galaxy``
 
 Install Dependant Collections

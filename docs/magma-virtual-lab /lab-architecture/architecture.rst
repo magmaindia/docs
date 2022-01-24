@@ -1,15 +1,22 @@
 Lab Architecture
 ****************
 
-.. image:: /docs/magma-virtual-lab /lab-architecture/photos/architecture.png
+.. image:: photos/architecture.png
+  :width: 400
+  :alt: Alternative text
+
+Infra Architecture
+==================
+
+.. image:: photos/ook.png
   :width: 400
   :alt: Alternative text
 
 Modules
 =======
 
-1. PGW ( Gateway )
-------------------
+1. PGW ( PDN Gateway )
+----------------------
 PGW is the network node that connects the EPC to external IP networks. What the PGW does is that it routes packets to and from external IP networks. Beyond that, it also allocates an IP address to all UEs and enforces different policies regarding IP user traffic such as packet filtering.
 
 
