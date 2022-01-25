@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Installation of Orchestrator with one IP instead of five &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installation of Access Gateway" href="agw-installation.html" />
+    <link rel="prev" title="Installation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Magma Virtual Labs</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installation of Orchestrator with one IP instead of five</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-dependant-collections">Install Dependant Collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-ansible-ubuntu-20-04-lts-setup">Setup Ansible (Ubuntu 20.04 LTS Setup):</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copy-your-public-ssh-key-to-the-host">Copy your public SSH key to the host:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-user">Create a new user:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="agw-installation.html">Installation of Access Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="srsRAN-installation.html">Installation of srsRAN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/index.html">Magma Services</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Magma Virtual Labs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation</a> &raquo;</li>
+        
+      <li>Installation of Orchestrator with one IP instead of five</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/labs/installation/orc8r-installation.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation-of-orchestrator-with-one-ip-instead-of-five">
+<h1>Installation of Orchestrator with one IP instead of five<a class="headerlink" href="#installation-of-orchestrator-with-one-ip-instead-of-five" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://www.youtube.com/watch?v=P_FRK38nkJI"><img alt="Alternative-text" src="../../_images/install.png" /></a>
+<p>Video by Nitin Rajput (click on the above pic to see installation of orchestrator)</p>
+<p>First, clone the repo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/ShubhamTatvamasi/magma-galaxy
+</pre></div>
+</div>
+<div class="section" id="install-dependant-collections">
+<h2>Install Dependant Collections<a class="headerlink" href="#install-dependant-collections" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-galaxy collection install -U shubhamtatvamasi.magma
+ansible-galaxy collection list
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-ansible-ubuntu-20-04-lts-setup">
+<h2>Setup Ansible (Ubuntu 20.04 LTS Setup):<a class="headerlink" href="#setup-ansible-ubuntu-20-04-lts-setup" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get remove --purge ansible
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible
+ansible-galaxy collection install shubhamtatvamasi.magma --force-with-deps
+</pre></div>
+</div>
+</div>
+<div class="section" id="copy-your-public-ssh-key-to-the-host">
+<h2>Copy your public SSH key to the host:<a class="headerlink" href="#copy-your-public-ssh-key-to-the-host" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen -R <span class="m">192</span>.168.5.70
+ssh-copy-id ubuntu@192.168.5.70
+</pre></div>
+</div>
+<p>Update your values in the hosts.yml file before running the playbook.</p>
+<p>Change directory to deploy folder.</p>
+<p>Deploy Magma orchestrator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">deploy</span><span class="o">-</span><span class="n">orc8r</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After deployment is done it takes around 10 minutes to start all the magma services.</p>
+</div>
+</div>
+<div class="section" id="create-a-new-user">
+<h2>Create a new user:<a class="headerlink" href="#create-a-new-user" title="Permalink to this headline">¶</a></h2>
+<p>On the orc8r terminal, run these commands.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">ORC_POD</span><span class="o">=</span><span class="k">$(</span>kubectl get pod -l app.kubernetes.io/component<span class="o">=</span>orchestrator -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].metadata.name}&#39;</span><span class="k">)</span>
+kubectl <span class="nb">exec</span> -it <span class="si">${</span><span class="nv">ORC_POD</span><span class="si">}</span> -- envdir /var/opt/magma/envdir /var/opt/magma/bin/accessc <span class="se">\</span>
+  add-existing -admin -cert /var/opt/magma/certs/admin_operator.pem admin_operator
+
+<span class="nv">NMS_POD</span><span class="o">=</span><span class="k">$(</span>kubectl get pod -l app.kubernetes.io/component<span class="o">=</span>magmalte -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].metadata.name}&#39;</span><span class="k">)</span>
+kubectl <span class="nb">exec</span> -it <span class="si">${</span><span class="nv">NMS_POD</span><span class="si">}</span> -- yarn setAdminPassword master admin admin
+kubectl <span class="nb">exec</span> -it <span class="si">${</span><span class="nv">NMS_POD</span><span class="si">}</span> -- yarn setAdminPassword magma-test admin admin
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="agw-installation.html" class="btn btn-neutral float-right" title="Installation of Access Gateway" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
