@@ -16,7 +16,7 @@ services:
 
         sphinx-quickstart \
           --no-sep \
-          --project "Magma Documentation" \
+          --project "Magma India Documentation" \
           --author "Magma India" \
           --release "0.1.0" \
           --language "en" \
@@ -42,7 +42,7 @@ services:
           'github_version': 'master/docs/'
         }
 
-        html_logo = "_static/magma-logo.svg"
+        html_logo = "_static/magma-logo.png"
 
         html_theme_options = {
           'navigation_depth': 10
