@@ -1,10 +1,12 @@
-Magma Documentation!
-********************
+Magma India Documentation!
+**************************
 
 .. toctree::
+   
    :maxdepth: 10
    :caption: General
    :name: sec-general
 
-   deploy/index
+   .. deploy/index
+   labs/index
    help

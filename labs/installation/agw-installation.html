@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Install AGW &mdash; Magma India Documentation 0.1.0 documentation</title>
+  <title>Installation of Access Gateway &mdash; Magma India Documentation 0.1.0 documentation</title>
   
 
   
@@ -34,7 +34,9 @@
 
     
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installation of srsRAN" href="srsRAN-installation.html" />
+    <link rel="prev" title="Installation of Orchestrator with one IP instead of five" href="orc8r-installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,8 +84,31 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Magma Virtual Labs</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="orc8r-installation.html">Installation of Orchestrator with one IP instead of five</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installation of Access Gateway</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-access-gateway-on-ubuntu-bare-metal">Install Access Gateway on Ubuntu (Bare Metal)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deployment">Deployment</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#create-boot-usb-stick-and-install-ubuntu-on-your-agw-host">1. Create boot USB stick and install Ubuntu on your AGW host</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#deploy-magma-on-the-agw-host">2. Deploy magma on the AGW_HOST</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#run-agw-installation">Run AGW installation</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#post-install-check">Post Install Check</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="srsRAN-installation.html">Installation of srsRAN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/index.html">Magma Services</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
 </ul>
 
@@ -133,14 +158,18 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Install AGW</li>
+          <li><a href="../index.html">Magma Virtual Labs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation</a> &raquo;</li>
+        
+      <li>Installation of Access Gateway</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
             
-              <a href="https://github.com/magmaindia/docs/blob/master/docs/deploy/agw/install-agw.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/labs/installation/agw-installation.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -154,8 +183,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="install-agw">
-<h1>Install AGW<a class="headerlink" href="#install-agw" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="installation-of-access-gateway">
+<h1>Installation of Access Gateway<a class="headerlink" href="#installation-of-access-gateway" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="install-access-gateway-on-ubuntu-bare-metal">
 <h2>Install Access Gateway on Ubuntu (Bare Metal)<a class="headerlink" href="#install-access-gateway-on-ubuntu-bare-metal" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
@@ -165,10 +194,8 @@
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>To setup a Magma Access Gateway, you will need a machine that satisfies the following requirements:</p>
-<ul class="simple">
-<li><p>AGW_HOST: 64bit-X86 machine, baremetal strongly recommended (not virtualized). You will need two ethernet ports. We use <code class="docutils literal notranslate"><span class="pre">enp1s0</span></code> and <code class="docutils literal notranslate"><span class="pre">enp2s0</span></code> in this guide. They might have different names on your hardware so just replace <code class="docutils literal notranslate"><span class="pre">enp1s0</span></code> and <code class="docutils literal notranslate"><span class="pre">enp2s0</span></code> with your current interfaces name in this guideline. One port is for the SGi interface (default: <code class="docutils literal notranslate"><span class="pre">enp1s0</span></code>) and one for the S1 interface (default: <code class="docutils literal notranslate"><span class="pre">enp2s0</span></code>). Note that the <code class="docutils literal notranslate"><span class="pre">agw_install_ubuntu.sh</span></code> script will rename the <code class="docutils literal notranslate"><span class="pre">enp1s0</span></code> interface to <code class="docutils literal notranslate"><span class="pre">eth0</span></code>.</p></li>
-</ul>
+<p>To set up a Magma Access Gateway, you will need a machine that satisfies the following requirements:
+AGW_HOST: 64bit-X86 machine, bare metal strongly recommended (not virtualized). You will need two ethernet ports. We use enp1s0 and enp2s0 in this guide. They might have different names on your hardware so just replace enp1s0 and enp2s0 with your current interfaces name in this guideline. One port is for the SGi interface (default: enp1s0) and one for the S1 interface (default: enp2s0). Note that the agw_install_ubuntu.sh script will rename the enp1s0 interface to eth0.</p>
 </div>
 <div class="section" id="deployment">
 <h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
@@ -236,6 +263,10 @@ Please answer yes or no.
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="srsRAN-installation.html" class="btn btn-neutral float-right" title="Installation of srsRAN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="orc8r-installation.html" class="btn btn-neutral float-left" title="Installation of Orchestrator with one IP instead of five" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
