@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Installation of Open5gs &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installation of UERANSIM" href="ueransim-installation.html" />
+    <link rel="prev" title="Installation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">5G Virtual Lab</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installation of Open5gs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-open5gs">Install Open5GS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup-open5gs">Setup Open5GS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nat-port-forwarding">NAT Port Forwarding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#access-open5gs-dashboard">Access Open5gs Dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ueransim-installation.html">Installation of UERANSIM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">5G Virtual Lab</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation</a> &raquo;</li>
+        
+      <li>Installation of Open5gs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/5gLab/installation/open5gs-installation.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation-of-open5gs">
+<h1>Installation of Open5gs<a class="headerlink" href="#installation-of-open5gs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-open5gs">
+<h2>Install Open5GS<a class="headerlink" href="#install-open5gs" title="Permalink to this headline">¶</a></h2>
+<p>We are deploying Open5gs as a native Linux daemon service application.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:open5gs/latest
+sudo apt update
+sudo apt install open5gs
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-open5gs">
+<h2>Setup Open5GS<a class="headerlink" href="#setup-open5gs" title="Permalink to this headline">¶</a></h2>
+<p>Update the Amf config file loacted at /etc/open5gs/amf.yaml by replacing given ip of ngap address to local eth0 ip. And then restart amf service.</p>
+<a class="reference internal image-reference" href="../../_images/amf.png"><img alt="Alternative text" src="../../_images/amf.png" style="width: 800px;" /></a>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo systemctl restart open5gs-amfd
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/amf-logs.png"><img alt="Alternative text" src="../../_images/amf-logs.png" style="width: 800px;" /></a>
+<p>Update the Upf config file loacted at /etc/open5gs/upf.yaml by replacing given ip of ngap address to local eth0 ip. And then restart upf service.</p>
+<a class="reference internal image-reference" href="../../_images/upf.png"><img alt="Alternative text" src="../../_images/upf.png" style="width: 800px;" /></a>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo systemctl restart open5gs-upfd
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/upf-logs.png"><img alt="Alternative text" src="../../_images/upf-logs.png" style="width: 800px;" /></a>
+</div>
+<div class="section" id="nat-port-forwarding">
+<h2>NAT Port Forwarding<a class="headerlink" href="#nat-port-forwarding" title="Permalink to this headline">¶</a></h2>
+<p>In order to bridge between the 5G Core UPF and Internet, we need enable IP forwarding and add a NAT rule to the IP Tables. Following are the NAT port forwarding we have to do. Without this port forwarding the connectivity from 5G Core to internet would not work.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo sysctl -w net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo systemctl stop ufw
+sudo iptables -I FORWARD <span class="m">1</span> -j ACCEPT
+</pre></div>
+</div>
+</div>
+<div class="section" id="access-open5gs-dashboard">
+<h2>Access Open5gs Dashboard<a class="headerlink" href="#access-open5gs-dashboard" title="Permalink to this headline">¶</a></h2>
+<p>Now we need to access our open5gs dashboard.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update
+sudo apt install curl
+curl -fsSL https://deb.nodesource.com/setup_14.x <span class="p">|</span> sudo -E bash -
+sudo apt install nodejs
+git clone https://github.com/open5gs/open5gs.git
+
+<span class="c1"># run webui with npm</span>
+<span class="nb">cd</span> webui
+npm ci --no-optional <span class="o">&amp;&amp;</span> npm run build
+npm run dev --host <span class="m">0</span>.0.0.0
+
+<span class="c1"># the web interface will start on</span>
+http://localhost:3000
+
+<span class="c1"># run this command if you are on remote serverand want to access dashboard locally</span>
+ssh -L localhost:3000:localhost:3000 ubuntu@ip
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/open5gs.png"><img alt="Alternative text" src="../../_images/open5gs.png" style="width: 800px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Login with follwoing credentials and register ue from dashboard.</p>
+<p>Login credentials : username - admin password - 1423</p>
+<p>Add new subscriber from dashboard : IMSI: 901700000000001 Subscriber Key: 465B5CE8B199B49FAA5F0A2EE238A6BC USIM Type: OPc Operator Key: E8ED289DEBA952E4283B54E88E6183CA</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/open5gs1.png"><img alt="Alternative text" src="../../_images/open5gs1.png" style="width: 800px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ueransim-installation.html" class="btn btn-neutral float-right" title="Installation of UERANSIM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

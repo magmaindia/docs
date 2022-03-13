@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>5G Lab Architecture &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="prev" title="Architecture" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">5G Virtual Lab</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Architecture</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5G Lab Architecture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modules">Modules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#amf">AMF</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#smf">SMF</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#upf">UPF</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#udr">UDR</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pcf">PCF</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#nssf">NSSF</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#nrf">NRF</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ausf">AUSF</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#udm">UDM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sbi">SBI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ngap">NGAP</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#interface">Interface</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#n2">N2</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n3">N3</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n4">N4</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n6">N6</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n7">N7</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n10">N10</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n11">N11</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n12">N12</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n13">N13</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">5G Virtual Lab</a> &raquo;</li>
+        
+          <li><a href="index.html">Architecture</a> &raquo;</li>
+        
+      <li>5G Lab Architecture</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/5gLab/architecture/architecture.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="g-lab-architecture">
+<h1>5G Lab Architecture<a class="headerlink" href="#g-lab-architecture" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../../_images/architecture.png"><img alt="Alternative text" src="../../_images/architecture.png" style="width: 800px;" /></a>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="amf">
+<h3>AMF<a class="headerlink" href="#amf" title="Permalink to this headline">¶</a></h3>
+<p>It is a control plane function in 5G core network. The main functions and responsibilities of AMF are:
+Registration Management,
+Reachability Management,
+Connection Management,
+Mobility Management</p>
+</div>
+<div class="section" id="smf">
+<h3>SMF<a class="headerlink" href="#smf" title="Permalink to this headline">¶</a></h3>
+<p>Session Management Function (SMF) is a fundamental element of the 5G Service-Based Architecture (SBA). The SMF is primarily responsible for interacting with the decoupled data plane, creating updating and removing Protocol Data Unit (PDU) sessions and managing session context with the User Plane Function (UPF).</p>
+</div>
+<div class="section" id="upf">
+<h3>UPF<a class="headerlink" href="#upf" title="Permalink to this headline">¶</a></h3>
+<p>The User Plane Function (UPF) represents the data plane evolution of a Control and User Plane Separation (CUPS) strategy, which is a fundamental component of the 3GPP 5G core network(5GC).The UPF plays the most critical role in the process of data transfer. It provides the interconnect point between the mobile infrastructure and the Data Network (DN), i.e. encapsulation and decapsulation of GTP-U.</p>
+</div>
+<div class="section" id="udr">
+<h3>UDR<a class="headerlink" href="#udr" title="Permalink to this headline">¶</a></h3>
+<p>Unified Data Repository (UDR) is a converged database that stores and manages subscriber data, SIM identities, and network service configurations. The UDR is used by multiple network functions such as PCF, UDM, and NEF to store service-specific parameters to be provisioned in the network for devices to use the service.</p>
+</div>
+<div class="section" id="pcf">
+<h3>PCF<a class="headerlink" href="#pcf" title="Permalink to this headline">¶</a></h3>
+<p>The Policy Control Function (5G PCF) uses the policy subscription information stored in the User Data Repository (UDR) to provide policy rules to network functions (SMF/AMF). It uses a standard REST-based interface to integrate with AMF for access and mobility policy, and with SMF for session management policy.</p>
+</div>
+<div class="section" id="nssf">
+<h3>NSSF<a class="headerlink" href="#nssf" title="Permalink to this headline">¶</a></h3>
+<p>The NSSF (Network Slicing Selection Function) system is a solution to select the optimal network slice available for the service requested by the user in the 5G environment where various services are provided.</p>
+</div>
+<div class="section" id="nrf">
+<h3>NRF<a class="headerlink" href="#nrf" title="Permalink to this headline">¶</a></h3>
+<p>Network Repository Function(NRF) supports the service discovery feature, which receives NF discovery requests from NF instances and provides information about the discovered NF instance (discovered) to another NF instance. Registration information includes NF type, address, service list, etc.</p>
+</div>
+<div class="section" id="ausf">
+<h3>AUSF<a class="headerlink" href="#ausf" title="Permalink to this headline">¶</a></h3>
+<p>As a major part of 5GC to facilitate security processes, AUSF performs the authentication function of identifying UEs and storing authentication keys.</p>
+</div>
+<div class="section" id="udm">
+<h3>UDM<a class="headerlink" href="#udm" title="Permalink to this headline">¶</a></h3>
+<p>UDM is a centralized way to process network user data in 5G through Nudm interfaces to provide services for AMF, SMF, SMSF and AUSF. It also provides services such as authorization of accessing, registration, uninterrupted services.</p>
+</div>
+<div class="section" id="sbi">
+<h3>SBI<a class="headerlink" href="#sbi" title="Permalink to this headline">¶</a></h3>
+<p>The most outstanding change in the 5G Core Control plane is induction of Service based Interface (SBI) or Service based Architecture (SBA) from traditional Point-to-Point network architecture. With this new change, except for a few interfaces such as N2 and N4, almost every interface is now defined to use unified interface, using HTTP/2 protocol.</p>
+</div>
+<div class="section" id="ngap">
+<h3>NGAP<a class="headerlink" href="#ngap" title="Permalink to this headline">¶</a></h3>
+<p>The NG Application Protocol (NGAP) provides the control plane signalling between NG-RAN node and the Access and Mobility Management Function (AMF). The services provided by the NGAP are divided to UE associated and non UE associated.
+Different categories of NGAP signalling procedures include:
+PDU Session Management,
+UE Context Managment,
+UE Mobility Management,
+Paging Procedures,
+Transport of NAS messages,
+Interface Management,
+Configuration Transfer,
+Warning Message Transmission</p>
+</div>
+</div>
+<div class="section" id="interface">
+<h2>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="n2">
+<h3>N2<a class="headerlink" href="#n2" title="Permalink to this headline">¶</a></h3>
+<p>N2 interface supports control plane signalling between RAN and 5G core covering scenarios related to UE context management, PDU session/resource management procedures.</p>
+</div>
+<div class="section" id="n3">
+<h3>N3<a class="headerlink" href="#n3" title="Permalink to this headline">¶</a></h3>
+<p>N3 interface performs the role of conveying user data from the RAN to the User Plane Function, making it possible to create both low- and high-latency services.</p>
+</div>
+<div class="section" id="n4">
+<h3>N4<a class="headerlink" href="#n4" title="Permalink to this headline">¶</a></h3>
+<p>N4 Interface is the bridge between the control plane and the user plane. As such, it is the conduit for PDU session management and traffic steering towards the UPF and PDU usage and event reporting towards the SMF.</p>
+</div>
+<div class="section" id="n6">
+<h3>N6<a class="headerlink" href="#n6" title="Permalink to this headline">¶</a></h3>
+<p>The N6 interface plays the same role in the 5G network, providing connectivity between the User Plane Function (UPF) and any other external (or internal) networks or service platforms, such as the Internet, the public cloud or private clouds.</p>
+</div>
+<div class="section" id="n7">
+<h3>N7<a class="headerlink" href="#n7" title="Permalink to this headline">¶</a></h3>
+<p>N7 interface to trigger session management policies towards Session Management Function (SMF). SMF controls the User plane Function (UPF) . It translates policies received from the PCF to a set of directives/information understood to the UPF and then forwards it to the UPF.</p>
+</div>
+<div class="section" id="n10">
+<h3>N10<a class="headerlink" href="#n10" title="Permalink to this headline">¶</a></h3>
+<p>N10 can emulate UDM within the 5G Core offering services to the SMF via the Nudm service-based N10 interface respectively. The 5G network represents the service-based interface, with focus on N10 between UDM and SMF.
+Following services via the Nudm service-based N10 interface respectively:
+Nudm_SubscriberDataManagement Services,
+Nudm_UEContextManagement Services</p>
+</div>
+<div class="section" id="n11">
+<h3>N11<a class="headerlink" href="#n11" title="Permalink to this headline">¶</a></h3>
+<p>N11 interface represent a trigger to add, modify or delete a PDU session across the user plane. The SMF sends messages to the UPF over the N4 reference interface using the Packet Forwarding Control Protocol (PFCP).</p>
+</div>
+<div class="section" id="n12">
+<h3>N12<a class="headerlink" href="#n12" title="Permalink to this headline">¶</a></h3>
+<p>N12 emulates Authentication Server Function (AUSF) within the 5G Core offering services to the Access and Mobility Management Function (AMF) via the ausf service-based N12 interfaces. The 5G network represents the service-based interface, with focus on the AUSF and AMF.</p>
+</div>
+<div class="section" id="n13">
+<h3>N13<a class="headerlink" href="#n13" title="Permalink to this headline">¶</a></h3>
+<p>N13 interface within the 5G Core offering services to the User Data Management (UDM) via the Nausf and Nudm service-based N13 interface respectively. The 5G network represents the service-based interface, with focus on N13 between AUSF and UDM.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

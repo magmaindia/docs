@@ -35,8 +35,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lab Architecture" href="architecture.html" />
-    <link rel="prev" title="Installation of srsRAN" href="../installation/srsRAN-installation.html" /> 
+    <link rel="next" title="5G Lab Architecture" href="architecture.html" />
+    <link rel="prev" title="Installation of UERANSIM" href="../installation/ueransim-installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,16 +85,15 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Magma Virtual Labs</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">5G Virtual Lab</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Architecture</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html">Lab Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html">5G Lab Architecture</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../services/index.html">Magma Services</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
 </ul>
 
@@ -144,7 +143,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../index.html">Magma Virtual Labs</a> &raquo;</li>
+          <li><a href="../index.html">5G Virtual Lab</a> &raquo;</li>
         
       <li>Architecture</li>
     
@@ -153,7 +152,7 @@
         
           
             
-              <a href="https://github.com/magmaindia/docs/blob/master/docs/labs/architecture/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/5gLab/architecture/index.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -171,24 +170,31 @@
 <h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="architecture.html">Lab Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="architecture.html#infra-architecture">Infra Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5G Lab Architecture</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="architecture.html#modules">Modules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#pgw-pdn-gateway">1. PGW ( PDN Gateway )</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#sgw-serving-gateway">2. SGW ( Serving Gateway )</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#mme-mobility-management-entity">3. MME ( Mobility Management Entity )</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#hss-home-subscriber-server">4. HSS ( Home Subscriber Server)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#enodeb">5. eNodeB</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#ue-user-equipment">6. UE ( User Equipment )</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#sgi">7. SGi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#s11">8. S11</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#itti">9. ITTI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#s6a">10. S6a</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#s1-ap">11. S1-AP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#s1">12. S1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#gtpv1-u">13. Gtpv1-u</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#gtpv2-c">14. Gtpv2-c</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture.html#srsran">14. srsRAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#amf">AMF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#smf">SMF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#upf">UPF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#udr">UDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#pcf">PCF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#nssf">NSSF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#nrf">NRF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#ausf">AUSF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#udm">UDM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#sbi">SBI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#ngap">NGAP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#interface">Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#n2">N2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#n3">N3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#n4">N4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#n6">N6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#n7">N7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#n10">N10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#n11">N11</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#n12">N12</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#n13">N13</a></li>
 </ul>
 </li>
 </ul>
@@ -203,8 +209,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="architecture.html" class="btn btn-neutral float-right" title="Lab Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../installation/srsRAN-installation.html" class="btn btn-neutral float-left" title="Installation of srsRAN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="architecture.html" class="btn btn-neutral float-right" title="5G Lab Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../installation/ueransim-installation.html" class="btn btn-neutral float-left" title="Installation of UERANSIM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
