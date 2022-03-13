@@ -9,4 +9,5 @@ Magma India Documentation!
 
    .. deploy/index
    labs/index
+   5gLab/index
    help
