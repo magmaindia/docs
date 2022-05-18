@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Access and Mobility Management Function &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="prev" title="AMF" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Magma 5G Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">AMF</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Access and Mobility Management Function</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amf-vs-mme">AMF Vs MME</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nr-interface">NR Interface</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#n1-n2">N1/N2</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n8">N8</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n11">N11</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n12">N12</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n14">N14</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n15">N15</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n17">N17</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n22">N22</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n26">N26</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#nr-call-flow">NR Call Flow</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#rrc-connection">RRC Connection</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#initial-nas-message-obtain-ue-context-from-old-amf">Initial NAS message + Obtain UE context from old AMF</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#nas-identification">NAS Identification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#nas-authentication">NAS Authentication</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#nas-security">NAS Security</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#retrieving-subscription-data">Retrieving Subscription data</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#deregistration">Deregistration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#setup-user-plane">Setup User Plane</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#as-security-and-rrc-reconfiguration">AS Security and RRC Reconfiguration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ul-and-dl-data-transfer">UL and DL data transfer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Magma 5G Core</a> &raquo;</li>
+        
+          <li><a href="index.html">AMF</a> &raquo;</li>
+        
+      <li>Access and Mobility Management Function</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/5gCore/amf/amf.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="access-and-mobility-management-function">
+<h1>Access and Mobility Management Function<a class="headerlink" href="#access-and-mobility-management-function" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<img alt="Alternative text" class="align-right" src="../../_images/magma.png" />
+<p>AMF(Access and Mobility Management Function) is a Control Plane(CU) function in the 5G Core Network(CN). gNodeB first needs to connect with AMF to access any 5G services. AMF is the only Network Function(NF) through which gNB communicates with the 5G Core(excluding interaction with the UPF(User Plane Function) during the PDU Session Establishment).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="amf-vs-mme">
+<h2>AMF Vs MME<a class="headerlink" href="#amf-vs-mme" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/mme_amf.png"><img alt="Alternative text" class="align-right" src="../../_images/mme_amf.png" style="width: 360px; height: 340px;" /></a>
+<p>AMF performs most of the functions that the MME(Mobility Management Entity) performs in the 4G Network except for some of them. The establishment of PDU sessions is carried out by a separate network function, SMF(Session Management Function) whereas functions related to authentication and security are carried out by AUSF(Authentication Server Function), an another network function in 5G. This shows that 5G architecture is more distributed than MME in 4G which makes it more effective.
+Basically, the main principle in the 5G architecture is the separation of the control and user plane.</p>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/amf_functions.png"><img alt="Alternative text" class="align-center" src="../../_images/amf_functions.png" style="width: 450px; height: 400px;" /></a>
+<p><strong>The main functions of AMF are:</strong></p>
+<div class="line-block">
+<div class="line">1. <strong>Registration Management</strong> - AMF manages UE registration and deregistration with the 5G System. To access 5G services, UE must complete the registration procedures.</div>
+</div>
+<div class="line-block">
+<div class="line">2. <strong>Connection Management</strong> - Establishment and release of the Control Plane(CP) signaling connections between the UE and AMF across the N1 interface.</div>
+</div>
+<div class="line-block">
+<div class="line">3. <strong>Mobility Management</strong> - AMF updates the UE’s location within the network. This is achieved through periodic registration by UE.</div>
+</div>
+<div class="line-block">
+<div class="line">4. <strong>NGAP Signaling Procedures</strong> - It includes paging procedures, transport of NAS messages, PDU Session Management, UE Context Management and some other message transmission.</div>
+</div>
+</div>
+<div class="section" id="nr-interface">
+<h2>NR Interface<a class="headerlink" href="#nr-interface" title="Permalink to this headline">¶</a></h2>
+<img alt="Alternative text" src="../../_images/interface.png" />
+<div class="section" id="n1-n2">
+<h3>N1/N2<a class="headerlink" href="#n1-n2" title="Permalink to this headline">¶</a></h3>
+<p>AMF retrieves all the connection and session related information from the UE over the N1 and N2 interface.</p>
+</div>
+<div class="section" id="n8">
+<h3>N8<a class="headerlink" href="#n8" title="Permalink to this headline">¶</a></h3>
+<p>Policy rules both for all users and for particular UEs, session related subscription data, subscriber data, and any other information(e.g. data exposed to the third party application) is stored in UDM which is retrieved by AMF over the N8 interface.</p>
+</div>
+<div class="section" id="n11">
+<h3>N11<a class="headerlink" href="#n11" title="Permalink to this headline">¶</a></h3>
+<p>N11 interface represents a trigger to add, modify or delete a PDU session by AMF across the User Plane.</p>
+</div>
+<div class="section" id="n12">
+<h3>N12<a class="headerlink" href="#n12" title="Permalink to this headline">¶</a></h3>
+<p>N12 emulates AUSF within the 5G Core offering services to the AMF  via the ausf service-based N12 interfaces. The 5G network represents the service-based interface, with focus on the AUSF and AMF.</p>
+</div>
+<div class="section" id="n14">
+<h3>N14<a class="headerlink" href="#n14" title="Permalink to this headline">¶</a></h3>
+<p>The N14 Reference point is between two AMFs (Access and Mobility Management Functions) and the UE context is transmitted over this interface during handovers, etc.</p>
+</div>
+<div class="section" id="n15">
+<h3>N15<a class="headerlink" href="#n15" title="Permalink to this headline">¶</a></h3>
+<p>Transmission and removal of Access and Mobility policies are carried out over the N15 interface between AMF and PCF.</p>
+</div>
+<div class="section" id="n17">
+<h3>N17<a class="headerlink" href="#n17" title="Permalink to this headline">¶</a></h3>
+<p>N17 emulates Equipment Identity Register(EIR) within the 5G Core offering services to the AMF via the N5g-eir service based interface. This interface supports Equipment Identity Check Service.</p>
+</div>
+<div class="section" id="n22">
+<h3>N22<a class="headerlink" href="#n22" title="Permalink to this headline">¶</a></h3>
+<p>AMF selects the best Network Functions (NF) across the network with the help of NSSF. NSSF provides the network functions location to the AMF over the N22 interface.</p>
+</div>
+<div class="section" id="n26">
+<h3>N26<a class="headerlink" href="#n26" title="Permalink to this headline">¶</a></h3>
+<p>This interface is used to transfer UE’s authentication and session management context as the UE moves between the 5GS and 4G-EPS systems.</p>
+</div>
+</div>
+<div class="section" id="nr-call-flow">
+<h2>NR Call Flow<a class="headerlink" href="#nr-call-flow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rrc-connection">
+<h3>RRC Connection<a class="headerlink" href="#rrc-connection" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When the UE powers ON, it undergoes an RRC connection setup with gNB. After that, gNB sends an initial NAS message to the AMF over the N2 interface which contains RAN UE NGAP ID, registration request context, User location information, 5G S-TMSI, and RRC establishment Cause.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/1_RRC.png" />
+</div>
+<div class="section" id="initial-nas-message-obtain-ue-context-from-old-amf">
+<h3>Initial NAS message + Obtain UE context from old AMF<a class="headerlink" href="#initial-nas-message-obtain-ue-context-from-old-amf" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>These parameters provide an identity to the UE which helps AMF to retrieve UE context either from the old serving AMF or by going through the whole procedure(only when the serving AMF is not able to find the traces of the old AMF). This has taken place through the N14 interface.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/2_1.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>    Release previous registration request context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>    gNB sends Initial NAS message via new RRC connection</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas5g_message.cpp">[23]</a>    Decode security protected NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a> Processes NGAP Initial UE NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_main.cpp">[4]</a>    Handle initial UE message from NGAP</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>    Mobility management messages</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[16]</a>   Store the registration type in parameters</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[1]</a>     Create registration request procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>    Encoded the initial NAS information message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_transport.cpp">[7]</a>    Handles NAS encoded message and sends it to NGAP task</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas5g_message.cpp">[23]</a> Decode plain NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>  Check if UE context exists for old parameters like GUTI, IMSI, gNB id, etc or not</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>  Update AMF UE context with new gNB UE NGAP id</p></li>
+</ul>
+<ul class="simple">
+<li><p>Let’s assume, the new AMF does not find any old AMF clues in the network, for closure exposure of NR call flow. Then AMF starts the identity, authentication, and security procedures with the UE to add a more defined identity to the UE.</p></li>
+</ul>
+</div>
+<div class="section" id="nas-identification">
+<h3>NAS Identification<a class="headerlink" href="#nas-identification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>During NAS identity procedures, identity parameters(e.g. SUCI) are derived from the registration context, and security headers are added to the NAS messages to securely transport them over the air interface through UL and DL DCCH(Dedicated Control Channel) from the N1 interface. There is a possibility of identification rejection due to many problems like TAC setup failure, forbidden PLMN(Public Land Mobile Network), and so on.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/2_2.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas_proc.cpp">[24]</a>    AMF sends identity request message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>     Build DL NAS transport message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>     DL messages to NGAP on identity/authentication request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>     Handle Uplink NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_identity.cpp">[15]</a>    Generate GUTI based on SUPI/IMSI</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[20]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a> Set NAS security header</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[16]</a>    AMF handles identity response message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_identity.cpp">[15]</a>    Identification procedure completion</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas5g_message.cpp">[23]</a>    Encode header of a security protected NAS message</p></li>
+</ul>
+</div>
+<div class="section" id="nas-authentication">
+<h3>NAS Authentication<a class="headerlink" href="#nas-authentication" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>On getting the identity of the UE, AMF selects the AUSF, configured by the NRF(Network Repository Function) for the UE authentication and security, based on derived SUCI(Subscription Concealed Identifier). This takes place the same as through UL and DL DCCH over the N1 interface. This procedure is carried out by the MME itself(in addition with AAA) in the 4G Network.</p></li>
+<li><p>AUSF then requests the authentication vectors from the UDM over the N13 interface and sends a response message to the AMF with all the required NAS security keys(AUTN, RAND, ABBA) and some other security keys over another interface named N12.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/auth1.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[10]</a> AMF send authentication request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[10]</a> Initialisation of authentication procedure to establish partial native 5G CN security context in the UE and the AMF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[10]</a> Procedure to start authentication procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_cn.cpp">[11]</a> Received security vector from HSS</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[10]</a> Abort the Authentication procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>  Send authentication reject to UE</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[16]</a> Processes authentication failure message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[10]</a> Authentication response message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas5g_message.cpp">[23]</a> Encode the message authentication code</p></li>
+</ul>
+</div>
+<div class="section" id="nas-security">
+<h3>NAS Security<a class="headerlink" href="#nas-security" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AMF authenticates UE and starts NAS SMC(Security Mode Command) procedures and requests for IMEISV(International Mobile Equipment Identity Software Version) which maintains the user device and assists upgrades and notifications.</p></li>
+<li><p>To confirm that UE is not blacklisted, AMF sends an equipment identity check request to the 5G-EIR(Equipment Identity Register) using PEI(Permanent Equipment Identifier) to identify the UE in the network.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/auth2.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[18]</a>    Sends security mode command message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[10]</a>    Handle security request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[1]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[18]</a> Create new security context and initiate SMC procedures</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[18]</a>    Request for IMEISV from UE</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[18]</a>    Security keys exchange, setup encryption and integrity algorithms</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_sap.cpp">[17]</a>    AMF send the security mode command message integrity protected</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_data.cpp">[13]</a>    Sets security context type</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[16]</a>    AMF security mode command reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[18]</a>    Notify AMF that security mode procedure failed</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_Security_Mode.cpp">[2]</a>     AMF handle security complete response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>     Setup/encode the NAS security message</p></li>
+</ul>
+</div>
+<div class="section" id="retrieving-subscription-data">
+<h3>Retrieving Subscription data<a class="headerlink" href="#retrieving-subscription-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AMF looks for the NSSF(Network Slicing Selection Function) to select the best network slice available for the service requested by the user and connect it over the N22 interface. Then it searches for the UDM to retrieve all the subscription data related to the Access Management(AM), Session Management(SM), and subscriber data. AMF is connected to the UDM through the N10 interface.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/udm1.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_session_context.cpp">[21]</a> To fill the slice information in PDU session establishment accept message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>  Get the AMF context based on UE identity</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>  Get the SMF context from the map</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[20]</a> Set the SMF context in AMF context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>  AMF create new UE context</p></li>
+</ul>
+<ul class="simple">
+<li><p>AMF also configures PCF(Policy Control Function) to retrieve AM policies over the N15 interface, to which UE has access and SMF allocates services accordingly.</p></li>
+<li><p>AMF has collected all the UE context, now it creates another identifier AMF UE NGAP ID for the UE to the network.</p></li>
+</ul>
+</div>
+<div class="section" id="deregistration">
+<h3>Deregistration<a class="headerlink" href="#deregistration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>At the same time, the old AMF releases the Session Management context and AM policies with which UE is registered earlier. And also deletes the UE context from itself to make it more reliable.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/udm2.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/deregistration_request.cpp">[22]</a> Processes deregistration request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>  Build De-registration accept message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[20]</a> Sending PDU session resource release request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[20]</a> Execute PDU session release and notify SMF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_session_manager_pco.cpp">[19]</a> clear SMF protocol configuration options</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[20]</a> Clean up the mobility IP address</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/deregistration_request.cpp">[22]</a> Delete PDU session id</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas_proc.cpp">[24]</a> Delete the NAS common procedures</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[1]</a>   Delete the NAS registration specific procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_data.cpp">[13]</a> Clear AMF security context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>  NGAP UE context Release request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_main.cpp">[4]</a>  Handle UE context release requests</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/deregistration_request.cpp">[22]</a> Start releasing UE related context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_main.cpp">[4]</a>  Handle UE context release complete</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>  Delete the UE context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>  Cleans up the AMF context</p></li>
+</ul>
+</div>
+<div class="section" id="setup-user-plane">
+<h3>Setup User Plane<a class="headerlink" href="#setup-user-plane" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AMF selects the SMF which performs all the session management operations that are managed by the MME(in addition with SGW-C and PGW-C) itself in the 4G System. The exchange of messages between AMF and SMF takes place over the N11 interface. Then SMF looks for the best UPF(User Plane Function) for the UE and creates sessions during UL and DL data flow. The interaction between SMF and UPF is carried out by PFCP(Packet Forwarding Control Protocol) over the N4 interface.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/5_1.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>    Check for the existing PDU session for session id</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>    PDU session Establishment accepts message to UE and gNB</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>    PDU session resource setup request message  to gNB</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_main.cpp">[4]</a>    Handle PDU session resource setup response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_main.cpp">[4]</a>    Handle PDU session resource release response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[20]</a>   AMF handle PDU session establish reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[20]</a>   Send PDU session reject to UE</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>    Set Session AMBR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[20]</a>   Update IP address information in SMF context Send the Downlink Transport with 5GMM Cause to gnb</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_pdu_resource_setup_req_rel.cpp">[5]</a> Retrieve subscriber QoS profile, UPF GTP TEID IP address from SMF context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[1]</a>     Send Activate PDU session Context Request message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_pdu_resource_setup_req_rel.cpp">[5]</a>    Adding security header to AMF PDU session transfer request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_state_converter.cpp">[6]</a> Generate new AMF NGAP UE id</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>    Notify NGAP about new AMF NGAP ID</p></li>
+</ul>
+</div>
+<div class="section" id="as-security-and-rrc-reconfiguration">
+<h3>AS Security and RRC Reconfiguration<a class="headerlink" href="#as-security-and-rrc-reconfiguration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Now, the AMF sends an initial context setup request along with a registration acceptance message to the gNB to update the UE context present in the gNB. gNB again undergoes RRC reconfiguration and SMC procedures to let the UE access the encrypted channels by using the derived keys(e.g. k-gNB, k-RRC, k-UP-int).</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/5_2.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_sap.cpp">[17]</a>    AMF sends SAP</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[1]</a>      Updated GUTI assigned to AMF SAP</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>     Processes the AMF AS SAP connection establish request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[16]</a> Processes the AMF AS SAP connection establish reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>     Processes the AMF AS SAP connection establish confirm</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[18]</a>    Notify AMF AS SAP that security mode command message has to be sent to the UE</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>     Processes the AMF AS SAP security request primitive</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_sap.cpp">[17]</a>    Setup security request when data transfer to lower layers</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[1]</a>      Notify AS SAP about registration reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[10]</a>    Fetch new security context to upper layer</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas5g_message.cpp">[23]</a>    Encrypt/Decrypt/Decode layer 3 NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>     Register the UE context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[1]</a>      Performs the registration signaling procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[1]</a>      Processes registration complete message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[1]</a>      AMF sends an registration accept message</p></li>
+</ul>
+</div>
+<div class="section" id="ul-and-dl-data-transfer">
+<h3>UL and DL data transfer<a class="headerlink" href="#ul-and-dl-data-transfer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When the user plane is setup for UL or DL purposes, PDU sessions update messages are transferred by the AMF to the SMF.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/userp.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>  Store gNB IP and TEID in respective SMF context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>  Received the session created response message from SMF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>  Prepare and send gNB setup response message to SMF through gRPC</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>  QoS flow setup list</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[20]</a> Function to check if max PDU sessions reached</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="AMF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
