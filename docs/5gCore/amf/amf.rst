@@ -185,7 +185,7 @@ NAS Security
 
 * To confirm that UE is not blacklisted, AMF sends an equipment identity check request to the 5G-EIR(Equipment Identity Register) using PEI(Permanent Equipment Identifier) to identify the UE in the network.
 
-.. image:: photos/9_auth.png
+.. image:: photos/9_sec.png
   :alt: Alternative text
 
 - `[18] <https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp>`_    Sends security mode command message
