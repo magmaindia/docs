@@ -35,7 +35,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="next" title="UPF" href="../upf/index.html" />
     <link rel="prev" title="AMF" href="index.html" /> 
 </head>
 
@@ -122,6 +122,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../upf/index.html">UPF</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
@@ -202,7 +203,7 @@
 <h1>Access and Mobility Management Function<a class="headerlink" href="#access-and-mobility-management-function" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<img alt="Alternative text" class="align-right" src="../../_images/magma.png" />
+<img alt="Alternative text" class="align-right" src="../../_images/1_magma.png" />
 <p>AMF(Access and Mobility Management Function) is a Control Plane(CU) function in the 5G Core Network(CN). gNodeB first needs to connect with AMF to access any 5G services. AMF is the only Network Function(NF) through which gNB communicates with the 5G Core(excluding interaction with the UPF(User Plane Function) during the PDU Session Establishment).</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -211,13 +212,13 @@
 </div>
 <div class="section" id="amf-vs-mme">
 <h2>AMF Vs MME<a class="headerlink" href="#amf-vs-mme" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="../../_images/mme_amf.png"><img alt="Alternative text" class="align-right" src="../../_images/mme_amf.png" style="width: 360px; height: 340px;" /></a>
+<a class="reference internal image-reference" href="../../_images/2_mme_amf.png"><img alt="Alternative text" class="align-right" src="../../_images/2_mme_amf.png" style="width: 360px; height: 340px;" /></a>
 <p>AMF performs most of the functions that the MME(Mobility Management Entity) performs in the 4G Network except for some of them. The establishment of PDU sessions is carried out by a separate network function, SMF(Session Management Function) whereas functions related to authentication and security are carried out by AUSF(Authentication Server Function), an another network function in 5G. This shows that 5G architecture is more distributed than MME in 4G which makes it more effective.
 Basically, the main principle in the 5G architecture is the separation of the control and user plane.</p>
 </div>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="../../_images/amf_functions.png"><img alt="Alternative text" class="align-center" src="../../_images/amf_functions.png" style="width: 450px; height: 400px;" /></a>
+<a class="reference internal image-reference" href="../../_images/3_amf_functions.png"><img alt="Alternative text" class="align-center" src="../../_images/3_amf_functions.png" style="width: 450px; height: 400px;" /></a>
 <p><strong>The main functions of AMF are:</strong></p>
 <div class="line-block">
 <div class="line">1. <strong>Registration Management</strong> - AMF manages UE registration and deregistration with the 5G System. To access 5G services, UE must complete the registration procedures.</div>
@@ -234,7 +235,7 @@ Basically, the main principle in the 5G architecture is the separation of the co
 </div>
 <div class="section" id="nr-interface">
 <h2>NR Interface<a class="headerlink" href="#nr-interface" title="Permalink to this headline">¶</a></h2>
-<img alt="Alternative text" src="../../_images/interface.png" />
+<img alt="Alternative text" src="../../_images/4_interface.png" />
 <div class="section" id="n1-n2">
 <h3>N1/N2<a class="headerlink" href="#n1-n2" title="Permalink to this headline">¶</a></h3>
 <p>AMF retrieves all the connection and session related information from the UE over the N1 and N2 interface.</p>
@@ -279,14 +280,14 @@ Basically, the main principle in the 5G architecture is the separation of the co
 <ul class="simple">
 <li><p>When the UE powers ON, it undergoes an RRC connection setup with gNB. After that, gNB sends an initial NAS message to the AMF over the N2 interface which contains RAN UE NGAP ID, registration request context, User location information, 5G S-TMSI, and RRC establishment Cause.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/1_RRC.png" />
+<img alt="Alternative text" src="../../_images/5_RRC.png" />
 </div>
 <div class="section" id="initial-nas-message-obtain-ue-context-from-old-amf">
 <h3>Initial NAS message + Obtain UE context from old AMF<a class="headerlink" href="#initial-nas-message-obtain-ue-context-from-old-amf" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>These parameters provide an identity to the UE which helps AMF to retrieve UE context either from the old serving AMF or by going through the whole procedure(only when the serving AMF is not able to find the traces of the old AMF). This has taken place through the N14 interface.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/2_1.png" />
+<img alt="Alternative text" src="../../_images/6_old_amf.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>    Release previous registration request context</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>    gNB sends Initial NAS message via new RRC connection</p></li>
@@ -311,7 +312,7 @@ Basically, the main principle in the 5G architecture is the separation of the co
 <ul class="simple">
 <li><p>During NAS identity procedures, identity parameters(e.g. SUCI) are derived from the registration context, and security headers are added to the NAS messages to securely transport them over the air interface through UL and DL DCCH(Dedicated Control Channel) from the N1 interface. There is a possibility of identification rejection due to many problems like TAC setup failure, forbidden PLMN(Public Land Mobile Network), and so on.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/2_2.png" />
+<img alt="Alternative text" src="../../_images/7_identity.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas_proc.cpp">[24]</a>    AMF sends identity request message</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>     Build DL NAS transport message</p></li>
@@ -330,7 +331,7 @@ Basically, the main principle in the 5G architecture is the separation of the co
 <li><p>On getting the identity of the UE, AMF selects the AUSF, configured by the NRF(Network Repository Function) for the UE authentication and security, based on derived SUCI(Subscription Concealed Identifier). This takes place the same as through UL and DL DCCH over the N1 interface. This procedure is carried out by the MME itself(in addition with AAA) in the 4G Network.</p></li>
 <li><p>AUSF then requests the authentication vectors from the UDM over the N13 interface and sends a response message to the AMF with all the required NAS security keys(AUTN, RAND, ABBA) and some other security keys over another interface named N12.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/auth1.png" />
+<img alt="Alternative text" src="../../_images/8_auth.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[10]</a> AMF send authentication request</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[10]</a> Initialisation of authentication procedure to establish partial native 5G CN security context in the UE and the AMF</p></li>
@@ -349,7 +350,7 @@ Basically, the main principle in the 5G architecture is the separation of the co
 <li><p>AMF authenticates UE and starts NAS SMC(Security Mode Command) procedures and requests for IMEISV(International Mobile Equipment Identity Software Version) which maintains the user device and assists upgrades and notifications.</p></li>
 <li><p>To confirm that UE is not blacklisted, AMF sends an equipment identity check request to the 5G-EIR(Equipment Identity Register) using PEI(Permanent Equipment Identifier) to identify the UE in the network.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/auth2.png" />
+<img alt="Alternative text" src="../../_images/9_sec.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[18]</a>    Sends security mode command message</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[10]</a>    Handle security request</p></li>
@@ -369,7 +370,7 @@ Basically, the main principle in the 5G architecture is the separation of the co
 <ul class="simple">
 <li><p>AMF looks for the NSSF(Network Slicing Selection Function) to select the best network slice available for the service requested by the user and connect it over the N22 interface. Then it searches for the UDM to retrieve all the subscription data related to the Access Management(AM), Session Management(SM), and subscriber data. AMF is connected to the UDM through the N10 interface.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/udm1.png" />
+<img alt="Alternative text" src="../../_images/10_udm.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_session_context.cpp">[21]</a> To fill the slice information in PDU session establishment accept message</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[8]</a>  Get the AMF context based on UE identity</p></li>
@@ -387,7 +388,7 @@ Basically, the main principle in the 5G architecture is the separation of the co
 <ul class="simple">
 <li><p>At the same time, the old AMF releases the Session Management context and AM policies with which UE is registered earlier. And also deletes the UE context from itself to make it more reliable.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/udm2.png" />
+<img alt="Alternative text" src="../../_images/11_dereg.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/deregistration_request.cpp">[22]</a> Processes deregistration request</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[9]</a>  Build De-registration accept message</p></li>
@@ -412,7 +413,7 @@ Basically, the main principle in the 5G architecture is the separation of the co
 <ul class="simple">
 <li><p>AMF selects the SMF which performs all the session management operations that are managed by the MME(in addition with SGW-C and PGW-C) itself in the 4G System. The exchange of messages between AMF and SMF takes place over the N11 interface. Then SMF looks for the best UPF(User Plane Function) for the UE and creates sessions during UL and DL data flow. The interaction between SMF and UPF is carried out by PFCP(Packet Forwarding Control Protocol) over the N4 interface.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/5_1.png" />
+<img alt="Alternative text" src="../../_images/12_UP.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>    Check for the existing PDU session for session id</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>    PDU session Establishment accepts message to UE and gNB</p></li>
@@ -435,7 +436,7 @@ Basically, the main principle in the 5G architecture is the separation of the co
 <ul class="simple">
 <li><p>Now, the AMF sends an initial context setup request along with a registration acceptance message to the gNB to update the UE context present in the gNB. gNB again undergoes RRC reconfiguration and SMC procedures to let the UE access the encrypted channels by using the derived keys(e.g. k-gNB, k-RRC, k-UP-int).</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/5_2.png" />
+<img alt="Alternative text" src="../../_images/13_asSec.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_sap.cpp">[17]</a>    AMF sends SAP</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[1]</a>      Updated GUTI assigned to AMF SAP</p></li>
@@ -459,7 +460,7 @@ Basically, the main principle in the 5G architecture is the separation of the co
 <ul class="simple">
 <li><p>When the user plane is setup for UL or DL purposes, PDU sessions update messages are transferred by the AMF to the SMF.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/userp.png" />
+<img alt="Alternative text" src="../../_images/14_data.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>  Store gNB IP and TEID in respective SMF context</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[3]</a>  Received the session created response message from SMF</p></li>
@@ -477,7 +478,7 @@ Basically, the main principle in the 5G architecture is the separation of the co
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../upf/index.html" class="btn btn-neutral float-right" title="UPF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="index.html" class="btn btn-neutral float-left" title="AMF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>User Plane Function &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="prev" title="UPF" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Magma 5G Core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../amf/index.html">AMF</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">UPF</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">User Plane Function</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-plane-setup">User Plane Setup</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#initial-user-plane-setup">Initial User Plane Setup</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#first-ul-dl-data-transfer">First UL/DL Data Transfer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#modification-of-the-ongoing-sessions">Modification of the ongoing sessions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Magma 5G Core</a> &raquo;</li>
+        
+          <li><a href="index.html">UPF</a> &raquo;</li>
+        
+      <li>User Plane Function</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/5gCore/upf/upf.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-plane-function">
+<h1>User Plane Function<a class="headerlink" href="#user-plane-function" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The UPF (User Plane Function) is one of the most important NF(Network Function) of the 5G Core network. It is the second network function with which NR RAN interacts(during PDUs flow). UPF is the evolution of the CUPS(Control and User Plane Separation). It inspects, routes, and forwards the packets inside the QoS flows within the subscription policies. It also enforces the UL and DL traffic rules using SDF templates sent by the SMF over the N4 interface. It allocates or terminates the QoS Flows within the PDU Sessions when the corresponding services end.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="user-plane-setup">
+<h2>User Plane Setup<a class="headerlink" href="#user-plane-setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="initial-user-plane-setup">
+<h3>Initial User Plane Setup<a class="headerlink" href="#initial-user-plane-setup" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When a UE wanted to access the 5G network, it undergoes a registration process. After completing all the control plane procedures, when it comes to user plane setup, SMF handles all the session-related information. AMF requests for the DL TEID for all the PDU sessions that passed to SMF. SMF then selects the best UPF for the UE in the range and sends a session establishment request containing all the parameters for the default PDU session setup.</p></li>
+<li><p>A session along with a default QoS flow of Non-GBR is created to exchange the best-effort traffic with the Data Network(DN). The best-effort traffic contains longer routes to figure out the latency and maintain the traffic.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/upf1.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> New UE establishment request, need to create session context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/UpfMsgManageHandler.cpp">[1]</a> Setting up the UPF address</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/PipelinedClient.cpp">[10]</a> Create a session request to UPF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Session context response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStore.cpp">[4]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> Get default session updates</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Default QoS, AMBR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Adding default DL and UL PDR rule for an IMSI</p></li>
+</ul>
+</div>
+<div class="section" id="first-ul-dl-data-transfer">
+<h3>First UL/DL Data Transfer<a class="headerlink" href="#first-ul-dl-data-transfer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When the actual data transfer takes place i.e. either UL or DL data, then AMF sends another SM context request to the SMF. SMF sends session modification requests containing information related to the type of session requested. UPF setup the PDU session according to the user needs within the rules and regulations.</p></li>
+<li><p>After that, UPF maps QoS flows, setup TEID, insert different rules like PDR, FAR, URR, etc, and some session-related policies to the PDU session. It also charges per data packet exchange and adds a unique session ID which helps in differentiating it from other PDU sessions. UPF adds an IMSI number to identify the ongoing session belongs to which UE.</p></li>
+<li><p>The session context is prepared by the UPF which is sent to the AMF via SMF to transmit it to the gNB. It contains information like UPF local TEID, QoS context, messages for the release of the session, etc.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/upf2.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> QoS policy management(policy type)</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> Setting up of dynamic rules</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> Update the static and dynamic rules</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Mapping FDR, PDR, QDR, BAR, URR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Attaching rules to the sessions</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Create a new TEID and insert PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> Setup TEID to pass to the UPF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> QoS/Bearer management</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> Create session request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionEvents.cpp">[9]</a> Update and create sessions</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Handle rule scheduling</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/ChargingGrant.cpp">[7]</a> Receive charging grant</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> Initialize charging credit</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> Get all active policies</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/PipelinedClient.cpp">[10]</a> Setup UPF session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStore.cpp">[4]</a> Read, create, update, and search sessions</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/RedisStoreClient.cpp">[8]</a> Read, and write sessions and serialize, and deserialize all session vectors</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> PDU Session inactive when moved to the IDLE state</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Handle session update response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> Handling set messages(either initial request or existing PDU Session) from AMF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Update the state change notification to AMF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Preparing response(session context) to the AMF to transmit it to gNB</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Sending UPF local TEID to AMF which are going to be used by gNB</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Sending corresponding QoS context to the AMF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> Fetch PDU Session ID from the RAT context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> Requested message from AMF to release the session</p></li>
+</ul>
+</div>
+<div class="section" id="modification-of-the-ongoing-sessions">
+<h3>Modification of the ongoing sessions<a class="headerlink" href="#modification-of-the-ongoing-sessions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>In addition to any changes to the session, a modification request is sent to the UPF which consists of all the policies related to a session being re-authenticated, and updated rules and regulations are also added to the session. UPF dynamically allocates session rules to the PDU sessions. It updates the charging credits and requests for charging re-authentication.</p></li>
+<li><p>UPF deactivates all the QoS flows and TEID when the services ended or when the user no longer wanted to access the 5G network. It removes all the static and dynamic rules that are inserted into the session. It also terminates the session and the rules related to the termination of the session.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/upf3.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Initialize policy reauthentication</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Policy reauthentication for the session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Scheduling static rules activation/ deactivation</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Updating session rules</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Change PDR and update UPF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Insert PDR along with TEID into the session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Insert IMSI and Session ID for the sessions</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> Configure subscribed QoS</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Update session with policy</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Update charging credits</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Initiating charging reauthentication</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> Update the session changes back to the session store</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/PipelinedClient.cpp">[10]</a> Deactivate flow request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/PipelinedClient.cpp">[10]</a> Deactivate request by TEID</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Deactivate QoS flows for dead sessions</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Schedule static and dynamic rule deactivation</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> Removal of dynamic rules</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStore.cpp">[4]</a> Read session for deletion</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> Initiate session release</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[3]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Release and termination of sessions</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Complete termination for the released sessions</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> Removal of rules related to the termination of the session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/LocalEnforcer.cpp">[6]</a> Delete session from session map</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/UpfMsgManageHandler.cpp">[1]</a> Periodic messages about UPF Session configuration</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="UPF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

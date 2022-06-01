@@ -5,7 +5,7 @@ Access and Mobility Management Function
 Overview
 =======
 
-.. image:: photos/magma.png
+.. image:: photos/1_magma.png
   :align: right
   :alt: Alternative text
 
@@ -17,7 +17,7 @@ AMF(Access and Mobility Management Function) is a Control Plane(CU) function in 
 AMF Vs MME
 =======
 
-.. image:: photos/mme_amf.png
+.. image:: photos/2_mme_amf.png
   :width: 360
   :height: 340
   :align: right
@@ -31,7 +31,7 @@ Functions
 =======
 
 
-.. image:: photos/amf_functions.png
+.. image:: photos/3_amf_functions.png
   :align: center
   :width: 450
   :height: 400
@@ -55,7 +55,7 @@ Functions
 NR Interface
 =======
 
-.. image:: photos/interface.png
+.. image:: photos/4_interface.png
   :alt: Alternative text
 
 N1/N2
@@ -112,7 +112,7 @@ RRC Connection
 
 * When the UE powers ON, it undergoes an RRC connection setup with gNB. After that, gNB sends an initial NAS message to the AMF over the N2 interface which contains RAN UE NGAP ID, registration request context, User location information, 5G S-TMSI, and RRC establishment Cause.
 
-.. image:: photos/1_RRC.png
+.. image:: photos/5_RRC.png
   :alt: Alternative text
 
 Initial NAS message + Obtain UE context from old AMF
@@ -120,7 +120,7 @@ Initial NAS message + Obtain UE context from old AMF
 
 * These parameters provide an identity to the UE which helps AMF to retrieve UE context either from the old serving AMF or by going through the whole procedure(only when the serving AMF is not able to find the traces of the old AMF). This has taken place through the N14 interface.
 
-.. image:: photos/2_1.png
+.. image:: photos/6_old_amf.png
   :alt: Alternative text
 
 - `[8] <https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp>`_    Release previous registration request context
@@ -145,7 +145,7 @@ NAS Identification
 
 * During NAS identity procedures, identity parameters(e.g. SUCI) are derived from the registration context, and security headers are added to the NAS messages to securely transport them over the air interface through UL and DL DCCH(Dedicated Control Channel) from the N1 interface. There is a possibility of identification rejection due to many problems like TAC setup failure, forbidden PLMN(Public Land Mobile Network), and so on.
 
-.. image:: photos/2_2.png
+.. image:: photos/7_identity.png
   :alt: Alternative text
 
 - `[24] <https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas_proc.cpp>`_    AMF sends identity request message 
@@ -165,7 +165,7 @@ NAS Authentication
 
 * AUSF then requests the authentication vectors from the UDM over the N13 interface and sends a response message to the AMF with all the required NAS security keys(AUTN, RAND, ABBA) and some other security keys over another interface named N12.
 
-.. image:: photos/auth1.png
+.. image:: photos/8_auth.png
   :alt: Alternative text
 
 - `[10] <https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp>`_ AMF send authentication request 
@@ -185,7 +185,7 @@ NAS Security
 
 * To confirm that UE is not blacklisted, AMF sends an equipment identity check request to the 5G-EIR(Equipment Identity Register) using PEI(Permanent Equipment Identifier) to identify the UE in the network.
 
-.. image:: photos/auth2.png
+.. image:: photos/9_sec.png
   :alt: Alternative text
 
 - `[18] <https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp>`_    Sends security mode command message
@@ -205,7 +205,7 @@ Retrieving Subscription data
 
 * AMF looks for the NSSF(Network Slicing Selection Function) to select the best network slice available for the service requested by the user and connect it over the N22 interface. Then it searches for the UDM to retrieve all the subscription data related to the Access Management(AM), Session Management(SM), and subscriber data. AMF is connected to the UDM through the N10 interface. 
 
-.. image:: photos/udm1.png
+.. image:: photos/10_udm.png
   :alt: Alternative text
 
 - `[21] <https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_session_context.cpp>`_ To fill the slice information in PDU session establishment accept message
@@ -223,7 +223,7 @@ Deregistration
 
 * At the same time, the old AMF releases the Session Management context and AM policies with which UE is registered earlier. And also deletes the UE context from itself to make it more reliable.
 
-.. image:: photos/udm2.png
+.. image:: photos/11_dereg.png
   :alt: Alternative text
 
 - `[22] <https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/deregistration_request.cpp>`_ Processes deregistration request
@@ -249,7 +249,7 @@ Setup User Plane
 
 * AMF selects the SMF which performs all the session management operations that are managed by the MME(in addition with SGW-C and PGW-C) itself in the 4G System. The exchange of messages between AMF and SMF takes place over the N11 interface. Then SMF looks for the best UPF(User Plane Function) for the UE and creates sessions during UL and DL data flow. The interaction between SMF and UPF is carried out by PFCP(Packet Forwarding Control Protocol) over the N4 interface.
 
-.. image:: photos/5_1.png
+.. image:: photos/12_UP.png
   :alt: Alternative text
 
 - `[3] <https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp>`_    Check for the existing PDU session for session id
@@ -273,7 +273,7 @@ AS Security and RRC Reconfiguration
 
 * Now, the AMF sends an initial context setup request along with a registration acceptance message to the gNB to update the UE context present in the gNB. gNB again undergoes RRC reconfiguration and SMC procedures to let the UE access the encrypted channels by using the derived keys(e.g. k-gNB, k-RRC, k-UP-int).
 
-.. image:: photos/5_2.png
+.. image:: photos/13_asSec.png
   :alt: Alternative text
 
 - `[17] <https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_sap.cpp>`_    AMF sends SAP
@@ -298,7 +298,7 @@ UL and DL data transfer
 
 * When the user plane is setup for UL or DL purposes, PDU sessions update messages are transferred by the AMF to the SMF.
 
-.. image:: photos/userp.png
+.. image:: photos/14_data.png
   :alt: Alternative text
 
 - `[3] <https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp>`_  Store gNB IP and TEID in respective SMF context 
