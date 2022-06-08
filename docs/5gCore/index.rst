@@ -6,3 +6,4 @@ Magma 5G Core
 
    amf/index
    upf/index
+   smf/index
