@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Access and Mobility Management Function [1] &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="prev" title="AMF" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">Magma 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">OAI 5G Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">AMF</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Access and Mobility Management Function [1]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interface">Interface</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#n1-2">N1 [2]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n2-3">N2 [3]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n8">N8</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n11-4">N11 [4]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n12">N12</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n22">N22</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#protocols">Protocols</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#nas-5">NAS [5]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ngap-6">NGAP [6]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sctp-7">SCTP [7]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sbi-8">SBI [8]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#itti-message-9">ITTI Message [9]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#call-flow">Call Flow</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#registration-and-deregistration">Registration and Deregistration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#authentication-and-authorization">Authentication and Authorization</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#user-plane-setup">User Plane Setup</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#context-setup-and-session-modification">Context Setup and Session Modification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#handover-procedure">Handover Procedure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">OAI 5G Core</a> &raquo;</li>
+        
+          <li><a href="index.html">AMF</a> &raquo;</li>
+        
+      <li>Access and Mobility Management Function [1]</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/OAI_5gCore/amf/amf.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="access-and-mobility-management-function-1">
+<h1>Access and Mobility Management Function <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf">[1]</a><a class="headerlink" href="#access-and-mobility-management-function-1" title="Permalink to this headline">¶</a></h1>
+<img alt="Alternative text" class="align-center" src="../../_images/OAI_amf.png" />
+<p>AMF(Access and Mobility Management Function) is a Control Plane(CU) function in the 5G Core Network(CN). gNodeB first needs to connect with AMF to access any 5G services. AMF is the only Network Function(NF) through which gNB communicates with the 5G Core(excluding interaction with the UPF(User Plane Function) during the PDU Session Establishment).</p>
+<div class="section" id="interface">
+<h2>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="n1-2">
+<h3>N1 <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[2]</a><a class="headerlink" href="#n1-2" title="Permalink to this headline">¶</a></h3>
+<p>AMF retrieves all the connection and session-related information from the UE over the N1 interface.</p>
+</div>
+<div class="section" id="n2-3">
+<h3>N2 <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[3]</a><a class="headerlink" href="#n2-3" title="Permalink to this headline">¶</a></h3>
+<p>UE-associated and non-UE-associated communication between AMF and gNodeB take place over this interface.</p>
+</div>
+<div class="section" id="n8">
+<h3>N8<a class="headerlink" href="#n8" title="Permalink to this headline">¶</a></h3>
+<p>Policy rules both for all users and for particular UEs, session-related subscription data, subscriber data, and any other information(e.g. data exposed to the third-party application) is stored in UDM which AMF retrieves over the N8 interface.</p>
+</div>
+<div class="section" id="n11-4">
+<h3>N11 <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[4]</a><a class="headerlink" href="#n11-4" title="Permalink to this headline">¶</a></h3>
+<p>The N11 interface represents a trigger to add, modify or delete a PDU session by AMF across the User Plane.</p>
+</div>
+<div class="section" id="n12">
+<h3>N12<a class="headerlink" href="#n12" title="Permalink to this headline">¶</a></h3>
+<p>N12 emulates AUSF within the 5G Core offering services to the AMF  via the AUSF service-based N12 interfaces. The 5G network represents the service-based interface, with a focus on the AUSF and AMF.</p>
+</div>
+<div class="section" id="n22">
+<h3>N22<a class="headerlink" href="#n22" title="Permalink to this headline">¶</a></h3>
+<p>AMF selects the best Network Functions (NF) across the network with the help of NSSF. NSSF provides the network functions location to the AMF over the N22 interface.</p>
+</div>
+</div>
+<div class="section" id="protocols">
+<h2>Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nas-5">
+<h3>NAS <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/tree/master/src/nas">[5]</a><a class="headerlink" href="#nas-5" title="Permalink to this headline">¶</a></h3>
+<p>The 5G NAS(Non-Access Stratum) is a control plane protocol that is present at the radio interface(N1 interface) between UE and AMF. This manages the mobility and session-related context within 5GS(5G System).</p>
+</div>
+<div class="section" id="ngap-6">
+<h3>NGAP <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/tree/master/src/ngap">[6]</a><a class="headerlink" href="#ngap-6" title="Permalink to this headline">¶</a></h3>
+<p>The Next-Generation Application Protocol(NGAP) is a Control Plane(CP) protocol signaling between gNB and the AMF. It handles the UE-associated and non-UE-associated services.</p>
+</div>
+<div class="section" id="sctp-7">
+<h3>SCTP <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/tree/master/src/sctp">[7]</a><a class="headerlink" href="#sctp-7" title="Permalink to this headline">¶</a></h3>
+<p>Stream Control Transmission Protocol(SCTP) ensures the transport of signaling messages among AMF and 5G-AN nodes (N2 interface).</p>
+</div>
+<div class="section" id="sbi-8">
+<h3>SBI <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/tree/master/src/sbi">[8]</a><a class="headerlink" href="#sbi-8" title="Permalink to this headline">¶</a></h3>
+<p>Service-Based Interface is the API-based communication between network functions.</p>
+</div>
+<div class="section" id="itti-message-9">
+<h3>ITTI Message <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/tree/master/src/itti">[9]</a><a class="headerlink" href="#itti-message-9" title="Permalink to this headline">¶</a></h3>
+<p>Inter Task Interface is used for sending messages between tasks.</p>
+</div>
+</div>
+<div class="section" id="call-flow">
+<h2>Call Flow<a class="headerlink" href="#call-flow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="registration-and-deregistration">
+<h3>Registration and Deregistration<a class="headerlink" href="#registration-and-deregistration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AMF first needs to register with the NRF to identify the Network Function locations and communicate with them. When the UE powers ON, it undergoes a registration process. AMF handles the registration procedure, then accepts the initial NAS UE message and the registration request. This message is needed to create an AMF identity for the UE.</p></li>
+<li><p>Then, it checks for the last AMF with which the UE is registered. And if it succeeds to find the old AMF address, the new AMF retrieves all the UE context, and a deregistration procedure is initiated against the old AMF. The old AMF requests for the release of SM context from the SMF and also requests for the release of UE context from the gNB.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/OAI_AMF2.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Process data to obtain NRF info</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Registering with NRF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Handle an NF status notification from NRF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/nas/ies/5GSRegistrationType.cpp">[10]</a> Registration Type</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Run mobility/periodic registration update procedure</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Decode registration request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle registration request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Registration reject response message</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Initialize registration accept</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Run registration procedure</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle UE registration state change</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Received Initial UE message</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handle Initial UE message</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Get NAS context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Received integrity and ciphered NAS messages</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Store NAS information in the NAS context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Find UE context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Checking for the NAS context with GUTI, AMF UE NGAP ID</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle UE-initiated deregistration process</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Delete event subscription</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Handle event exposure delete/unsubscribe</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Trigger N11 Deregistration Request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handle PDU session resource release</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handle UE context release request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> handling UE context release command</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Send UE release command to source gNB</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handle UE context release complete</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Delete gNB context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Remove UE context</p></li>
+</ul>
+</div>
+<div class="section" id="authentication-and-authorization">
+<h3>Authentication and Authorization<a class="headerlink" href="#authentication-and-authorization" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>If the new AMF didn’t get any traces of the old AMF, then it starts an authorization and authentication procedure with the UE. It handles the identification process and asks for the authentication vectors from the AUSF. Then, it sends an authentication request to the UE to setup security keys and select security algorithms in the channels to make them secure for the transfer of the data.</p></li>
+<li><p>AMF controls all the NAS DL/UL transport channels for communication.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/OAI_AMF3.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Check existing identification procedure</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Generate 5g GUTI</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/nas/ies/5GSMobilityIdentity.cpp">[9]</a> Set 5G GUTI</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_config.cpp">[2]</a> Configure GUAMI</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/nas/ies/5GSMobilityIdentity.cpp">[9]</a> Set SUCI with SUPI IMSI</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/nas/ies/5GSMobilityIdentity.cpp">[9]</a> Set IMEISV</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Check UE context with 5g-S-TMSI, if not available create a new one with RAN AMF ID</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_config.cpp">[2]</a> Configure PLMN list</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Set PLMN support list</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Verify PLMN</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Set GUTI, AMF UE NGAP ID to NAS context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Set SUPI, AMF UE NGAP ID, and RAN AMF ID to UE context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle Identity response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_config.cpp">[2]</a> Configure AUSF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Check ongoing authentication procedure</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Start authentication procedure</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle authentication failure</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> AKA confirmation from AUSF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_config.cpp">[2]</a> Configure integrity/ciphering algorithm</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Get Authentication vectors from AUSF or generate them  locally</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Authentication vector generator in UDM</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle authentication response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle authentication vector successful result</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Encode NAS message protected</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle NAS UL and DL Transport messages</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Check security header type</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Start security mode control procedure</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Select security algorithm</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Security context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle security mode reject</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle Security mode complete</p></li>
+</ul>
+</div>
+<div class="section" id="user-plane-setup">
+<h3>User Plane Setup<a class="headerlink" href="#user-plane-setup" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AMF retrieves all the AM subscription data from the UDM and requests the NSI(Network Slice Instances) information from the  NSSF to get the information about the SMF. Then, it sends an SM context setup request to the SMF to establish a default PDU session. After that, it authenticates the session and bearers to avoid data leakage. On the completion of the user plane setup procedure, AMF generates an AMF UE identity for the UE.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/OAI_AMF4.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[12]</a> Handle Access Mobility subscription data retrieval</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Get NSI information from NSSF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Discover SMF from NSI info</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Discover SMF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> SMF selection from configuration</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Handle PDU Session Create SM Context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/contexts/ue_context.cpp">[11]</a> Add/Get/find PDU session context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Create PDU session context if not available</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Send notification for the subscribed events</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Handle PDU session initial request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Handle PDU session establishment request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> send DL NAS buffer task N2</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Send UE authentication request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Generate/Update AMF UE NGAP ID</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Generate AMF profile</p></li>
+</ul>
+</div>
+<div class="section" id="context-setup-and-session-modification">
+<h3>Context Setup and Session Modification<a class="headerlink" href="#context-setup-and-session-modification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>After creating an AMF UE identity for the UE, AMF shares security capabilities, SMC messages, and registration acceptance messages under the initial context setup request with the gNB and UE.</p></li>
+<li><p>In the session modification request, AMF sends the updated session management resources to the SMF. The AMF also initiated a  session establishment request at the gNB level.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/OAI_AMF5.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handle initial context setup request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Get UE security capability</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Encode initial context setup request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Send Initial Context Setup Request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handle initial context setup response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle SMC messages</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_event.cpp">[3]</a> Subscribe to UE Registration Status</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Registration complete handle</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle registration response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle Service Request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Send PDU session update SM context request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Send PDU session Update SM context request to SMF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Get NSSAI from the PDU session context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Received modification of PDU Session Resource request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handle PDU session resource modify</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Encode PDU session resource setup request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Get the PDU session to be activated</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handle PDU Session resource procedure</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n11.cpp">[5]</a> Store corresponding info in the PDU session context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Encode DL NAS transport message</p></li>
+</ul>
+</div>
+<div class="section" id="handover-procedure">
+<h3>Handover Procedure<a class="headerlink" href="#handover-procedure" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AMF sends a paging request to the gNB.  During the handover procedure, gNB sends a handover notification to the AMF as UE changes the RAN area.  It sends the handover messages to the source gNB to direct the remaining resources from the other gNB. AMF also sends the handover request message to the target gNB for the continuation of data flow.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/OAI_AMF6.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handle paging message</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle NAS signaling establishment request(create or update NAS context)</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_app.cpp">[1]</a> Handle NAS signaling establishment message</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> handle UL/DL NAS transport message</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handling Handover required</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handle handover Notify</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handover request message to be sent to target gNB</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Send handover command message to source gNB</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Handling handover requests ACK</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n2.cpp">[6]</a> Send handover preparation failure</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Set 5G MM state</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Set 5G CM state</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle UE location change</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_event.cpp">[3]</a> Subscribe UE location report</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_event.cpp">[3]</a> UE reachability status</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle UE reachability status change</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_n1.cpp">[4]</a> Handle UE connectivity state change</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_statistics.cpp">[7]</a> Update UE info</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/blob/master/src/amf-app/amf_statistics.cpp">[7]</a> Update 5g MM state</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="AMF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

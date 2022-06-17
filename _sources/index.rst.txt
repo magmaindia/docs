@@ -10,5 +10,6 @@ Magma India Documentation!
    .. deploy/index
    labs/index
    5gLab/index
-   5gCore/index
+   Magma_5gCore/index
+   OAI_5gCore/index
    help
