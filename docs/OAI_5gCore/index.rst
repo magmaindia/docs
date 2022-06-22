@@ -5,4 +5,5 @@ OAI 5G Core
    :maxdepth: 10
 
    amf/index
+   ausf/index
 
