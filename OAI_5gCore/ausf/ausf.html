@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Authentication Server Function [1] &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="prev" title="AUSF" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">Magma 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">OAI 5G Core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../amf/index.html">AMF</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">AUSF</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Authentication Server Function [1]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-procedure">Authentication Procedure</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#sending-temporary-identifier">Sending Temporary Identifier</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#retrieving-authentication-parameters">Retrieving Authentication Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#deriving-keys">Deriving Keys</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">OAI 5G Core</a> &raquo;</li>
+        
+          <li><a href="index.html">AUSF</a> &raquo;</li>
+        
+      <li>Authentication Server Function [1]</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/OAI_5gCore/ausf/ausf.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="authentication-server-function-1">
+<h1>Authentication Server Function <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf">[1]</a><a class="headerlink" href="#authentication-server-function-1" title="Permalink to this headline">¶</a></h1>
+<img alt="Alternative text" class="align-center" src="../../_images/interface.png" />
+<p>AUSF is a Control Plane(CP) function, and as its name sounds, it manages the authentication-related procedures in the 5GS(5G System). It provides a UE authentication service to the AMF and derives cryptographic keys to protect the signaling and user plane data. It is connected with the AMF and UDM through SBI(Service Based Interface).</p>
+<div class="section" id="authentication-procedure">
+<h2>Authentication Procedure<a class="headerlink" href="#authentication-procedure" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sending-temporary-identifier">
+<h3>Sending Temporary Identifier<a class="headerlink" href="#sending-temporary-identifier" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>On receiving the registration request by the AMF, it chooses the best AUSF in the network for serving the user and initiates an authentication process in which a temporary identifier such as SUCI or 5G-GUTI and SNN(Service Network Name) is sent to the AUSF. AMF won’t be able to find the AUSF URL without NRF so the AUSF must be registered with it before the authentication starts.</p></li>
+<li><p>AMF is not involved directly in the authentication procedure, it communicates with the AUSF through SEAF(Security Anchor Function). AUSF then requests the authentication vector from the UDM. UDM converts the SUCI to SUPI, generates authentication vectors, and selects 5G AKA as the authentication procedure.</p></li>
+</ul>
+</div>
+<div class="section" id="retrieving-authentication-parameters">
+<h3>Retrieving Authentication Parameters<a class="headerlink" href="#retrieving-authentication-parameters" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The authentication data received from the UDM is used by the AUSF to derive the authentication vector, different keys, and necessary authentication parameters from the UDM. The AUSF then stores XRES(Expected Response), calculates HXRES(Hash of the Expected Response token) from it, and creates SE(Serving Environment) AV(Authentication Vector) from HE(Home Environment) AV.</p></li>
+<li><p>The AMF sends the AUTH token, HXRES in the authentication response to the SEAF. The SUPI is not sent to the SEAF in this response, it is only sent to the SEAF after the UE authentication succeeds. The SEAF stores the HXRES and sends the AUTN in an authentication request to the UE. The UE validates the AUTN by using the secret keys and if the validation succeeds, it sends the RES token to the SEAF, which is validated by the SEAF. Upon successful validation, it is last sent to the AMF, to validate RES and end up with some authentication conclusion. If the RES is valid, it derives an anchor key Kseaf to send it to the SEAF, along with the SUPI. AUSF also informs the UDM about the authentication completion.</p></li>
+</ul>
+</div>
+<div class="section" id="deriving-keys">
+<h3>Deriving Keys<a class="headerlink" href="#deriving-keys" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Upon receiving the Kseaf, the SEAF derives the Kamf(AMF Key) to send it to the AMF. SEAF also deletes the Kseaf before sending the AMF key. The AMF derives the Kamf to protect the signaling messages between the UE and AMF and Kgnb(gNB key) is derived to send it to the gNB. gNB derives the Kgnb to protect the communication that takes place between the UE and the gNB. The UE can derive all the above keys to access the network resources.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/OAI_ausf.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_nrf.cpp">[5]</a> Register to NRF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_nrf.cpp">[5]</a> send NF registration request  with NRF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_config.cpp">[4]</a> AUSF config NRF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_nrf.cpp">[5]</a> Generate AUSF profile</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_config.cpp">[4]</a> Config AUSF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_config.cpp">[4]</a> config AUSF SBI</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/api_server/model/AuthenticationInfo.cpp">[2]</a> Get Authentication info</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_config.cpp">[4]</a> AUSF config UDM</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Create authentication to send to UDM</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Send a request to UDM</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Getting parameters from UDM</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Get authentication-related info</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[1]</a> Derive Kausf</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[1]</a> Generate Vector</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[1]</a> Generate AUTN</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[1]</a> Derive SQN MS</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[1]</a> Generate RAND</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[1]</a> Generate HXRES</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Generate HXRES*</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Generating 5G AV from 5G HE AV</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Send authentication context to SEAF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Handle UE authentication</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Handle UE authentication confirmation</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Send Kseaf to SEAF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Set context id to the security context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Set SUPI to the security context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[1]</a> Derive Kseaf</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[1]</a> Derive Kamf</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[1]</a> Derive Knas</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[1]</a> Derive Kgnb</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-ausf/-/blob/master/src/ausf_app/ausf_app.cpp">[3]</a> Get info from the security context stored in AUSF</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="AUSF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
