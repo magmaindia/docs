@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Unified Data Management and Unified Data Repository &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="prev" title="UDM &amp; UDR" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">Magma 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">OAI 5G Core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../amf/index.html">AMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ausf/index.html">AUSF</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">UDM &amp; UDR</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Unified Data Management and Unified Data Repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#udm-1">UDM [1]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#udr-2">UDR [2]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-management">Data Management</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#register-context">Register Context</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#deregistration-of-functions">Deregistration of functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">OAI 5G Core</a> &raquo;</li>
+        
+          <li><a href="index.html">UDM &amp; UDR</a> &raquo;</li>
+        
+      <li>Unified Data Management and Unified Data Repository</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/OAI_5gCore/udm&udr/udm&udr.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="unified-data-management-and-unified-data-repository">
+<h1>Unified Data Management and Unified Data Repository<a class="headerlink" href="#unified-data-management-and-unified-data-repository" title="Permalink to this headline">¶</a></h1>
+<img alt="Alternative text" class="align-center" src="../../_images/udm1.png" />
+<div class="section" id="udm-1">
+<h2>UDM <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm">[1]</a><a class="headerlink" href="#udm-1" title="Permalink to this headline">¶</a></h2>
+<p>UDM(Unified Data Management) is a front-end part of the UDR which makes subscription-related data available to the different network functions at their request. It supplies the information to the network functions such as AMF, AUSF, SMF, etc. It is similar to HSS in 4G. The functions of HSS in the 5G system are split into AUSF and UDM. UDM doesn’t serve policy-related context to the PCF as PCF communicates directly to the UDR for its data.</p>
+</div>
+<div class="section" id="udr-2">
+<h2>UDR <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr">[2]</a><a class="headerlink" href="#udr-2" title="Permalink to this headline">¶</a></h2>
+<p>UDR(Unified Data Repository) is the network function that acts as a database for the 5GS(5G System). It mainly stores 4 different subscription-related information: subscription data, policy data, structured data for exposure, and application data. The subscription data is available via UDM(Unified Data Management) which acts as a front-end and serves essential services to the different network functions on request. All the network functions use UDR to store their relative data and retrieve them through request messages.</p>
+</div>
+<div class="section" id="data-management">
+<h2>Data Management<a class="headerlink" href="#data-management" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="register-context">
+<h3>Register Context<a class="headerlink" href="#register-context" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Before the registration procedure is carried out by the UE, all the network functions need to be registered with the NRF to get located by the network functions which require their services. After the registration of NFs, each NF has to register all data with the UDR. But not all the functions directly communicate with the UDR, some main NFs interact with the UDM for their data registration. UDM acts as an intermediary between NFs and UDR.</p></li>
+<li><p>UDM and UDR play an important role in authentication and authorization. It stores and generates different authentication parameters and creates authentication status which describes at what stage the authentication procedure resides. Then, the AUSF subscribed to the Authentication updates so that it does not have to request each time for any change in the parameters or any data add-ups.</p></li>
+<li><p>AMF then requests for the Access Management(AM) subscription data from the UDM, which requests to the UDR. AMF also requests the Subscriber data for the identification of the subscriber in the network and subscribed for further updates. And also send update requests of SDM(Subscriber Data Management) on modification.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/udm2.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_config.cpp">[4]</a> UDM config support features</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[3]</a> Handle AMF registration</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle create AMF context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle query AMF context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[3]</a> Handle generate authentication data request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> Generate AUTN</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> Generate KDF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> Derive Kseaf</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> Derive Kausf</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> Derive Kamf</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> Derive Knas</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> Derive Kgnb</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> Derive Kasme (Key Access Security Management Entity)</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> Generate vector</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> Derive SQN MS</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/5gaka/authentication_algorithms_with_5gaka.cpp">[2]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[3]</a> Derive Random</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[3]</a> Response data(ausf)</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[3]</a> Handle confirm Authentication(udr)</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle create authentication status</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle query authentication status</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> handle modify authentication subscription</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> handle read authentication subscription</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[3]</a> Handle Access Mobility subscription data request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle query SDM subscription</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle create SDM subscription</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle query SD subscription</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle Update SDM subscription</p></li>
+</ul>
+</div>
+<div class="section" id="deregistration-of-functions">
+<h3>Deregistration of functions<a class="headerlink" href="#deregistration-of-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>NSSF retrieves network slicing subscription data from the UDM via SBI(Service-based Interface). As AMF registered with the NRF before storing its data inside the UDR, similarly SMF carried out the same procedure and registered the data along with its non-3gpp context with the network. And on the requirement, SMF retrieves all of its data.</p></li>
+<li><p>On the deregistration procedure, all the session context and the subscription-related data are removed from the UDR. The authentication-related parameters and status update algorithm are also deleted in this process.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/udm3.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[3]</a> Handle slice selection subscription data retrieval</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle query SMF registration</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle query SMF registration list</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle create SMF context non-3gpp</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle query SM data</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle query SMF select data</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[3]</a> Handle session management subscription data retrieval</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[3]</a> Handle subscription creation</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle delete SMF context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle remove SDM subscription</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udm/-/blob/master/src/udm_app/udm_app.cpp">[3]</a> Handle delete authentication</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-udr/-/blob/master/src/udr_app/udr_app.cpp">[1]</a> Handle delete authentication status</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="UDM &amp; UDR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
