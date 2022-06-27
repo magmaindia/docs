@@ -6,4 +6,4 @@ OAI 5G Core
 
    amf/index
    ausf/index
-
+   udm&udr/index
