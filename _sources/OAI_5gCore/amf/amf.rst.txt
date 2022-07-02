@@ -40,6 +40,11 @@ N22
 
 AMF selects the best Network Functions (NF) across the network with the help of NSSF. NSSF provides the network functions location to the AMF over the N22 interface.
 
+SBI `[8] <https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/tree/master/src/sbi>`_
+-------
+
+Service-Based Interface is the API-based communication between network functions.
+
 Protocols
 =======
 
@@ -57,11 +62,6 @@ SCTP `[7] <https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/tree/master/src/sct
 -------
 
 Stream Control Transmission Protocol(SCTP) ensures the transport of signaling messages among AMF and 5G-AN nodes (N2 interface). 
-
-SBI `[8] <https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/tree/master/src/sbi>`_
--------
-
-Service-Based Interface is the API-based communication between network functions.
 
 ITTI Message `[9] <https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-amf/-/tree/master/src/itti>`_
 -------

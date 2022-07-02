@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Session Management Function [1] &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="UDM &amp; UDR" href="../udm%26udr/index.html" />
+    <link rel="prev" title="SMF" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">Magma 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">OAI 5G Core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../amf/index.html">AMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ausf/index.html">AUSF</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">SMF</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Session Management Function [1]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interface">Interface</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#n1-6">N1 [6]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n2-7">N2 [7]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n4-8">N4 [8]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n11">N11</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#n10">N10</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sbi-9">SBI [9]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#protocols">Protocols</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#nas-2">NAS [2]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ngap-3">NGAP [3]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pfcp-4">PFCP [4]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#udp-5">UDP [5]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#itti-message-10">ITTI Message [10]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#call-flow">Call Flow</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#session-establishment">Session Establishment</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#session-modification">Session Modification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#session-release">Session Release</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#handover-handling">Handover Handling</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../udm%26udr/index.html">UDM &amp; UDR</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">OAI 5G Core</a> &raquo;</li>
+        
+          <li><a href="index.html">SMF</a> &raquo;</li>
+        
+      <li>Session Management Function [1]</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/OAI_5gCore/smf/smf.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="session-management-function-1">
+<h1>Session Management Function <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf">[1]</a><a class="headerlink" href="#session-management-function-1" title="Permalink to this headline">¶</a></h1>
+<img alt="Alternative text" class="align-center" src="../../_images/OAI_smf.png" />
+<p>SMF is a Control Plane(CP) function that manages the session-related context with the UPF. It creates, updates, and removes sessions. It also allocates the IP addresses to each PDU session. SMF provides all the session parameters and supports the functions of UPF. SMF functions are collectively performed by MME, SGW-U, and PGW-U in the 4G System. This NF enables CUPS(Control and User Plane Separation) which decentralized the control plane and data forwarding components of the 4G System. It obtained all the rules and policies from the PCF through the N7 interface and routed them to UPF to execute them in the respective sessions.</p>
+<div class="section" id="interface">
+<h2>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="n1-6">
+<h3>N1 <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n1.cpp">[6]</a><a class="headerlink" href="#n1-6" title="Permalink to this headline">¶</a></h3>
+<p>All the connections and session-related information between UE and AMF are transmitted over the N1 interface. SMF transmits all the session parameters to the UE and gNB via AMF.</p>
+</div>
+<div class="section" id="n2-7">
+<h3>N2 <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n2.cpp">[7]</a><a class="headerlink" href="#n2-7" title="Permalink to this headline">¶</a></h3>
+<p>Session parameters and context are transmitted from the AMF to the gNB over the N2 interface. SMF sends the Session-related parameters to the AMF to setup the user plane resource at gNB and UE.</p>
+</div>
+<div class="section" id="n4-8">
+<h3>N4 <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[8]</a><a class="headerlink" href="#n4-8" title="Permalink to this headline">¶</a></h3>
+<p>Session Management context and necessary parameters are transmitted to the UPF(User Plane Function) from the SMF, once the user plane is setup.</p>
+</div>
+<div class="section" id="n11">
+<h3>N11<a class="headerlink" href="#n11" title="Permalink to this headline">¶</a></h3>
+<p>This is the interface between AMF and SMF. All the session resources required by the gNB and UE is transfer via AMF through this interface.</p>
+</div>
+<div class="section" id="n10">
+<h3>N10<a class="headerlink" href="#n10" title="Permalink to this headline">¶</a></h3>
+<p>SMF retrieves all the SM subscription data from the UDM through this interface. SMF also stores ongoing PDU session records in the UDM.</p>
+</div>
+<div class="section" id="sbi-9">
+<h3>SBI <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_sbi.cpp">[9]</a><a class="headerlink" href="#sbi-9" title="Permalink to this headline">¶</a></h3>
+<p>Service-Based Interface is the API-based communication between network functions.</p>
+</div>
+</div>
+<div class="section" id="protocols">
+<h2>Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nas-2">
+<h3>NAS <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/tree/master/src/nas">[2]</a><a class="headerlink" href="#nas-2" title="Permalink to this headline">¶</a></h3>
+<p>The 5G NAS(Non-Access Stratum) is a control plane protocol that is present at the radio interface(N1 interface) between UE and AMF. This manages the mobility and session-related context within 5GS(5G System).</p>
+</div>
+<div class="section" id="ngap-3">
+<h3>NGAP <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/tree/master/src/ngap">[3]</a><a class="headerlink" href="#ngap-3" title="Permalink to this headline">¶</a></h3>
+<p>The Next-Generation Application Protocol(NGAP) is a Control Plane(CP) protocol signaling between gNB and the AMF. It handles the UE-associated and non-UE-associated services such as handover, sending session-related context, etc.</p>
+</div>
+<div class="section" id="pfcp-4">
+<h3>PFCP <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/tree/master/src/pfcp">[4]</a><a class="headerlink" href="#pfcp-4" title="Permalink to this headline">¶</a></h3>
+<p>Any kind of communication between SMF and UPF is managed by the PFCP(Packet Forwarding Control Protocol). It is one of the main protocols that separates the User Plane and Control Plane.</p>
+</div>
+<div class="section" id="udp-5">
+<h3>UDP <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/tree/master/src/udp">[5]</a><a class="headerlink" href="#udp-5" title="Permalink to this headline">¶</a></h3>
+<p>User Datagram Protocol is a transport layer protocol, providing source and destination port addressing for the multiplexing/demultiplexing of higher-layer applications. This is the protocol responsible for the data transmission between gNB and UPF.</p>
+</div>
+<div class="section" id="itti-message-10">
+<h3>ITTI Message <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/tree/master/src/itti">[10]</a><a class="headerlink" href="#itti-message-10" title="Permalink to this headline">¶</a></h3>
+<p>Inter Task Interface is used for sending messages between tasks.</p>
+</div>
+</div>
+<div class="section" id="call-flow">
+<h2>Call Flow<a class="headerlink" href="#call-flow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="session-establishment">
+<h3>Session Establishment<a class="headerlink" href="#session-establishment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>At first, SMF registers with the NRF to locate the other Network Functions in the network. If the user wants to access 5G data facilities, it has to setup a PDU session with the network. UE sends PDU session establishment requests to the Core Network i.e. to the AMF. Then, AMF chooses the best SMF in the network to maintain its session-related information.</p></li>
+<li><p>On selecting the best SMF, it requests the SMF to create an SM context. SMF retrieves SM subscription data from the UDM and generates an SM context. After that, SMF starts the N4 session establishment procedure with the UPF and setup default values for session-related parameters. Then, SMF sends the session information to the gNB and UE via AMF to establish default PDU Session values.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/smf11.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Start NF registration discovery</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_sbi.cpp">[6]</a> Send Registration to NRF</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Handle NF status notification(nrf)</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> generate SMF profile</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Trigger NF registration request(n11)</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> N11 register NF instance response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle service request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_procedure.cpp">[7]</a> Create SM context request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU session create SM context request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Verify SM context request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Retrieve SM Subscription data from udm</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Get SM subscription data</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_sbi.cpp">[6]</a> Get SM data</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Generate SMF context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Trigger Session create SM context response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> N11 create SM context response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Handle receive N4 association setup request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Start UPF association(n4 association setup request)</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Receive PFCP msg</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Generate SEID</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Get PDU Session</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Get default QoS flow description</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Get default QoS rule</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Get default QoS</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Get Session AMBR</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Add QoS rule</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Handle receive N4 association setup response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_procedure.cpp">[7]</a> N4 Session establishment response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n1.cpp">[3]</a> Create N1 PDU Session establishment reject</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_sbi.cpp">[6]</a> Send N1N2 message transfer request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> N1N2 message transfer response status</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n1.cpp">[3]</a> Create N1 PDU Session establishment accept</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Handle receive session establishment response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n2.cpp">[4]</a> Create N2 PDU Session resource setup request transfer</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU Session resource setup response transfer</p></li>
+</ul>
+</div>
+<div class="section" id="session-modification">
+<h3>Session Modification<a class="headerlink" href="#session-modification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>On the first data transmission, AMF update the session management context to the SMF. SMF then sends a session modification request to the UPF and registered the modified session context to the UDM. On the completion of session modification, SMF sends a confirmation response and also notifies SM context status to the AMF. The response message also contains the necessary parameters to update the session information at the gNB and UE.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/smf21.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_procedure.cpp">[7]</a> Update SM context request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU Session update SM context request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU Session modification network requested</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Handle receive N4 association update request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> trigger PDU session modification</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU session modification request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU session modification command reject</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Add PDU Session</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Update QoS info</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> update QoS rule</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Restore N4 session</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_procedure.cpp">[7]</a> N4 Session modification response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU Session resource modify response transfer</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> handle receive session modification response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Generate an SMF context Id and store the corresponding information</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> DNN SNSSAI subscription data</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Insert DNN Subscription</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Trigger session update SM context response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> N11 update SM context response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU session modification complete</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Update PDU Session status</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle SM context status change</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_sbi.cpp">[6]</a> Send SM context status notification</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n2.cpp">[4]</a> Create N2 PDU Session resource modify request transfer</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n1.cpp">[3]</a> Create N1 PDU Session modification command</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle UE IP change</p></li>
+</ul>
+</div>
+<div class="section" id="session-release">
+<h3>Session Release<a class="headerlink" href="#session-release" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>During deregistration, AMF requests for the release of SM context from the SMF. On receiving the request, SMF initiates a session release procedure with the UPF. After the deletion of the session, SMF sends a session release response to the AMF along with the release command of session-related parameters and resources at the UE and gNB levels.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/smf31.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Trigger NF deregistration(n11)</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU Session release SM context request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_procedure.cpp">[7]</a> Release SM context request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Delete SMF context</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU Session release request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Send release request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Remove PDU Session</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Handle receive session deletion response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> N4 Session deletion response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU session release complete</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Handle receive N4 association release response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n1.cpp">[3]</a> Create N1 PDU Session release reject</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> Trigger session release SM context response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> N11 release SM context response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n2.cpp">[4]</a> Create N2 PDU Session resource release command transfer</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle PDU session resource release response transfer</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n1.cpp">[3]</a> create N1 PDU Session release command</p></li>
+</ul>
+</div>
+<div class="section" id="handover-handling">
+<h3>Handover Handling<a class="headerlink" href="#handover-handling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>SMF keeps on sending heartbeat requests at a regular interval of time to the UPF to check the UPF availability in the network. When UE enters a new cell, gNB starts a handover procedure. During Handover, if the user is accessing 5G Data Plane resources, a session transfer request is sent to the SMF. SMF reports any issue if there occurs during session handover otherwise, it acknowledges the path switch and continues sending the remaining data.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/smf41.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Handle heartbeat request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Handle receive heartbeat response</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle HO preparation request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle HO Cancellation</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> Handle HO Execution</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_app.cpp">[1]</a> <a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_context.cpp">[2]</a> N4 Session Report request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n4.cpp">[5]</a> Handle receive session report request</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n2.cpp">[4]</a> Create N2 path switch request ack</p></li>
+<li><p><a class="reference external" href="https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-smf/-/blob/master/src/smf_app/smf_n2.cpp">[4]</a> Create N2 Handover command transfer</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../udm%26udr/index.html" class="btn btn-neutral float-right" title="UDM &amp; UDR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="SMF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
