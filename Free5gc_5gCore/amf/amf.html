@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Access and Mobility Management Function [1] &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="prev" title="AMF" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">Magma 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OAI_5gCore/index.html">OAI 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">FREE5GC 5G Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">AMF</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Access and Mobility Management Function [1]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#protocols">Protocols</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#nas-2">NAS [2]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ngap-3">NGAP [3]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sbi-4">SBI [4]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#call-flow">Call Flow</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#registration">Registration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#deregistration">Deregistration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#authorization-authentication">Authorization &amp; Authentication</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pdu-session-establishment-modification">PDU Session Establishment/ Modification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#registration-with-amf-re-allocation">Registration with AMF Re-allocation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mobility-management">Mobility Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">FREE5GC 5G Core</a> &raquo;</li>
+        
+          <li><a href="index.html">AMF</a> &raquo;</li>
+        
+      <li>Access and Mobility Management Function [1]</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/Free5gc_5gCore/amf/amf.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="access-and-mobility-management-function-1">
+<h1>Access and Mobility Management Function <a class="reference external" href="https://github.com/free5gc/amf">[1]</a><a class="headerlink" href="#access-and-mobility-management-function-1" title="Permalink to this headline">¶</a></h1>
+<img alt="Alternative text" class="align-center" src="../../_images/amf1.png" />
+<p>AMF(Access and Mobility Management Function) is a Control Plane(CU) function in the 5G Core Network(CN). gNodeB first needs to connect with AMF to access any 5G services. AMF is the only Network Function(NF) through which gNB communicates with the 5G Core(excluding interaction with the UPF(User Plane Function) during the PDU Session Establishment).</p>
+<div class="section" id="protocols">
+<h2>Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nas-2">
+<h3>NAS <a class="reference external" href="https://github.com/free5gc/amf/tree/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/nas">[2]</a><a class="headerlink" href="#nas-2" title="Permalink to this headline">¶</a></h3>
+<p>The 5G NAS(Non-Access Stratum) is a control plane protocol that is present at the radio interface(N1 interface) between UE and AMF. This manages the mobility and session-related context within 5GS(5G System).</p>
+</div>
+<div class="section" id="ngap-3">
+<h3>NGAP <a class="reference external" href="https://github.com/free5gc/amf/tree/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap">[3]</a><a class="headerlink" href="#ngap-3" title="Permalink to this headline">¶</a></h3>
+<p>The Next-Generation Application Protocol(NGAP) is a Control Plane(CP) protocol signaling between gNB and the AMF. It handles the UE-associated and non-UE-associated services.</p>
+</div>
+<div class="section" id="sbi-4">
+<h3>SBI <a class="reference external" href="https://github.com/free5gc/amf/tree/main/internal/sbi">[4]</a><a class="headerlink" href="#sbi-4" title="Permalink to this headline">¶</a></h3>
+<p>A service-Based Interface is an API-based communication between network functions.</p>
+</div>
+</div>
+<div class="section" id="call-flow">
+<h2>Call Flow<a class="headerlink" href="#call-flow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="registration">
+<h3>Registration<a class="headerlink" href="#registration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When UE wants to access 5G services, it undergoes a registration process. gNB sends registration requests along with an initial UE message to AMF. AMF uses this information to identify UE in the network. Then, it checks for the last AMF with which the UE is registered, and if it succeeds to find the old AMF address, the new AMF request for the UE context procedure.</p></li>
+<li><p>AMF authenticates UE and also at the same, the network initiates the deregistration process against the old AMF. AMF also requests for a UE radio capability check from the UE to be aware of all the details of its capabilities. It stores this information for future requirements. It also retrieves all the subscriber-related data from UDM and session-related subscriber data from SMF.</p></li>
+<li><p>It also creates Access Management Policies with PCF and after retrieving all the necessary information, it creates UE context. It allocates UE with an id known as AMF UE NGAP ID to identify it from a pool of UEs. Then, it sends a registration confirmation message with an initial context setup message.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/registration.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Initial Registration</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Registration Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/amf_ran.go">[1]</a> Set RAN ID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build registration reject</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send Registration Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go">[37]</a> Handle UE Context Transfer Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/communication.go">[23]</a> UE Context Transfer Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go">[37]</a> <a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> UE Context Transfer Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_individual_ue_context_document.go">[15]</a> HTTP UE Context Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_individual_ue_context_document.go">[15]</a> HTTP Registration Status Update</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/communication.go">[23]</a> Registration Status Update/Registration Complete Notify</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go">[37]</a> Handle Registration Status Update Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go">[37]</a> Registration Status Update Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build UE Radio Capability Check Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send UE Radio Capability Check Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/amf_ue.go">[2]</a> Copy data from the UE Context model</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/sm_context.go">[5]</a> Set User Location</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/context.go">[3]</a> Add AMF UE to the UE pool</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> store Last Visited Registered TAI</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/sm_context.go">[5]</a> Set PLMN ID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/sm_context.go">[5]</a> Set SNSSAI</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Requested NSSAI</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/nsselection.go">[25]</a> NS Selection Get For Registration</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/subscriber_data_management.go">[38]</a> SDM Get Slice Selection Subscription Data</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/ue_context_management.go">[28]</a> UE CM Registration</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/subscriber_data_management.go">[38]</a> SDM Get AM Data</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/subscriber_data_management.go">[38]</a> SDM Subscribe</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/subscriber_data_management.go">[38]</a> SDM Get SMF Select Data</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/amf_ue.go">[2]</a> Store SM context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/am_policy.go">[22]</a> AM Policy Control Create</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/communication.go">[23]</a> Build AM Policy Request Triggers</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/oam.go">[36]</a> Build UE Context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_individual_ue_context_document.go">[15]</a> HTTP creates UE Context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/communication.go">[23]</a> Create UE Context Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go">[37]</a> Handle Create UE Context Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go">[37]</a> Create UE Context Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/context.go">[3]</a> Allocate AMF UE NGAP ID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Initial Context Setup Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Initial Context Setup Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Registration accept</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send Registration Accept</p></li>
+</ul>
+</div>
+<div class="section" id="deregistration">
+<h3>Deregistration<a class="headerlink" href="#deregistration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>2 types of deregistration processes occur, first when UE does not want to access the 5GS any longer and second when the network informs UE that it cannot access 5GS any longer. In this flow chart, the UE-initiated deregistration process is initiated. At first, AMF requests for the release of SM context along with resource release messages to the SMF. Then it deregisters with UDM, unsubscribes SDM notification, and also terminates the AM policies, it is created in the context of UE.</p></li>
+<li><p>After deregistration confirmation by the AMF, it unsubscribes the N1N2 message notification and releases the UE context. Then, it removes the UE from the AMF UE pool.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/deregistration.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/ue_context_management.go">[28]</a> UE CM Deregistration</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Deregistration Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Deregistration Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send Deregistration Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Build Release SM Context Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Send Release SM Context Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build PDU Session Release Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send PDU Session Resource Release Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/ue_context_management.go">[28]</a> SDM Unsubscribe</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/common/user_profile.go">[6]</a> Purge Subscriber Data</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/httpcallback/api_am_policy_control_update_notify.go">[29]</a> HTTP AM Policy Control Update Notify Terminate</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/callback.go">[34]</a> Handle Am Policy Control Update Notify Terminate</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/callback.go">[34]</a> Am Policy Control Update Notify Terminate Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/amf_ue.go">[2]</a> Remove AM Policy Association</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Deregistration Accept</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Deregistration Accept</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send Deregistration Accept</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/n1n2message.go">[35]</a> Handle N1N2 Message Unsubscribe Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_n1_n2_individual_subscription_document.go">[16]</a> HTTP N1N2 Message UnSubscribe</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/n1n2message.go">[35]</a> N1N2 Message UnSubscribe Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build UE Context Release Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send UE Context Release Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go">[37]</a> Release UE Context Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go">[37]</a> Handle Release UE Context Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_individual_ue_context_document.go">[15]</a> HTTP Release UE Context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/communication.go">[23]</a> Release UE Context Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/common/user_profile.go">[6]</a> Remove AMF UE</p></li>
+</ul>
+</div>
+<div class="section" id="authorization-authentication">
+<h3>Authorization &amp; Authentication<a class="headerlink" href="#authorization-authentication" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>After UE context transfer between AMFs, AMF initiates authorization and authentication procedure with the UE. It handles the identification process and asks for the authentication-related parameters from the AUSF. Then, it sends an authentication request to the UE to setup security keys and select security algorithms in the channels to make them secure for the transfer of the data. AMF builds protected NAS UL and DL transport channels before any type of communication between UE, gNB, and AMF.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/authentication.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Identity Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send Identity Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> <a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build DL NAS Transport</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> <a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send DL NAS Transport</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Identity Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle UL NAS Transport</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/sm_context.go">[5]</a> Store/Delete UL NAS Transport</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Authentication Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> <a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/ue_authentication.go">[27]</a> Send Authentication Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Authentication Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send Authentication Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Authentication Error</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Authentication Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send Authentication Accept</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/context.go">[3]</a> Allocate GUTI to UE</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/amf_ue.go">[2]</a> Derive algorithm key</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/amf_ue.go">[2]</a> Derive NH(Next Hop)</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/amf_ue.go">[2]</a> Derive Kamf</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/ue_authentication.go">[27]</a> Send AUTH 5G AKA Confirm Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/ue_authentication.go">[27]</a> Send EAP AUTH Confirm Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Authentication Result</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Authentication Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/nas/nas_security/security.go">[11]</a> Encode/Decode NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Authentication Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Security Mode Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send SMC</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/amf_ue.go">[2]</a> Selecting Security Algorithm(Integrity &amp; encryption)</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/util/init_context.go">[10]</a> Get Integrity and Encryption Algorithm Order</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Security Mode Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Security Mode Complete</p></li>
+</ul>
+</div>
+<div class="section" id="pdu-session-establishment-modification">
+<h3>PDU Session Establishment/ Modification<a class="headerlink" href="#pdu-session-establishment-modification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>During UE undergoes the registration procedure, it set up a user plane for UE to access 5G data services. It selects the best SMF which can serve the best possible session services to the UE. It requests the creation of SM context to the SMF and also subscribes to the SDM.</p></li>
+<li><p>When UE wants to access 5G data, it sends a service request to the AMF, AMF then sends the modification request of SM context to the SMF which further sends the PDU session modification request to the UPF. AMF accordingly updates the UE context and passes the updated parameters and information to the gNB and UE to reconfigure its base.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/session.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Select SMF</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/sm_context.go">[5]</a> Set SMF URI</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/sm_context.go">[5]</a> Set SMF ID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Build Create SM Context Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Send Create SM Context Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/callback.go">[34]</a> Handle SM Context Status Notify</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/httpcallback/api_sm_context_status_notify.go">[31]</a> HTTP SM Context Status Notify</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/callback.go">[34]</a> SM Context Status Notify Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build PDU Session Resource Setup Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send PDU Session Resource Setup Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/subscriber_data_management.go">[38]</a> SDM Get AM Data</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/subscriber_data_management.go">[38]</a> SDM Subscribe</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Service Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Forward 5G SM Message To SMF</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Transport 5G SM Message</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Forward 5G SM Message To SMF</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Transport 5G SM Message</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Service Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send Service Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/nsselection.go">[25]</a> NS Selection Get For PDU Session</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/httpcallback/api_am_policy_control_update_notify.go">[29]</a> HTTP AM Policy Control Update Notify Update</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/callback.go">[34]</a> Handle AM Policy Control Update Notify Update</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/callback.go">[34]</a> AM Policy Control Update Notify Update Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Send Update SM Context Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build PDU Session Resource Modify Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send PDU Session Resource Modify Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/sm_context.go">[5]</a> Set PDU Session ID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build PDU Session Resource Modify Confirm</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send PDU Session Resource Modify Confirm</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build UE Context Modification Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send UE Context Modification Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/callback/n1n2message.go">[32]</a> Send N1N2 Transfer Failure Notification</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/n1n2message.go">[35]</a> Handle N1N2 Message Transfer Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_n1_n2_message_collection_document.go">[17]</a> HTTP N1N2 Message Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/n1n2message.go">[35]</a> N1 N2 Message Transfer Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/n1n2message.go">[35]</a> Handle N1N2 Message Transfer Status Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_n1_n2_message_collection_document.go">[17]</a> N1N2 Message Transfer status</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/n1n2message.go">[35]</a> N1N2 Message Transfer Status Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Service Accept</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> <a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Send Service Accept</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/n1n2message.go">[35]</a> Handle N1N2 Message Subscribe Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/n1n2message.go">[35]</a> N1N2 Message Subscribe Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_n1_n2_subscriptions_collection_for_individual_ue_contexts_document.go">[18]</a> <a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_n1_n2_subscriptions_collection_for_individual_ue_contexts_document.go">[19]</a> <a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_n1_n2_subscriptions_collection_for_individual_ue_contexts_document.go">[20]</a> HTTP N1N2 Message Subscribe</p></li>
+</ul>
+</div>
+<div class="section" id="registration-with-amf-re-allocation">
+<h3>Registration with AMF Re-allocation<a class="headerlink" href="#registration-with-amf-re-allocation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When an AMF receives a registration request, it may reroute the request to another AMF because of many reasons. For example, maybe the initial AMF is the right AMF to serve the UE. The registration with AMF re-allocation procedure is used to reroute the NAS message of the UE to the target AMF during the registration procedure.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/amfReallocation.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Initial Registration</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/nf_discovery.go">[24]</a> Send Search NF Instances</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/nf_discovery.go">[24]</a> Search UDM SDM Instance</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/nf_discovery.go">[24]</a> Search NSSF NS Selection Instance</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/nf_discovery.go">[24]</a> Search AMF Communication Instance</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_individual_ue_context_document.go">[15]</a> HTTP Registration Status Update</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/communication.go">[23]</a> Registration Status Update/Registration Complete Notify</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go">[37]</a> Handle Registration Status Update Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go">[37]</a> Registration Status Update Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/nrf/blob/35bbb553b90188d8d195a16e8fcb686dd440a8f0/internal/sbi/producer/nf_discovery.go">[39]</a> Handle NF Discovery Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/nrf/blob/35bbb553b90188d8d195a16e8fcb686dd440a8f0/internal/sbi/producer/nf_discovery.go">[39]</a> NF Discovery Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/callback/n1n2message.go">[32]</a> Send N1 Message Notify At AMF ReAllocation</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/httpcallback/api_n1_message_notify.go">[30]</a> HTTP N1 Message Notify</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Reroute Nas Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Reroute Nas Request</p></li>
+</ul>
+</div>
+<div class="section" id="mobility-management">
+<h3>Mobility Management<a class="headerlink" href="#mobility-management" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When UE mobilizes to other regions, based on the UE measurement report, gNB sends the handover request to the AMF. AMF acknowledges the handover request and notifies the N2 handover to the target gNB. Then, the initial gNB sends the path switch request to the AMF. AMF updates the SM context handover and acknowledges the path switch message.</p></li>
+<li><p>Based on the changes, AMF decides whether UE needs reconfiguration or it should re-register with the AMF again. Then, the AMF initiates the Configuration Update procedure when it observes a change in the configuration that was previously sent to a UE.  As a response, UE acknowledges the request and sends the completion of the configuration updates to the AMF.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/mobility.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Handover Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Handover Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Handover Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Handover Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Handover Preparation Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Handover Preparation Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Handover Cancel Acknowledge</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Handover Cancel Acknowledge</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/context/ran_ue.go">[4]</a> Update Location</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Location Reporting Control</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Location Reporting Control</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Mobility And Periodic Registration Updating</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Status 5G MM</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Status 5G MM</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send Status 5G MM</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/callback/ue_context.go">[33]</a> Send N2 Info Notify N2 Handover</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Path Switch Request Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Path Switch Request Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Send Update SM Context Xn Handover</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Send Update SM Context Xn Handover Failed</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Send Update SM Context Handover Between AMF</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Send Update SM Context Handover Between Access Type</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Send Update SM Context N2 Handover Preparing</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Send Update SM Context N2 Handover Canceled</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go">[26]</a> Send Update SM Context N2 Handover Complete</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Path Switch Request Acknowledge</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Path Switch Request Acknowledge</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Downlink RAN Configuration Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Downlink RAN Configuration Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Downlink RAN Status Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Downlink RAN Status Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build RAN Configuration Update Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send RAN Configuration Update Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build RAN Configuration Update Acknowledge</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send RAN Configuration Update Acknowledge</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/build.go">[7]</a> Build Configuration Update Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go">[8]</a> Send Configuration Update Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Downlink UE Associated NRPPa Transport</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Downlink UE Associated NRPPa Transport</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build Downlink Non-UE Associated NRPPA Transport</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send Downlink Non-UE Associated NRPPA Transport</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/handler.go">[9]</a> Handle Configuration Update Complete</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go">[12]</a> Build AMF Configuration Update</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go">[13]</a> Send AMF Configuration Update</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="AMF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
