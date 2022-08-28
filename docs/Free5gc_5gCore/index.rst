@@ -5,3 +5,4 @@ FREE5GC 5G Core
    :maxdepth: 10
 
    amf/index
+   smf/index
