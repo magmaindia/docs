@@ -301,17 +301,46 @@ Registration with AMF Re-allocation
 - `[12] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go>`_ Build Reroute Nas Request
 - `[13] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go>`_ Send Reroute Nas Request
 
-Mobility Management
+Xn-based Inter NG-RAN Handover
 -------
 
-* When UE mobilizes to other regions, based on the UE measurement report, gNB sends the handover request to the AMF. AMF acknowledges the handover request and notifies the N2 handover to the target gNB. Then, the initial gNB sends the path switch request to the AMF. AMF updates the SM context handover and acknowledges the path switch message.
+* When UE moves to other regions, based on the UE measurement report, the Source gNB sends the handover request to the Target gNB. Then, S-RAN forwards DL data to the T-RAN. T-RAN sends path switch requests to the AMF and continues to send UL data to the UPF. AMF then sends an SM modification request to the SMF to initiate a session handover procedure at the UPF. To avoid the delay in the forwarding of data, UPF continues to forward end-marker data packets to the S-RAN which transfers the packets towards T-RAN. After, a successful handover, T-RAN initiates the UE context release procedure in the S-RAN.
 
-* Based on the changes, AMF decides whether UE needs reconfiguration or it should re-register with the AMF again. Then, the AMF initiates the Configuration Update procedure when it observes a change in the configuration that was previously sent to a UE.  As a response, UE acknowledges the request and sends the completion of the configuration updates to the AMF.
-
-
-.. image:: photos/mobility.png
+.. image:: photos/XnHandover.png
   :alt: Alternative text
 
+- `[12] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go>`_ Build Path Switch Request Failure
+- `[13] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go>`_ Send Path Switch Request Failure
+ 
+- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context Xn Handover
+- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context Xn Handover Failed
+ 
+- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context N2 Handover Preparing
+- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context N2 Handover Canceled
+- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context N2 Handover Complete
+ 
+- `[12] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go>`_ Build Path Switch Request Acknowledge
+- `[13] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go>`_ Send Path Switch Request Acknowledge
+
+Inter NG RAN Node N2-based Handover
+-------
+
+* Due to the relocation of UE, along with the change in the serving RAN, there may be a handover of AMF. The serving AMF selects the appropriate AMF to serve the UE in that region. Then, it transfers the UE context to the T-AMF(Target AMF) for registration. T-AMF sends an update SM Context Handover message to the SMF to update the serving AMF context. 
+
+* T-AMF then sends a handover request to the T-RAN(Target RAN) and also notifies the S-RAN(Source RAN) about the N2 Handover.
+
+.. image:: photos/amfHandover.png
+  :alt: Alternative text
+
+- `[36] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/oam.go>`_ Build UE Context
+- `[15] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/communication/api_individual_ue_context_document.go>`_ HTTP creates UE Context
+- `[23] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/communication.go>`_ Create UE Context Request
+- `[37] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go>`_ Handle Create UE Context Request
+- `[37] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/ue_context.go>`_ Create UE Context Procedure
+
+- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context Handover Between AMF
+- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context Handover Between Access Type
+ 
 - `[12] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go>`_ Build Handover Request
 - `[13] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go>`_ Send Handover Request
  
@@ -333,23 +362,15 @@ Mobility Management
 - `[8] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/gmm/message/send.go>`_ Send Status 5G MM
  
 - `[33] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/producer/callback/ue_context.go>`_ Send N2 Info Notify N2 Handover
- 
-- `[12] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go>`_ Build Path Switch Request Failure
-- `[13] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go>`_ Send Path Switch Request Failure
- 
-- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context Xn Handover
-- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context Xn Handover Failed
- 
-- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context Handover Between AMF
-- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context Handover Between Access Type
- 
-- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context N2 Handover Preparing
-- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context N2 Handover Canceled
-- `[26] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/sbi/consumer/sm_context.go>`_ Send Update SM Context N2 Handover Complete
- 
-- `[12] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go>`_ Build Path Switch Request Acknowledge
-- `[13] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go>`_ Send Path Switch Request Acknowledge
- 
+
+Configuration Update
+-------
+
+* Based on the changes, AMF decides whether UE needs reconfiguration or it should re-register with the AMF again. Then, the AMF initiates the Configuration Update procedure when it observes a change in the configuration that was previously sent to a UE.  As a response, UE acknowledges the request and sends the completion of the configuration updates to the AMF.
+
+.. image:: photos/configuration.png
+  :alt: Alternative text
+
 - `[12] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/build.go>`_ Build Downlink RAN Configuration Transfer
 - `[13] <https://github.com/free5gc/amf/blob/a3bd5358ec55215e2b2f86f7744609f17bbc6991/internal/ngap/message/send.go>`_ Send Downlink RAN Configuration Transfer
  
