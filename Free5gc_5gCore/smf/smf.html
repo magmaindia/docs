@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Session Management Function [1] &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="OPEN5GS 5G CORE" href="../../Open5gs_5gCore/index.html" />
+    <link rel="prev" title="SMF" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">Magma 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OAI_5gCore/index.html">OAI 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">FREE5GC 5G Core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../amf/index.html">AMF</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">SMF</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Session Management Function [1]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#protocols">Protocols</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#pfcp-2">PFCP [2]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#udp-3">UDP [3]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sbi-service-based-interface-4">SBI(Service-based Interface) [4]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#call-flow">Call Flow</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#session-establishment">Session Establishment</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#session-modification">Session Modification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#session-release">Session Release</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#addition-of-additional-psa-and-bp-or-ul-cl">Addition of additional PSA and BP or UL CL</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#handover-procedure">Handover Procedure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Open5gs_5gCore/index.html">OPEN5GS 5G CORE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">FREE5GC 5G Core</a> &raquo;</li>
+        
+          <li><a href="index.html">SMF</a> &raquo;</li>
+        
+      <li>Session Management Function [1]</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/Free5gc_5gCore/smf/smf.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="session-management-function-1">
+<h1>Session Management Function <a class="reference external" href="https://github.com/free5gc/smf/tree/de70bf6cffa14eae582373e5010c8695dffb2f8d">[1]</a><a class="headerlink" href="#session-management-function-1" title="Permalink to this headline">¶</a></h1>
+<img alt="Alternative text" class="align-center" src="../../_images/smf.png" />
+<p>SMF is a Control Plane(CP) function that manages the session-related context with the UPF. It creates, updates, and removes sessions. It also allocates the IP addresses to each PDU session. SMF provides all the session parameters and supports the functions of UPF. SMF functions are collectively performed by MME, SGW-U, and PGW-U in the 4G System. This NF enables CUPS(Control and User Plane Separation) which decentralized the control plane and data forwarding components of the 4G System. It obtained all the rules and policies from the PCF through the N7 interface and routed them to UPF to execute them in the respective sessions.</p>
+<div class="section" id="protocols">
+<h2>Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pfcp-2">
+<h3>PFCP <a class="reference external" href="https://github.com/free5gc/smf/tree/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp">[2]</a><a class="headerlink" href="#pfcp-2" title="Permalink to this headline">¶</a></h3>
+<p>Any kind of communication between SMF and UPF is managed by the PFCP(Packet Forwarding Control Protocol). It is one of the main protocols that separates the User Plane and Control Plane.</p>
+</div>
+<div class="section" id="udp-3">
+<h3>UDP <a class="reference external" href="https://github.com/free5gc/smf/tree/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/udp">[3]</a><a class="headerlink" href="#udp-3" title="Permalink to this headline">¶</a></h3>
+<p>User Datagram Protocol is a transport layer protocol, providing source and destination port addressing for the multiplexing/demultiplexing of higher-layer applications. This is the protocol responsible for the data transmission between gNB and UPF.</p>
+</div>
+<div class="section" id="sbi-service-based-interface-4">
+<h3>SBI(Service-based Interface) <a class="reference external" href="https://github.com/free5gc/smf/tree/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi">[4]</a><a class="headerlink" href="#sbi-service-based-interface-4" title="Permalink to this headline">¶</a></h3>
+<p>Service-Based Interface is the API-based communication between network functions.</p>
+</div>
+</div>
+<div class="section" id="call-flow">
+<h2>Call Flow<a class="headerlink" href="#call-flow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="session-establishment">
+<h3>Session Establishment<a class="headerlink" href="#session-establishment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>At first, SMF registers with the NRF to locate the other Network Functions in the network. If the user wants to access 5G data facilities, it has to setup a PDU session with the network. UE sends PDU session establishment requests to the Core Network i.e. to the AMF. Then, AMF chooses the best SMF in the network to maintain its session-related information.</p></li>
+<li><p>After selecting the best SMF, it requests the SMF to create an SM context. SMF retrieves SM subscription data from the UDM and generates an SM context. After that, SMF starts the PFCP session establishment procedure with the UPF and setup default values for session-related parameters. Then, SMF sends the session information to the gNB and UE via AMF to establish default PDU Session values.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/sessionEstablishment.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/consumer/nnrf.go">[22]</a> Send NF Registration</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/consumer/nnrf.go">[22]</a> Retry Send NF Registration</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/nf_profile.go">[6]</a> Setup NF Profile</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/consumer/nnrf.go">[22]</a> Send NF Discovery Serving AMF</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/gsm_handler.go">[5]</a> Handle PDU Session Establishment Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/gsm_build.go">[4]</a> Build GSM PDU Session Establishment Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/datapath.go">[30]</a> Send PDU Session Establishment Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/pdusession/api_sm_contexts_collection.go">[28]</a> HTTP Post SM Contexts - receive Create SM Context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/pdu_session.go">[31]</a> Handle PDU Session SM Context Create</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/consumer/nnrf.go">[22]</a> Send NF Discovery UDM</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/pdusession/api_individual_sm_context.go">[27]</a> Retrieve SM Context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/sm_context.go">[10]</a> Build/Set Created Data</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/context.go">[2]</a> Initialize SMF Context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/context.go">[2]</a> Retrieve DNN Information</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/gsm_build.go">[4]</a> Build GSM PDU Session Establishment Accept</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/consumer/nnrf.go">[22]</a> Send NF Discovery PCF</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/sm_context.go">[10]</a> PCF Selection</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/consumer/sm_policy.go">[24]</a> Send SM Policy Association Create</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/callback.go">[29]</a> Apply SM Policy From Decision</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> create UPF List For Selection</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Sort UPF List By Name</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Select UPF And Allocate UE IP</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Select UPF By DNN</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Get UPF Name By IP</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Get UPF Node ID By Name</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Get UPF Node By IP</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Get UPF ID By IP</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Association Setup Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/handler/handler.go">[17]</a> Handle PFCP Association Setup Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> Send PFCP Association Setup Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Session Establishment Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> Send PFCP Session Establishment Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/udp/udp.go">[20]</a> Send PFCP Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> PFCP creates PDR, FAR, QER, BAR</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/sm_context.go">[10]</a> Put PDR to PFCP Session</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ue_defaultPath.go">[13]</a> <a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Generate Default Data Path</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Generate Data Path</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Add Data Path</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Generate TEID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/context.go">[2]</a> <a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/sm_context.go">[10]</a> Allocate Local SEID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/sm_context.go">[10]</a> Select Session Rule</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Select UPF parameters</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Add PDR, FDR, BAR, QER</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/callback.go">[29]</a> Handle session rules</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/datapath.go">[3]</a> Activate Tunnel And PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/datapath.go">[3]</a> Activate UL/DL Tunnel</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Select UP Path Source</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/datapath.go">[30]</a> Activate UPF Session</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/datapath.go">[30]</a> Establish PFCP Session</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Session Establishment Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> Send PFCP Session Establishment Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/udp/udp.go">[20]</a> Send PFCP Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Association Setup Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> Send PFCP Association Setup Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/context.go">[2]</a> Get User Plane Information</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Get Default User Plane Path By DNN And UPF</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/datapath.go">[3]</a> Get UPF ID, Node IP, UL PDR, UL FAR</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/datapath.go">[3]</a> Copy First Data Path Node</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/oam/api_get_ue_pdu_session_info.go">[25]</a> HTTP Get UE PDU Session Info</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Get Interface to get UPF interface info</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Retrieve UPF Node By Node ID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Get UPF IP, ID, PDR ID, FAR ID, BAR ID, QER ID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/context.go">[2]</a> Get UE Default Path Pool</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/datapath.go">[30]</a> Notify UE - send all datapaths to UPFs and send results to UE</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/sm_context.go">[10]</a> PDU Address To NAS</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ue_datapath.go">[12]</a> New UE Data Path Node</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/context.go">[2]</a> Initialize SMF UE Routing</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_build.go">[7]</a> Build PDU Session Resource Setup Request Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_handler.go">[8]</a> Handle PDU Session Resource Setup Unsuccessful Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_handler.go">[8]</a> Handle PDU Session Resource Setup Response Transfer</p></li>
+</ul>
+</div>
+<div class="section" id="session-modification">
+<h3>Session Modification<a class="headerlink" href="#session-modification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>AMF keeps tracking whether sessions are working properly or not, in order to do so, it performs a heartbeat procedure with the SMF. UPF keeps updating the session-related changes at SMF by initializing PFCP Session Report procedure at some intervals.</p></li>
+<li><p>On the first data transmission, AMF update the session management context to the SMF. SMF then sent a session modification request to the UPF and registered the modified session context to the UDM. On the completion of session modification, SMF sends a confirmation response and also notifies SM context status to the AMF. The response message also contains the necessary parameters to update the session information at the gNB and UE.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/sessionModification.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/handler/handler.go">[17]</a> Handle PFCP Heartbeat Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> Send Heartbeat Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/handler/handler.go">[17]</a> Handle PFCP Session Report Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Session Report Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> Send PFCP Session Report Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/handler/handler.go">[17]</a> Handle PFCP Management Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/pdusession/api_individual_sm_context.go">[27]</a> HTTP Update SM Context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/pdu_session.go">[31]</a> Handle PDU Session SM Context Update</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/pdu_session.go">[31]</a> Handle PDU Session SM Context Local Release - check duplicate SM context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/nf_profile.go">[6]</a> S-NSSAI SMF Info</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/handler/handler.go">[17]</a> Handle PFCP Association Update Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Session Modification Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> Send PFCP Session Modification Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/datapath.go">[30]</a> Update AN UPF PFCP Session Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/datapath.go">[30]</a> Modify Existing PFCP Session</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Update PDR, FAR, QER, BAR</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/pcc_rule.go">[9]</a> New PCC Rule From Model</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/callback.go">[29]</a> Handle modification session rule</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/datapath.go">[30]</a> Update AN UPF PFCP Session Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> New UP Tunnel</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/gsm_build.go">[4]</a> Build GSM PDU Session Modification Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/pdusession/api_individual_pdu_session_hsmf.go">[26]</a> Update PDU Session</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> Send PFCP Session Modification Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Session Modification Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/sm_context.go">[10]</a> New SM Context added in the pool</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/consumer/nsmf_pdusession_callback.go">[23]</a> Send SM Context Status Notification</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ue_datapath.go">[12]</a> Add New UE Pre Config Paths</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ue_defaultPath.go">[13]</a> Create New UE Default Paths</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Update AN Information</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/callback/api_default.go">[21]</a> HTTP SM Policy Update Notification</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/callback.go">[29]</a> Handle SM Policy Update Notify</p></li>
+</ul>
+</div>
+<div class="section" id="session-release">
+<h3>Session Release<a class="headerlink" href="#session-release" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>During deregistration, AMF requests for the release of SM context from the SMF. On receiving the request, SMF initiates a session release procedure with the UPF. After the deletion of the session, SMF sends a session release response to the AMF along with the release command of session-related parameters and resources at the UE and gNB levels.</p></li>
+<li><p>SMF afterward releases the SM policy associated with the session and then removes the SM context on its completion. After completely disconnecting from each function, it deregisters with the network.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/sessionRelease.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/pdusession/api_individual_sm_context.go">[27]</a> HTTP Release SM Context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/pdu_session.go">[31]</a> Handle PDU Session SM Context Release</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/gsm_handler.go">[5]</a> Handle PDU Session Release Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/gsm_build.go">[4]</a> Build GSM PDU Session Release Command</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Association Release Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> Send PFCP Association Release Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Session Deletion Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> <a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/datapath.go">[30]</a>  Send PFCP Session Deletion Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/handler/handler.go">[17]</a> Handle PFCP Session Set Deletion Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/callback.go">[29]</a> Handle deletion of session rule</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/sm_context.go">[10]</a> Remove PDR from PFCP Session</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Remove PDR, FAR, BAR, QER</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/datapath.go">[3]</a> Deactivate UL/DL Tunnel</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/datapath.go">[30]</a> ReleaseTunnel</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> Remove UPF Node By Node ID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Release UE IP Address from UPF</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/pdusession/api_individual_pdu_session_hsmf.go">[26]</a> <a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/pdu_session.go">[31]</a>  Release PDU Session</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/gsm_build.go">[4]</a> Build GSM PDU Session Release Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Session Deletion Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> <a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/datapath.go">[30]</a> Send PFCP Session Deletion Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/build.go">[18]</a> Build PFCP Association Release Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/pfcp/message/send.go">[19]</a> Send PFCP Association Release Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_build.go">[7]</a> Build PDU Session Resource Release Command Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/callback/api_default.go">[21]</a> SM Policy Control Termination Request Notification</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/consumer/sm_policy.go">[24]</a> Send SM Policy AssociationTermination</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/sm_context.go">[10]</a> Remove SM Context</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/consumer/nnrf.go">[22]</a> Send NF Deregistration</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/consumer/nnrf.go">[22]</a> Send Deregister NF Instance</p></li>
+</ul>
+</div>
+<div class="section" id="addition-of-additional-psa-and-bp-or-ul-cl">
+<h3>Addition of additional PSA and BP or UL CL<a class="headerlink" href="#addition-of-additional-psa-and-bp-or-ul-cl" title="Permalink to this headline">¶</a></h3>
+<img alt="Alternative text" src="../../_images/PSAinterface.png" />
+<ul class="simple">
+<li><p>UE first establish PDU Session with a UPF, which is capable of performing as PSA(PDU Session Anchor), lets call it UPF PSA1. At some point, there is need to selects another UPF(UPF PSA2) for example, due to UE mobility. SMF selects one more UPF and establish the BP(Branching Point) or UL CL(Uplink Classifier) for PDU Session. It forwards the necessary UL rules towards PSA1 and PSA2.</p></li>
+<li><p>UL CL or BP is added to route the traffic towards the corresponding PSA1 and PSA2 in case of DL. SMF then updates the PSA1, and PSA2 and provides the BP or UL CL Core Network Tunnel info fo the DL traffic. SMF sends N2 SM information over N11 interface and provide new CN tunnel info corresponding to the UPF(BP or UL CL). SMF then notifies the availability of the new IP prefix and sends UE reconfiguration message.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/PSAnBP.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/user_plane_information.go">[16]</a> Select Anchor UPF</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/ulcl_procedure.go">[32]</a> Add PDU Session Anchor</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/bp_manager.go">[1]</a> Select PSA2</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/sm_context.go">[10]</a> Allocate Local SEID For Data Path</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/datapath.go">[3]</a> Activate Tunnel And PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/ulcl_procedure.go">[32]</a> Establish PSA 2</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/upf.go">[15]</a> New UPF returns a new UPF context in SMF</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ue_defaultPath.go">[13]</a> Extract Anchor UPF For UL CL</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/bp_manager.go">[1]</a> Find UL CL</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ulcl_group.go">[14]</a> Get UL CL Group Name From SUPI</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ue_defaultPath.go">[13]</a> Create UPF List For Selection UL CL</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/ulcl_procedure.go">[32]</a> Add UL CL</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/ulcl_procedure.go">[32]</a> Establish UL CL</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ue_defaultPath.go">[13]</a> Select UPF For UL CL</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ue_defaultPath.go">[13]</a> Allocate UE IP For UL CL</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/ulcl_procedure.go">[32]</a> Update PSA 2 DownLink</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/ulcl_procedure.go">[32]</a> Update RAN And I-UPF UpLink</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/sbi/producer/ulcl_procedure.go">[32]</a> Establish RAN Tunnel Info</p></li>
+</ul>
+</div>
+<div class="section" id="handover-procedure">
+<h3>Handover Procedure<a class="headerlink" href="#handover-procedure" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When UE enters a new cell, gNB starts a handover procedure. During Handover, a session transfer request is sent to the SMF by the AMF, if the user is accessing 5G Data Plane resources. SMF then sends a path switch setup request to the UPF to divert the session tunnels to the target gNB.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/handover.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_handler.go">[8]</a> Handle Handover Required Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_build.go">[7]</a> Build Handover Command Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_handler.go">[8]</a> Handle Handover Request Acknowledge Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_handler.go">[8]</a> Handle Path Switch Request Setup Failed Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_build.go">[7]</a> Build Path Switch Request Unsuccessful Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_handler.go">[8]</a> Handle Path Switch Request Transfer</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/smf/blob/de70bf6cffa14eae582373e5010c8695dffb2f8d/internal/context/ngap_build.go">[7]</a> Build Path Switch Request Acknowledge Transfer</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../Open5gs_5gCore/index.html" class="btn btn-neutral float-right" title="OPEN5GS 5G CORE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="SMF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
