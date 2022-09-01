@@ -1,7 +1,8 @@
-OPEN5GS 5G CORE
-****
+OPEN5GS 5G Core
+**************
 
 .. toctree::
    :maxdepth: 10
 
-   amf
+   amf/index
+   smf/index
