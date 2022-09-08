@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>User Plane Function [1] &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="OPEN5GS 5G Core" href="../../Open5gs_5gCore/index.html" />
+    <link rel="prev" title="UPF" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">Magma 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OAI_5gCore/index.html">OAI 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">FREE5GC 5G Core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../amf/index.html">AMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../smf/index.html">SMF</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">UPF</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">User Plane Function [1]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#protocols">Protocols</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#pfcp-2">PFCP [2]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gtp-u-3">GTP-U [3]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#call-flow">Call Flow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Open5gs_5gCore/index.html">OPEN5GS 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">FREE5GC 5G Core</a> &raquo;</li>
+        
+          <li><a href="index.html">UPF</a> &raquo;</li>
+        
+      <li>User Plane Function [1]</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/Free5gc_5gCore/upf/upf.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-plane-function-1">
+<h1>User Plane Function <a class="reference external" href="https://github.com/free5gc/go-upf/tree/4972fffb016a092d569273d00c191a28d7afac26">[1]</a><a class="headerlink" href="#user-plane-function-1" title="Permalink to this headline">¶</a></h1>
+<img alt="Alternative text" class="align-center" src="../../_images/upf1.png" />
+<p>The UPF (User Plane Function) is one of the most important NF(Network Function) of the 5G Core network. It is the second network function with which NR RAN interacts(during PDUs flow). UPF is the evolution of the CUPS(Control and User Plane Separation). It inspects, routes, and forwards the packets inside the QoS flows within the subscription policies. It also enforces the UL and DL traffic rules using SDF templates sent by the SMF over the N4 interface. It allocates or terminates the QoS Flows within the PDU Sessions when the corresponding services end.</p>
+<div class="section" id="protocols">
+<h2>Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pfcp-2">
+<h3>PFCP <a class="reference external" href="https://github.com/free5gc/go-upf/tree/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp">[2]</a><a class="headerlink" href="#pfcp-2" title="Permalink to this headline">¶</a></h3>
+<p>Any kind of communication between SMF and UPF is managed by the PFCP(Packet Forwarding Control Protocol). It is one of the main protocols that separates the User Plane and Control Plane.</p>
+</div>
+<div class="section" id="gtp-u-3">
+<h3>GTP-U <a class="reference external" href="https://github.com/free5gc/go-upf/tree/4972fffb016a092d569273d00c191a28d7afac26/internal/gtpv1">[3]</a><a class="headerlink" href="#gtp-u-3" title="Permalink to this headline">¶</a></h3>
+<p>GTP-U is used to carry user plane data traffic between gNB and UPF.</p>
+</div>
+</div>
+<div class="section" id="call-flow">
+<h2>Call Flow<a class="headerlink" href="#call-flow" title="Permalink to this headline">¶</a></h2>
+<img alt="Alternative text" src="../../_images/upf11.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/association.go">[6]</a> Handle Association Setup Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/session.go">[9]</a> Handle Session Establishment Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5g.go">[3]</a> New Flow Description</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5g.go">[3]</a> New SDF Filter - filters flow description</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5g.go">[3]</a> New PDI(Packet Detection Information)</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5g.go">[3]</a> <a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/node.go">[8]</a> Create PDR, FAR, QER, URR, BAR</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5g.go">[3]</a> New Forwarding Parameter</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5g.go">[3]</a> Apply Action for forwarding, dropping, buffering</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5g.go">[3]</a> Write Packet</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5glink.go">[4]</a> Add route</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/driver.go">[2]</a> NewDriver - Configure GTP-U</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/gtpv1/msg.go">[5]</a> Encode message</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/association.go">[6]</a> Handle Association Update Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/heartbeat.go">[7]</a> Handle Heartbeat Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/session.go">[9]</a> Handle Session Modification Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/pfcp.go">[10]</a> Update node ID</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5g.go">[3]</a> <a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/node.go">[8]</a> Update PDR, FAR, QER, URR, BAR</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/node.go">[8]</a> Create a new session</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/upf2.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/report.go">[11]</a> Serve DL Data Report</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/report.go">[11]</a> Serve session report</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5g.go">[3]</a> Handle Report</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/buff/server_test.go">[1]</a> <a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/pfcp.go">[10]</a> Notify Session Report</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/session.go">[9]</a> Handle Session Report Request Timeout</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/session.go">[9]</a> Handle Session Report Response</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/session.go">[9]</a> Handle Session Deletion Request</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/gtp5g.go">[3]</a> <a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/node.go">[8]</a> <a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/forwarder/empty.go">[12]</a> Remove PDR, FAR, QER, URR, BAR</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/node.go">[8]</a> Delete Session</p></li>
+<li><p><a class="reference external" href="https://github.com/free5gc/go-upf/blob/4972fffb016a092d569273d00c191a28d7afac26/internal/pfcp/association.go">[6]</a> Handle Association Release Request</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../Open5gs_5gCore/index.html" class="btn btn-neutral float-right" title="OPEN5GS 5G Core" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="UPF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -199,7 +199,7 @@
 <li><p>When a UE wanted to access the 5G network, it undergoes a registration process. After completing all the control plane procedures, when it comes to user plane setup, SMF handles all the session-related information. AMF requests for the DL TEID for all the PDU sessions that passed to SMF. SMF then selects the best UPF for the UE in the range and sends a session establishment request containing all the parameters for the default PDU session setup.</p></li>
 <li><p>A session along with a default QoS flow of Non-GBR is created to exchange the best-effort traffic with the Data Network(DN). The best-effort traffic contains longer routes to figure out the latency and maintain the traffic.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/upf1.png" />
+<img alt="Alternative text" src="../../_images/upf12.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[5]</a> New UE establishment request, need to create session context</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/UpfMsgManageHandler.cpp">[1]</a> Setting up the UPF address</p></li>
@@ -217,7 +217,7 @@
 <li><p>After that, UPF maps QoS flows, setup TEID, insert different rules like PDR, FAR, URR, etc, and some session-related policies to the PDU session. It also charges per data packet exchange and adds a unique session ID which helps in differentiating it from other PDU sessions. UPF adds an IMSI number to identify the ongoing session belongs to which UE.</p></li>
 <li><p>The session context is prepared by the UPF which is sent to the AMF via SMF to transmit it to the gNB. It contains information like UPF local TEID, QoS context, messages for the release of the session, etc.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/upf2.png" />
+<img alt="Alternative text" src="../../_images/upf21.png" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> QoS policy management(policy type)</p></li>
 <li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[2]</a> Setting up of dynamic rules</p></li>
