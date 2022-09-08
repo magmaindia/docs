@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>User Plane Function [0] &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="prev" title="UPF" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">Magma 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OAI_5gCore/index.html">OAI 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Free5gc_5gCore/index.html">FREE5GC 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">OPEN5GS 5G Core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../amf/index.html">AMF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../smf/index.html">SMF</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">UPF</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">User Plane Function [0]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interface-protocols">Interface &amp; Protocols</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#n4-5">N4 [5]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pfcp-7">PFCP [7]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gtp-3">GTP [3]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#call-flow">Call Flow</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#session-establishment-upf-initialisation">Session Establishment &amp; UPF Initialisation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#session-modification">Session Modification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#session-deletion">Session Deletion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">OPEN5GS 5G Core</a> &raquo;</li>
+        
+          <li><a href="index.html">UPF</a> &raquo;</li>
+        
+      <li>User Plane Function [0]</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/Open5gs_5gCore/upf/upf.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-plane-function-0">
+<h1>User Plane Function <a class="reference external" href="https://github.com/open5gs/open5gs/tree/main/src/upf">[0]</a><a class="headerlink" href="#user-plane-function-0" title="Permalink to this headline">¶</a></h1>
+<img alt="Alternative text" class="align-center" src="../../_images/UPF.jpg" />
+<p>The UPF (User Plane Function) is one of the most important NF(Network Function) of the 5G Core network. It is the second network function with which NR RAN interacts(during PDUs flow). UPF is the evolution of the CUPS(Control and User Plane Separation). It inspects, routes, and forwards the packets inside the QoS flows within the subscription policies. It also enforces the UL and DL traffic rules using SDF templates sent by the SMF over the N4 interface. It allocates or terminates the QoS Flows within the PDU Sessions when the corresponding services end..</p>
+<div class="section" id="interface-protocols">
+<h2>Interface &amp; Protocols<a class="headerlink" href="#interface-protocols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="n4-5">
+<h3>N4 <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/smf/n4-build.c">[5]</a><a class="headerlink" href="#n4-5" title="Permalink to this headline">¶</a></h3>
+<p>Session Management context and necessary parameters are transmitted to the UPF(User Plane Function) from the SMF, once the user plane is setup.</p>
+</div>
+<div class="section" id="pfcp-7">
+<h3>PFCP <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/smf/pfcp-path.c">[7]</a><a class="headerlink" href="#pfcp-7" title="Permalink to this headline">¶</a></h3>
+<p>Any kind of communication between SMF and UPF is managed by the PFCP(Packet Forwarding Control Protocol). It is one of the main protocols that separates the User Plane and Control Plane.</p>
+</div>
+<div class="section" id="gtp-3">
+<h3>GTP <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/smf/sbi-path.c">[3]</a><a class="headerlink" href="#gtp-3" title="Permalink to this headline">¶</a></h3>
+<p>GPRS Tunneling Protocol (GTP) is responsible for providing seamless interconnection and for carrying traffic between roaming or home subscribers and key network interfaces in 4G, 5G non-standalone (NSA), 5G standalone (SA), and mobile edge compute architectures. In 5g GTP tunnel is used in N3 and N9 interface.</p>
+</div>
+</div>
+<div class="section" id="call-flow">
+<h2>Call Flow<a class="headerlink" href="#call-flow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="session-establishment-upf-initialisation">
+<h3>Session Establishment &amp; UPF Initialisation<a class="headerlink" href="#session-establishment-upf-initialisation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>During PDU session establishment, SMF connects with UPF through PFCP(N4 Interface). This PFCP session carries SDF template which carries PDR, QFI, URR, FAR, etc. In the case of initial session establishment, Default QOS(Non GBR) flow is assigned.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/Establishment.jpg" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> N4 handle session establishment request</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> PFCP handle create PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/handler.c">[12]</a> Checking of existing PDI of PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/handler.c">[12]</a> Checking of TEID</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/handler.c">[12]</a> Checking of source interface</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/handler.c">[12]</a> Checking of previous SDF filter ID</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/handler.c">[12]</a> Set All filter flags: BID, FL, SPI, TTC, FD</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> PFCP handle create FAR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Create URR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Create BAR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Create QRR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Setup N3 TEID and QFI</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/init.c">[4]</a> UPF initialized</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/init.c">[4]</a> PFCP context initialized</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> Initialize UPF context</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> Set User Plane Function features: FTUP, EMPU, MNOP, VTIME, UPF featurs length.</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/pfcp-path.c">[7]</a> Session Establishment Response</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> N4 build session establishment response</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> Node ID</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> PFCP cause request accepted</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> F-SEID</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> PDR presence checked</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> PFCP built message.</p></li>
+<li><p>FTUP: F-TEID allocation / release in the UP function is supported by the UP function.</p></li>
+<li><p>EMPU: Sending of End Marker packets supported by the UP function.</p></li>
+<li><p>MNOP: The UP function supports measurement of number of packets which is instructed with the flag <cite>Measurement of Number of Packets</cite> in a URR. See also clause 5.2.2.2.1. MNOP (Measurement of Number of Packets): when set to “1”, this indicate a request to measure the number of packets transferred in UL/DL/Total in addition to the measurement in octets when Volume based measurement applies</p></li>
+<li><p>VTIME: UP function support of quota validity time feature., if the VTIME feature is supported by UP function, to request the UP function to send a usage report after the validity duration is over. After Quota validity timer expiry, if packets are received on UPF, the UPF shall stop forwarding packets or only allow forwarding of limited user plane traffic, based on operator`s policy in the UP function.</p></li>
+<li><p>FL: Flow Label</p></li>
+<li><p>TTC: Tos Traffic Class</p></li>
+<li><p>SPI: Security Parameter Index</p></li>
+<li><p>FD: Flow description.</p></li>
+<li><p>BID: Bidirectional SDF Filter</p></li>
+</ul>
+</div>
+<div class="section" id="session-modification">
+<h3>Session Modification<a class="headerlink" href="#session-modification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Dedicated QOS flow is assigned through PDU session modification process. Additional Dedicated QOS flows supports more QOS-demanding traffic such as voice, video, gaming traffic, etc.</p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/Modification.jpg" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> N4 handle session modification request</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Remove Existing PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Update PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Update FAR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Update URR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Update QER</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Update BAR</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Setup GTP Node</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Setup N3 TEID and QFI</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/pfcp-path.c">[7]</a> PFCP send  Session Modificartion Response</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> N4 build session modification response</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> PFCP cause accepted</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> PDR buffer initialised</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> PDR created</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[6]</a> Send Buffered Packet to gnB(when needed)</p></li>
+</ul>
+</div>
+<div class="section" id="session-deletion">
+<h3>Session Deletion<a class="headerlink" href="#session-deletion" title="Permalink to this headline">¶</a></h3>
+<img alt="Alternative text" src="../../_images/Deletion.jpg" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> N4 handle session deletion request</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/pfcp-path.c">[7]</a> PFCP send session deletion request</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> Session URR fill usage report</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> Last report Timestamp</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> Time triggers</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> Quota validity time report</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> Volume triggers</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> Volume quota report</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-build.c">[5]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> UPF sess URR snapshot(total octets, total pkts, both ul and dl)</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> <a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> UPF sess remove</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/context.c">[1]</a> UPF session URR acc remove all: validity time delete, Time quota delete, threshold time delete.</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/context.c">[13]</a> PDR remove all</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/context.c">[13]</a> FAR remove all</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/context.c">[13]</a> URR remove all</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/context.c">[13]</a> QER remove all</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/context.c">[13]</a> BAR remove all</p></li>
+<li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/lib/pfcp/context.c">[13]</a> Self SEID</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="UPF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

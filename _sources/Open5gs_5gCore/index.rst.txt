@@ -6,3 +6,4 @@ OPEN5GS 5G Core
 
    amf/index
    smf/index
+   upf/index
