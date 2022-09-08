@@ -6,3 +6,4 @@ FREE5GC 5G Core
 
    amf/index
    smf/index
+   upf/index
