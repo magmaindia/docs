@@ -274,7 +274,7 @@ PDU Session Establishment/ Modification
 Registration with AMF Re-allocation
 -------
 
-* When an AMF receives a registration request, it may reroute the request to another AMF because of many reasons. For example, maybe the initial AMF is the right AMF to serve the UE. The registration with AMF re-allocation procedure is used to reroute the NAS message of the UE to the target AMF during the registration procedure.
+* When an AMF receives a registration request, it may reroute the request to another AMF because of many reasons. For example, maybe the initial AMF is not the right AMF to serve the UE. The registration with AMF re-allocation procedure is used to reroute the NAS message of the UE to the target AMF during the registration procedure.
 
 .. image:: photos/amfReallocation.png
   :alt: Alternative text
