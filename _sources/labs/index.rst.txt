@@ -1,4 +1,4 @@
-Magma Virtual Labs
+Magma 4G Virtual Labs
 ******************
 
 .. toctree::

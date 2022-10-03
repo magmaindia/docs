@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Magma SessionD Service [0] &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="prev" title="SessionD" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma 4G Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OAI_5gCore/index.html">OAI 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Free5gc_5gCore/index.html">FREE5GC 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Open5gs_5gCore/index.html">OPEN5GS 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">MAGMA 5G Core SA</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">SessionD</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Magma SessionD Service [0]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sessiond-s-interface-with-other-services">SessionD’s Interface with other Services</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#sessiond-accessd">SessionD &lt;——&gt; AccessD</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sessiond-pipelined">SessionD &lt;——&gt; PipelineD</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sessiond-policydb">SessionD &lt;——&gt; PolicyDB</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#architecture-of-sessiond">Architecture of SessionD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#call-flow">Call Flow</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#pdu-session-establishment">PDU Session Establishment</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#session-release-termination">Session Release/Termination</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#paging-request">Paging Request</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">MAGMA 5G Core SA</a> &raquo;</li>
+        
+          <li><a href="index.html">SessionD</a> &raquo;</li>
+        
+      <li>Magma SessionD Service [0]</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/Magma_5gCore_SA/SessionD/sessionD.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="magma-sessiond-service-0">
+<h1>Magma SessionD Service <a class="reference external" href="https://github.com/magma/magma/tree/master/lte/gateway/c/session_manager">[0]</a><a class="headerlink" href="#magma-sessiond-service-0" title="Permalink to this headline">¶</a></h1>
+<img alt="Alternative text" class="align-center" src="../../_images/SessionD.jpg" />
+<p>SessionD is the main service responsible for managing and enforcing session configurations. It also coordinates the lifecycle of a session. AccessD calls Sessiond for the session’s creation, modification, and termination. Compared with network functions, it can be considered as Session Management Function(SMF).</p>
+<div class="section" id="sessiond-s-interface-with-other-services">
+<h2>SessionD’s Interface with other Services<a class="headerlink" href="#sessiond-s-interface-with-other-services" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sessiond-accessd">
+<h3>SessionD &lt;——&gt; AccessD<a class="headerlink" href="#sessiond-accessd" title="Permalink to this headline">¶</a></h3>
+<p>SM Context Request from AccessD for the establishment of a session.</p>
+</div>
+<div class="section" id="sessiond-pipelined">
+<h3>SessionD &lt;——&gt; PipelineD<a class="headerlink" href="#sessiond-pipelined" title="Permalink to this headline">¶</a></h3>
+<p>Responsible for policy and QoS enforcement. Pipelined receives any relevant policy and QoS configuration from SessionD and periodically reports usage accordingly.</p>
+</div>
+<div class="section" id="sessiond-policydb">
+<h3>SessionD &lt;——&gt; PolicyDB<a class="headerlink" href="#sessiond-policydb" title="Permalink to this headline">¶</a></h3>
+<p>Responsible for propagating any session or policy configuration that sessioD must enforce.</p>
+</div>
+</div>
+<div class="section" id="architecture-of-sessiond">
+<h2>Architecture of SessionD<a class="headerlink" href="#architecture-of-sessiond" title="Permalink to this headline">¶</a></h2>
+<p>SessionD is created by combining different components such as:</p>
+<ul class="simple">
+<li><p>Message Manager Handler <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[29]</a></p></li>
+<li><p>M5g-Enforcer <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a></p></li>
+<li><p>Session State <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[26]</a></p></li>
+<li><p>Session Store <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStore.cpp">[28]</a></p></li>
+<li><p>Redis Store (when stateless feature is enabled) <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/RedisStoreClient.cpp">[16]</a></p></li>
+<li><p>Memory Store (when stateless feature is disabled) <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/MemoryStoreClient.cpp">[10]</a></p></li>
+<li><p>Session Proxy Responder Handler <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionProxyResponderHandler.cpp">[24]</a></p></li>
+<li><p>Session Credit <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionCredit.cpp">[20]</a></p></li>
+</ul>
+<img alt="Alternative text" src="../../_images/Architecture.jpg" />
+</div>
+<div class="section" id="call-flow">
+<h2>Call Flow<a class="headerlink" href="#call-flow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pdu-session-establishment">
+<h3>PDU Session Establishment<a class="headerlink" href="#pdu-session-establishment" title="Permalink to this headline">¶</a></h3>
+<img alt="Alternative text" src="../../_images/Establishment.jpg" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[29]</a> Handling set message from AMF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[29]</a> Send create sesion</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[29]</a> Set Session ID</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[29]</a> M5g enforcer initialisation</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> New Session state object</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Creating sesion state object  with ‘Creating’ state</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Writing session in session map</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStore.cpp">[28]</a> Write session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStore.cpp">[28]</a> Set current version of session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStore.cpp">[28]</a> Set fsm state</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Process static and dynamic rules to install</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Session state change</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[26]</a> Charging Grant Intialised</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[26]</a> Monitoring Grant Initialised</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStore.cpp">[28]</a> Rule map addition, charging and monitoring criteria</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> M5g send session request to UPF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Set subscribed qos,</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Set priority level</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Set preemption capability</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Set PDR, FAR, URR and BAR mapping</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Set UPF node</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/PipelinedClient.cpp">[14]</a> PipelinedD create session request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/PipelinedClient.cpp">[14]</a> Set subscriber ID, Teid</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/PipelinedClient.cpp">[14]</a> QOS flow setup done</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/AmfServiceClient.cpp">[2]</a> Handle response to AccessD</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/AmfServiceClient.cpp">[2]</a> Handle notification to AccessD</p></li>
+</ul>
+</div>
+<div class="section" id="session-release-termination">
+<h3>Session Release/Termination<a class="headerlink" href="#session-release-termination" title="Permalink to this headline">¶</a></h3>
+<img alt="Alternative text" src="../../_images/Termination.jpg" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[29]</a> Initiate Session Release</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[29]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a>  M5g Enforcer proceeds the  release session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStore.cpp">[28]</a> Session store find session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Get session ID</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> M5g start session termination</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[26]</a> Set FSM state  in Session State</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[26]</a> Set current version of session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> PDR Map Erase</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Remove all rules for termination</p></li>
+</ul>
+<p>If there is termination because of no required report from UPF then follow the below steps</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> M5g complete termination</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Find session from Session Store</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionReporter.cpp">[25]</a> Termination in controller</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionState.cpp">[26]</a> Remove all PDR, FAR rules from session state</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Remove session from session map</p></li>
+</ul>
+<p>Final Steps for both the cases</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionStateEnforcer.cpp">[27]</a> Update session in session store</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SetMessageManagerHandler.cpp">[29]</a> Successfully released and updated session store of subscriber</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/PipelinedClient.cpp">[14]</a> PipelineD deactivate flow for rules</p></li>
+</ul>
+</div>
+<div class="section" id="paging-request">
+<h3>Paging Request<a class="headerlink" href="#paging-request" title="Permalink to this headline">¶</a></h3>
+<img alt="Alternative text" src="../../_images/Paging.jpg" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/UpfMsgManageHandler.cpp">[33]</a> PipelineD sends paging request to sessionD</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/UpfMsgManageHandler.cpp">[33]</a> Local F-TEID</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/UpfMsgManageHandler.cpp">[33]</a> UE IP address</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionManagerServer.cpp">[24]</a> SessionD receives the message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionManagerServer.cpp">[24]</a> Get the subscriber ID from MobilityD w.r.t UE IP address</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/SessionManagerServer.cpp">[24]</a> SessionD reads the session map from session store.</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/AmfServiceClient.cpp">[2]</a> SessionD sends the notification to AccessD</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/session_manager/AmfServiceClient.cpp">[2]</a> Handle Notification to AccessD</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="SessionD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
