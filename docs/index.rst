@@ -14,4 +14,5 @@ Magma India Documentation!
    OAI_5gCore/index
    Free5gc_5gCore/index
    Open5gs_5gCore/index
+   Magma_5gCore_SA/index
    help
