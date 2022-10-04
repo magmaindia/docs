@@ -1,9 +1,8 @@
-5G Core
+MAGMA 5G Core SA
 **************
 
 .. toctree::
    :maxdepth: 10
 
-   amf/index
-   upf/index
-   smf/index
+   SessionD/index
+   
