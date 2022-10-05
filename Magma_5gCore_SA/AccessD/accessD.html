@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>AccessD Service [1] &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SessionD" href="../SessionD/index.html" />
+    <link rel="prev" title="AccessD" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma 4G Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OAI_5gCore/index.html">OAI 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Free5gc_5gCore/index.html">FREE5GC 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Open5gs_5gCore/index.html">OPEN5GS 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">MAGMA 5G Core SA</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">AccessD</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">AccessD Service [1]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#protocols">Protocols</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#nas-2">NAS [2]</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ngap-3">NGAP [3]</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#call-flow">Call Flow</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#registration-with-suci-as-mobile-identity">Registration with SUCI as Mobile Identity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#registration-with-guti-as-mobile-identity">Registration with GUTI as Mobile Identity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pdu-session-establishment">PDU Session Establishment</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pdu-session-modification">PDU Session Modification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#service-request">Service Request</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ue-initiated-session-release">UE-Initiated Session Release</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ue-initiated-deregistration">UE-Initiated Deregistration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#idle-mode-and-paging">IDLE Mode and Paging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../SessionD/index.html">SessionD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">MAGMA 5G Core SA</a> &raquo;</li>
+        
+          <li><a href="index.html">AccessD</a> &raquo;</li>
+        
+      <li>AccessD Service [1]</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/Magma_5gCore_SA/AccessD/accessD.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="accessd-service-1">
+<h1>AccessD Service <a class="reference external" href="https://github.com/magma/magma/tree/master/lte/gateway/c/core/oai/tasks/amf">[1]</a><a class="headerlink" href="#accessd-service-1" title="Permalink to this headline">¶</a></h1>
+<p>Accessd is one of the main magma service that plays the role of the MME and AMF of the 4G and 5G System respectively. It supports registration, mobility, access authentication and authorization, lawful inspect and transporting session management messages between the UE(CPE) and Sessiond.</p>
+<img alt="Alternative text" class="align-center" src="../../_images/accessD.png" />
+<div class="section" id="protocols">
+<h2>Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nas-2">
+<h3>NAS <a class="reference external" href="https://github.com/magma/magma/tree/master/lte/gateway/c/core/oai/tasks/nas5g">[2]</a><a class="headerlink" href="#nas-2" title="Permalink to this headline">¶</a></h3>
+<p>The 5G NAS(Non-Access Stratum) is a control plane protocol that is present at the Radio Interface(N1 Interface) between UE and AMF. This manages the mobility and session-related context within 5GS(5G System).</p>
+</div>
+<div class="section" id="ngap-3">
+<h3>NGAP <a class="reference external" href="https://github.com/magma/magma/tree/master/lte/gateway/c/core/oai/tasks/ngap">[3]</a><a class="headerlink" href="#ngap-3" title="Permalink to this headline">¶</a></h3>
+<p>The Next-Generation Application Protocol(NGAP) is a Control Plane(CP) protocol signaling between gNB and the AMF. It handles the UE-associated and non-UE-associated services.</p>
+</div>
+</div>
+<div class="section" id="call-flow">
+<h2>Call Flow<a class="headerlink" href="#call-flow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="registration-with-suci-as-mobile-identity">
+<h3>Registration with SUCI as Mobile Identity<a class="headerlink" href="#registration-with-suci-as-mobile-identity" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When UE is powered on, it first undergoes the registration process. UE sends the registration request to the gNB. gNB then sends the initial UE message carrying the registration request to Accessd. Since the UE identity(SUCI/IMSI) was included in the registration request, Accessd initiates the authentication procedure. It retrieves the authentication vectors and algorithm information from the SUBSDB. Accessd then sends the authentication parameters to the UE to setup a mutual authentication between the user and the network. On successful validation by the network, the UE is considered authenticated and secure communication is set up between the UE and the network.</p></li>
+<li><p>After authentication, the SMC procedure is initiated, and after that Accessd creates a new UE Context and allocates an AMF NGAP UE ID to the UE. Accessd then initiates an Initial UE context setup procedure with the gNB.  After this, the registration procedure is completed.</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/suci.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[14]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Handle Registration Request from UE</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[14]</a> Handle Registration Type Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Handle Initial UE message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas5g_message.cpp">[23]</a> Decode plain NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GRegistrationRequest.cpp">[55]</a> Decode Registration Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSRegistrationType.cpp">[92]</a> Decode Registration Type Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GRegistrationReject.cpp">[54]</a>  Encode Registration Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Handler to trigger registration reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> Send Registration Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Abort Registration procedure for timer failure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Notify AS-SAP about the Registration Reject message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSMobileIdentity.cpp">[90]</a>  Decode SUCI Mobile Identity Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSMobileIdentity.cpp">[90]</a> Decode TMSI Mobile Identity Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSMobileIdentity.cpp">[90]</a> Decode Mobile Identity Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_client_servicer.cpp">[9]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/lib/n11/M5GSUCIRegistrationServiceClient.cpp">[28]</a> Decrypt IMSI Info</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_data.cpp">[11]</a> Set IMSI as valid</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Upsert IMSI in AMF Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Insert IMSI into the IMSI UE table</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Checks if UE context exists for IMSI or not</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Get AMF UE ID from IMSI</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Register the UE Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_identity.cpp">[13]</a> Generate GUTI based on SUPI/IMSI received</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Create Registration Request Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Allocate and initialize AMF procedures</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[8]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Validate AMF Context and invokes authentication procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/lib/n11/M5GAuthenticationServiceClient.cpp">[26]</a> Create Subscriber Authentication Request(SNN)</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[8]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[14]</a> Handle Authentication Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[8]</a> Abort Authentication Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Callback for Authentication Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GAuthenticationFailure.cpp">[31]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GAuthenticationFailureIE.cpp">[65]</a> Decode Authentication Failure Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas_proc.cpp">[22]</a> Authentication Response received from SUBSDB</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_client_servicer.cpp">[9]</a> Get Subscriber Authentication Information</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_cn.cpp">[10]</a> Receive Security Vector from SUBSDB</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas_proc.cpp">[22]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/lib/n11/M5GAuthenticationServiceClient.cpp">[26]</a> Create an Authentication answer from SUBSDB</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GEAPMessage.cpp">[70]</a> Decode EAP Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GNasKeySetIdentifier.cpp">[76]</a> Decode NAS Key Set identifier</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GDLNASTransport.cpp">[36]</a> Encode DL NAS Transport Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GExtendedProtocolDiscriminator.cpp">[71]</a> Encode Extended Protocol Discriminator</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GAuthenticationRequest.cpp">[33]</a> Encode Authentication Request Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GABBA.cpp">[64]</a> Encode ABBA Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GAuthenticationParameterAUTN.cpp">[66]</a> Encode Authentication Parameter AUTN</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GAuthenticationParameterRAND.cpp">[67]</a> Encode Authentication Parameter RAND</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GAuthenticationResponseParameter.cpp">[68]</a> Encode Authentication Response Parameter</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[8]</a> Handle NAS Authentication Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> Builds DL NAS Transport message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[8]</a> Send Authentication Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_data.cpp">[11]</a> Set Security  ngKSI</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[14]</a> Handle Authentication Response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_main.cpp">[2]</a> Handle UL NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GULNASTransport.cpp">[62]</a> Decode UL NAS Transport Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GAuthenticationResponse.cpp">[34]</a> Decode Authentication Response Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GAuthenticationReject.cpp">[32]</a> Encode Authentication Reject Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> Send authentication Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GAuthenticationResult.cpp">[35]</a> Encode Authentication Result Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[8]</a> Authentication Completion Response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Callback for successful Authentication</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Create new UE Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> Send Initial Context Setup Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Send AMF NGAP UE ID</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GRegistrationAccept.cpp">[52]</a> Encode Registration Accept</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Builds Registration Accept message and sent it to UE</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Handle Initial Context Setup Response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Handle Registration Complete Response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSRegistrationResult.cpp">[91]</a> Decode Registration Result</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Store Registration information is received and processed once old UE gets deregistered</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/regF.png" />
+<img alt="Alternative text" class="align-center" src="../../_images/authF.png" />
+</div>
+<div class="section" id="registration-with-guti-as-mobile-identity">
+<h3>Registration with GUTI as Mobile Identity<a class="headerlink" href="#registration-with-guti-as-mobile-identity" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When the registration request contains GUTI as a mobile identity, then Accessd initiates an identification procedure with the UE to get a permanent UE ID(SUCI). After the identity process, Accessd setup a mutual authentication with the UE and initiates the SMC procedure.</p></li>
+<li><p>NAS SMC procedure is designed to protect the registration process from alteration by a middleman. It also set up AS security, and selects the integrity and ciphering algorithm for the NAS protection. After the SMC procedure, the initial UE context is setup in gNB and registration completes.</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/guti.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas_proc.cpp">[22]</a> Invoke Identification Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> Builds DL NAS Transport message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas_proc.cpp">[22]</a> Send Identity Request to UE</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GIdentityRequest.cpp">[39]</a> Encode Identity Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSIdentityType.cpp">[88]</a> Encode Identity Type Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Handle UL NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[14]</a> Handle Identity Response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GIdentityResponse.cpp">[40]</a> Decode Identity Response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Callback for Identification Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_identity.cpp">[13]</a> Identification Completion</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Callback for successful Identification</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSMobileIdentity.cpp">[90]</a> Decode GUTI Mobile Identity Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Checks if UE context exists for GUTI or not</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Fetch the GUTI based on UE Id</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Get the AMF Context based on UE Identity</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Insert GUTI into UE Context Table</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[16]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Create and initiates SMC Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GSecurityModeCommand.cpp">[56]</a> Encode Security Mode Command</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[16]</a> Send SMC(Security Mode Command) Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas5g_message.cpp">[23]</a> Encode plain NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> Setup the security header of the given NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSecurityHeaderType.cpp">[93]</a> Encode Security Header Type Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GNASSecurityAlgorithms.cpp">[74]</a> Encode NAS Security Algorithm</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSMobileIdentity.cpp">[90]</a> Encode IMEI Mobile Identity Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GIMEISVRequest.cpp">[72]</a> Encode IMEISV Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GUESecurityCapability.cpp">[96]</a> Encode UE Security Capability</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_data.cpp">[11]</a> Set Security ngKSI</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_data.cpp">[11]</a> Set Security Type</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[16]</a> Set Security algorithms(Integrity and Security Algorithm based on Security Capabilities)</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> Send AS Security Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_sap.cpp">[15]</a> Set AS Security Data</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GSecurityModeReject.cpp">[58]</a> Encode Security Mode Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[14]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_security_mode_control.cpp">[16]</a> Handle Security Mode Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Callback for Security Mode Command Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> AS Security Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_Security_Mode.cpp">[17]</a> Handle Security Mode Complete</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/Registration.cpp">[25]</a> Callback for successful Security Mode Complete</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GSecurityModeComplete.cpp">[57]</a> Decode Security Mode Complete</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas5g_message.cpp">[23]</a> Decode header of a Security protected NAS message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_authentication.cpp">[8]</a> Fetch New Security Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_transport.cpp">[5]</a> Handle NAS Encoded message</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/idenF.png" />
+<img alt="Alternative text" class="align-center" src="../../_images/smcF.png" />
+</div>
+<div class="section" id="pdu-session-establishment">
+<h3>PDU Session Establishment<a class="headerlink" href="#pdu-session-establishment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>UE sends a PDU Session Establishment request to Accessd for the first time to establish a user plane. Accessd sends the IP address of the UE to the mobilityd to keep track of the location of the UE and update the location in the SUBSDB. It then sets SM context with the sessiond and setup PDU Session Resource at the UE and gNB.</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/sessionEst.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Handle PDU Session Establishment Request from UE</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionEstablishmentRequest.cpp">[43]</a> Decode PDU Session Establishment Request Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GPDUSessionType.cpp">[81]</a> Decode PDU Session Type</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionEstablishmentReject.cpp">[42]</a> Encode PDU Session Establishment Reject Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Send PDU Session Establishment Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_client_servicer.cpp">[9]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/lib/n11/M5GMobilityServiceClient.cpp">[27]</a> Allocate IPv4/IPv6/IPv4v6 Address Async</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/lib/n11/M5GMobilityServiceClient.cpp">[27]</a> Handle allocate IPv4/IPv6/IPv4v6 Address Status</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_client_servicer.cpp">[9]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Update Location Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/prepare_request_for_smf.cpp">[24]</a> Send Session Request to SMF</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Handle PDU Session Failure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_client_servicer.cpp">[9]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Set SMF Session Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_session_qos.cpp">[20]</a> Get QoS Rules and Default QoS Info from SMF Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/SmfMessage.cpp">[63]</a> Decode SMF Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_pdu_resource_setup_req_rel.cpp">[4]</a> Calculate PDU Session AMBR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Convert AMBR format one defined in create PDU Session Response to one defined in PDU Session Establishment Accept message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_Security_Mode.cpp">[17]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Copy DNN and AMBR info in SMF Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Insert SM Context in the map</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSessionAMBR.cpp">[95]</a> Encode Session AMBR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GDNN.cpp">[69]</a> Encode DNN</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GPDUSessionIdentity.cpp">[78]</a> Encode PDU Session Identity Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GPDUAddress.cpp">[77]</a> Encode PDU Session Address Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GQOSRules.cpp">[84]</a> Encode QoS Rules</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GQosFlowDescriptor.cpp">[85]</a> Encode QoS Flow Descriptor</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GQosFlowParam.cpp">[86]</a> Encode QoS Flow Parameter</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_pdu_resource_setup_req_rel.cpp">[4]</a> Send PDU Session Resource Setup Request to RAN</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionEstablishmentAccept.cpp">[41]</a> Encode PDU Session Establishment Accept Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GProtocolConfigurationOptions.cpp">[83]</a> Encode Protocol Configuration Options</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Send the PDU Establishment Accept</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_session_context.cpp">[19]</a> Send Slice Information in PDU Session Establishment Accept Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/prepare_request_for_smf.cpp">[24]</a> Handle PDU Resource Setup Response containing gNB IP and TEID</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/sessionEstF.png" />
+</div>
+<div class="section" id="pdu-session-modification">
+<h3>PDU Session Modification<a class="headerlink" href="#pdu-session-modification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Accessd sends the session modification request inside the session context update message. After getting the response from the sessiond, it initiates the session resource modification request with the RAN and UE.</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/sessionMod.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionModificationCommand.cpp">[44]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionModificationRequest.cpp">[48]</a> Decode PDU Session Modification Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionModificationCommandReject.cpp">[45]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionModificationReject.cpp">[47]</a> Encode PDU Session Modification Command Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/prepare_request_for_smf.cpp">[24]</a> Handle PDU Session Modification Command Reject Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Update SMF Session PTI Procedure</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Update IP Address information in SMF Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GPDUSessionStatus.cpp">[80]</a> Decode PDU Session Status</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GPTI.cpp">[82]</a> Decode PTI Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GMaxNumOfSupportedPacketFilters.cpp">[73]</a> Decode Maximum Number of Supported Packet Filters</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Check if maximum PDU Sessions are not reached</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Send PDU Session Modification Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_pdu_resource_setup_req_rel.cpp">[4]</a> Send PDU Session Resource Modify Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/prepare_request_for_smf.cpp">[24]</a> Handle PDU Session Resource Modify Response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Handle PDU Session Resource Modify Completion</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/prepare_request_for_smf.cpp">[24]</a> Handle PDU Session Modification Complete Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionModificationComplete.cpp">[46]</a> Decode PDU Session Modification Complete</p></li>
+</ul>
+</div>
+<div class="section" id="service-request">
+<h3>Service Request<a class="headerlink" href="#service-request" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The service request message is sent by the UE to the network to request the establishment of a NAS signaling connection and of the radio and signaling bearers. The UE sends the service request message when it is in IDLE mode and has pending user data to be sent. Accessd updates this information in the SM Context and sends it to the sessiond to modify the session. After the successful service procedure, accessd initiates the initial UE context setup message with the gNB.</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/service.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_recv.cpp">[14]</a> Handle Service Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GServiceRequest.cpp">[61]</a> Decode Service Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GServiceType.cpp">[94]</a> Decode Service Type Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GServiceReject.cpp">[60]</a> Encode Service Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a>  Builds Service reject message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/lib/n11/SmfServiceClient.cpp">[29]</a> Set SMF Notification</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> Send Initial Context Setup Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GServiceAccept.cpp">[59]</a> Encode Service Accept</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> Service Request Accept to UE</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Handle Initial Context Setup Response from gNB</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/serviceF.png" />
+</div>
+<div class="section" id="ue-initiated-session-release">
+<h3>UE-Initiated Session Release<a class="headerlink" href="#ue-initiated-session-release" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>UE initiates the release of PDU Session by sending a release request to the accessd. Accessd sends release requests to the sessiond. On receiving the release response from sessiond, it forwards the PDU session release command to the RAN and UE. Accessd then sends the release of the IPv4/IPv6/IPv4v6 address of the UE from the mobilityd service.</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/sessionRel.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Handle PDU Session Release Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionReleaseCommand.cpp">[49]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionReleaseRequest.cpp">[51]</a> Decode PDU Session Release Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GPDUSessionReleaseReject.cpp">[50]</a>  Encode PDU Session Release Reject</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/lib/n11/SmfServiceClient.cpp">[29]</a> Set SMF Notification</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> Clear SMF Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_pdu_resource_setup_req_rel.cpp">[4]</a> PDU Session Resource Release Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Handle PDU Session Release Response</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_client_servicer.cpp">[9]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/lib/n11/M5GMobilityServiceClient.cpp">[27]</a> Release IPv4/IPv6/IPv4v6 Address</p></li>
+</ul>
+</div>
+<div class="section" id="ue-initiated-deregistration">
+<h3>UE-Initiated Deregistration<a class="headerlink" href="#ue-initiated-deregistration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>When UE does not want to access the 5GS any longer, it sends a deregistration request to the network. Accessd requests for the release of SM context along with resource release messages to the sessiond. After the successful deregistration procedure, it sends the UE context release command to the RAN to delete the UE-related information at gNB.</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/dereg.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/deregistration_request.cpp">[21]</a> Handle Deregistration Request</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GDeRegistrationRequestUEInit.cpp">[38]</a> Decode De-registration Request Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/ies/M5GSDeRegistrationType.cpp">[87]</a> Decode Deregistration Type Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/deregistration_request.cpp">[21]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/prepare_request_for_smf.cpp">[24]</a> Set SMF Session(release)</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/nas5g/src/M5GDeRegistrationAcceptUEInit.cpp">[37]</a> Encode De-registration Accept Message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_as.cpp">[7]</a> Builds De-Registration Accept message by Network</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_msg.cpp">[3]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Send UE Context Release Command</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Handle UE Context Release Complete</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Handle gNB deregister Indication</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/deregistration_request.cpp">[21]</a> Delete the UE Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_data.cpp">[11]</a> Clear AMF Security Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/nas_proc.cpp">[22]</a> Clear AMF Context</p></li>
+</ul>
+<img alt="Alternative text" class="align-center" src="../../_images/deregF.png" />
+</div>
+<div class="section" id="idle-mode-and-paging">
+<h3>IDLE Mode and Paging<a class="headerlink" href="#idle-mode-and-paging" title="Permalink to this headline">¶</a></h3>
+<img alt="Alternative text" class="align-center" src="../../_images/paging.png" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Get UE Context Release Cause</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/deregistration_request.cpp">[21]</a> Delete the UE Context</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_smf_send.cpp">[18]</a> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/lib/n11/SmfServiceClient.cpp">[29]</a> Set SMF Notification</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_handler.cpp">[1]</a> Handle AMF Notification</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/c/core/oai/tasks/amf/amf_app_ue_context.cpp">[6]</a> Transition to IDLE State</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../SessionD/index.html" class="btn btn-neutral float-right" title="SessionD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="AccessD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
