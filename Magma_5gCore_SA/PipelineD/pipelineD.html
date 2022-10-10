@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Magma PipelineD Service [0] &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help" href="../../help.html" />
+    <link rel="prev" title="PipelineD" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma 4G Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OAI_5gCore/index.html">OAI 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Free5gc_5gCore/index.html">FREE5GC 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Open5gs_5gCore/index.html">OPEN5GS 5G Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">MAGMA 5G Core SA</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../AccessD/index.html">AccessD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SessionD/index.html">SessionD</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">PipelineD</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Magma PipelineD Service [0]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interface-of-pipelined-with-other-services">Interface of PipelineD with Other Services:</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#sessiond-pipelined">sessionD ←→pipelineD</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ovspipelined">OVS←→pipelineD</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#directoryd-pipelined">directoryD ←→pipelineD</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mobilityd-pipelined">mobilityD ←→pipelineD</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#architecture-of-pipelined">Architecture of PipelineD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#call-flow">Call Flow</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#session-establishment">1. Session Establishment</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#session-modification">2. Session Modification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#session-termination">3. Session Termination</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#paging-procedure">4. Paging Procedure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">MAGMA 5G Core SA</a> &raquo;</li>
+        
+          <li><a href="index.html">PipelineD</a> &raquo;</li>
+        
+      <li>Magma PipelineD Service [0]</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/Magma_5gCore_SA/PipelineD/pipelineD.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="magma-pipelined-service-0">
+<h1>Magma PipelineD Service <a class="reference external" href="https://github.com/magma/magma/tree/master/lte/gateway/python/magma/pipelined">[0]</a><a class="headerlink" href="#magma-pipelined-service-0" title="Permalink to this headline">¶</a></h1>
+<img alt="Alternative text" class="align-center" src="../../_images/pipelineD.png" />
+<div class="line-block">
+<div class="line"><em>Pipelined</em> is the control application that programs rules in the Open vSwitch (OVS). pipelineD takes PDR rules from sessionD. In implementation, Pipelined is a set of network services that are chained together. These services can be chained and enabled/disabled through the REST API in the orchestrator.</div>
+<div class="line">PipelineD talks with <code class="docutils literal notranslate"><span class="pre">sessionD</span></code>, <code class="docutils literal notranslate"><span class="pre">OVS</span></code>, <code class="docutils literal notranslate"><span class="pre">directoryD</span></code>, <code class="docutils literal notranslate"><span class="pre">mobilityD</span></code>.</div>
+<div class="line">Provides paging functionality without buffering support for 5G.</div>
+</div>
+<div class="section" id="interface-of-pipelined-with-other-services">
+<h2>Interface of PipelineD with Other Services:<a class="headerlink" href="#interface-of-pipelined-with-other-services" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sessiond-pipelined">
+<h3>sessionD ←→pipelineD<a class="headerlink" href="#sessiond-pipelined" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">sessiond is responsible for lifecycle management of the session state(credit and rules) associated with an user.</div>
+<div class="line">It interact with PCEF datapath throught pipelineD for <code class="docutils literal notranslate"><span class="pre">L2-L4</span></code> and DPid for <code class="docutils literal notranslate"><span class="pre">L4-L7</span></code> policies.</div>
+</div>
+</div>
+<div class="section" id="ovspipelined">
+<h3>OVS←→pipelineD<a class="headerlink" href="#ovspipelined" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Implements the OpenFlow protocol.</div>
+<div class="line">Pipelined services program rules in OVS to implement basic PCEF functionality for user plane traffic.</div>
+<div class="line">OpenFlow pipeline of OVS contains 255 flow tables:</div>
+<div class="line-block">
+<div class="line">Main table (Table 1 - 20)</div>
+<div class="line">Scratch table (Table 21 - 254)</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Each flow table is programmed by a single service through OpenFlow and it can contain multiple flow entries.</div>
+</div>
+</div>
+<div class="section" id="directoryd-pipelined">
+<h3>directoryD ←→pipelineD<a class="headerlink" href="#directoryd-pipelined" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Adds a directoryD call to pipelined to allow: for associating a learned IP for a given subscriber IMSI.</div>
+<div class="line">By adding this mapping, sessiond can fetch from directoryD to allow: for redirection to work properly</div>
+<div class="line">Used to push all different keys and attribute pair for each key(ex <em>Subscriber ID</em> and <em>Session ID</em>)</div>
+<div class="line">Add session id from sessionD to subscribers record..</div>
+</div>
+</div>
+<div class="section" id="mobilityd-pipelined">
+<h3>mobilityD ←→pipelineD<a class="headerlink" href="#mobilityd-pipelined" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>pipelined</em> use api from mobility for default gw info.</div>
+<div class="line">This patch would use monilityD APIs rather than accessing redis directly from pipelineD for retrieving GW info.</div>
+<div class="line">patch has following related changes:</div>
+<div class="line-block">
+<div class="line">Add mobilityD service dependency for pipelineD</div>
+<div class="line">change ARP egress dev to uplink_br0</div>
+<div class="line">add mobilityd_client</div>
+<div class="line">cmock mobilityd api in in-out unit test</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">mobilityD interface with the orchestrator to receive IP address block.</div>
+<div class="line">Can Allocate/release IP of subscribers on request of SPGW.</div>
+</div>
+</div>
+</div>
+<div class="section" id="architecture-of-pipelined">
+<h2>Architecture of PipelineD<a class="headerlink" href="#architecture-of-pipelined" title="Permalink to this headline">¶</a></h2>
+<p><em>PipelineD</em> is created by combining different components. Some of the main components are:</p>
+<ul class="simple">
+<li><p><strong>Session State Manager</strong> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a>: This controller manages session state information and reports session configuration to SMF.</p></li>
+<li><p><strong>Node State Manager</strong> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/node_state_manager.py">[6]</a>: Manages node state informationand reports to SMF.</p></li>
+<li><p><strong>QOS Manager</strong> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[7]</a>: Add, update and remove subscriber QOS and maintains QOS state as well as Subscriber Session state. Also manages QOS store(redis).</p></li>
+<li><p><strong>QOS Meter</strong> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/qos_meter_impl.py">[8]</a>: Utility class for managing IDs and meters qos information.</p></li>
+<li><p><strong>Rule Mapper</strong> <a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[9]</a>: This class assigns integers to rule ids so that they can be identified in   an openflow register. The methods can be called from multiple threads.</p></li>
+<li><p><strong>Redis Store</strong>: Used for storing rule id, tunnel id and also acts as QOS store.</p></li>
+<li><dl class="simple">
+<dt><strong>Ryu Applications(Controllers)</strong> <a class="reference external" href="https://github.com/magma/magma/tree/master/lte/gateway/python/magma/pipelined/app">[10]</a>: Pipelined services are implemented as Ryu applications (controllers) under the hood. Ryu apps are single-threaded entities that communicate using an event model. Generally, each controller is assigned a table and manages the its flows. Some of the controllers are:</dt><dd><ul>
+<li><p>Access Control Controller</p></li>
+<li><p>ARP Controller</p></li>
+<li><p>Quota Check Controller</p></li>
+<li><p>Classifier</p></li>
+<li><p>DPI Controller</p></li>
+<li><p>Ingress/Egress Controller</p></li>
+<li><p>Header Enrichment Controller</p></li>
+<li><p>NG Service Controller</p></li>
+<li><p>Uplink Bridge Controller</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="Alternative text" src="../../_images/Pipelined_Architecture.jpg" />
+</div>
+<div class="section" id="call-flow">
+<h2>Call Flow<a class="headerlink" href="#call-flow" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="session-establishment">
+<h3>1. Session Establishment<a class="headerlink" href="#session-establishment" title="Permalink to this headline">¶</a></h3>
+<img alt="Alternative text" src="../../_images/Establishment.jpg" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_set_session_msg.py">[11]</a> Create Session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_set_session_msg.py">[11]</a> Create Add QER in PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_set_session_msg.py">[11]</a> Create FAR in PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_set_session_msg.py">[11]</a> According to PDR state, Create PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_set_session_msg.py">[11]</a> Create Session Msg</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a> PDR create rule group</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a> Validate session msg</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a> Process session message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Initialize QOS manager</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Setup connnection with redis store</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Initial qos state</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Store QID</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Store AMBR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Get or create subscriber</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Add subscriber QOS</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Get or create subscriber session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/qos_meter_impl.py">[14]</a> Initialise QOS meter</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/qos_meter_impl.py">[14]</a> Set ID manager</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Rule ID to number mapper</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Setup redis</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Register rule</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Create or get rule num</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Get rule id</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Assign version number to rule id and subscriber id combinations</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Subscriber + rule id to rule version</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/ng_services.py">[15]</a> initialize node state and session state manager with datapath connect event</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/ng_services.py">[15]</a> Send association setup</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/ng_services.py">[15]</a> Session message handler</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a> report session config state</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/set_interface_client.py">[16]</a> RPC call to sessionD about session state.</p></li>
+</ul>
+</div>
+<div class="section" id="session-modification">
+<h3>2. Session Modification<a class="headerlink" href="#session-modification" title="Permalink to this headline">¶</a></h3>
+<img alt="Alternative text" src="../../_images/Modification.jpg" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a> Update PDR rules</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a> PDR create rule entry w.r.t PDR ID</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a> Process session message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a> Find session with rule</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Update rule</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Update QOS data</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Update data in redis store</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Update rules map</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> increment the version number for a given subscriber and rule</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Save version for the rule id</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Add to redis store</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/ng_services.py">[15]</a> Send association setup message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a> report session config state</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/set_interface_client.py">[16]</a> RPC call to sessionD about session state</p></li>
+</ul>
+</div>
+<div class="section" id="session-termination">
+<h3>3. Session Termination<a class="headerlink" href="#session-termination" title="Permalink to this headline">¶</a></h3>
+<img alt="Alternative text" src="../../_images/Termination.jpg" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_set_session_msg.py">[11]</a> Deactivate session</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_set_session_msg.py">[11]</a> Delete QER in PDR</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_set_session_msg.py">[11]</a> Deactivate flow</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> remove subscriber QOS</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Removing QOS for rule num</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Remove QID</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Remove QOS data</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Remove rules</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Purge session with no rules</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Get all empty sessions</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Remove root AMBR QOS handle</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/common.py">[13]</a> Purge Subscriber state with no rules</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/qos_meter_impl.py">[14]</a> Destroying all meters</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/qos/qos_meter_impl.py">[14]</a> Remove QOS from QOS meter</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Remove all versions</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/rule_mappers.py">[12]</a> Remove element from redis store</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/ng_services.py">[15]</a> Delete all flows</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/ng_services.py">[15]</a> Cleanup state</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/ng_services.py">[15]</a> Stop NG services</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/ng_services.py">[15]</a> Cleanup on disconnect</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/ng_services.py">[15]</a> Send notification to sesisonD about release message</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/ng_manager/session_state_manager.py">[5]</a>  report session config state</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/set_interface_client.py">[16]</a> RPC call to sessionD about session state</p></li>
+</ul>
+</div>
+<div class="section" id="paging-procedure">
+<h3>4. Paging Procedure<a class="headerlink" href="#paging-procedure" title="Permalink to this headline">¶</a></h3>
+<img alt="Alternative text" src="../../_images/Paging.jpg" />
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/classifier.py">[17]</a> Send paging message interface</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/classifier.py">[17]</a> UPF paging info</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/classifier.py">[17]</a> Local F-TEID</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/set_interface_client.py">[16]</a> Send paging initiated notification</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/set_interface_client.py">[16]</a> RPC call to send paging notification</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/set_interface_client.py">[16]</a> Set paging initiated</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/classifier.py">[17]</a> Paging msg sent callback</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/classifier.py">[17]</a> Install Paging flow</p></li>
+<li><p><a class="reference external" href="https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/app/classifier.py">[17]</a> Pass controller ID value as action</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../help.html" class="btn btn-neutral float-right" title="Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="PipelineD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

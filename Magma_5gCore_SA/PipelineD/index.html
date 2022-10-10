@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>AccessD &mdash; Magma India Documentation 0.1.0 documentation</title>
+  <title>PipelineD &mdash; Magma India Documentation 0.1.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="AccessD Service [1]" href="accessD.html" />
-    <link rel="prev" title="MAGMA 5G Core SA" href="../index.html" /> 
+    <link rel="next" title="Magma PipelineD Service [0]" href="pipelineD.html" />
+    <link rel="prev" title="Magma SessionD Service [0]" href="../SessionD/sessionD.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,12 +92,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Free5gc_5gCore/index.html">FREE5GC 5G Core</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Open5gs_5gCore/index.html">OPEN5GS 5G Core</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">MAGMA 5G Core SA</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">AccessD</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html">AccessD Service [1]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../AccessD/index.html">AccessD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SessionD/index.html">SessionD</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PipelineD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipelineD.html">Magma PipelineD Service [0]</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../SessionD/index.html">SessionD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PipelineD/index.html">PipelineD</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
@@ -151,14 +151,14 @@
         
           <li><a href="../index.html">MAGMA 5G Core SA</a> &raquo;</li>
         
-      <li>AccessD</li>
+      <li>PipelineD</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
             
-              <a href="https://github.com/magmaindia/docs/blob/master/docs/Magma_5gCore_SA/AccessD/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/Magma_5gCore_SA/PipelineD/index.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -172,25 +172,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="accessd">
-<h1>AccessD<a class="headerlink" href="#accessd" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pipelined">
+<h1>PipelineD<a class="headerlink" href="#pipelined" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="accessD.html">AccessD Service [1]</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="accessD.html#protocols">Protocols</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html#nas-2">NAS [2]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html#ngap-3">NGAP [3]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelineD.html">Magma PipelineD Service [0]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipelineD.html#interface-of-pipelined-with-other-services">Interface of PipelineD with Other Services:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipelineD.html#sessiond-pipelined">sessionD ←→pipelineD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelineD.html#ovspipelined">OVS←→pipelineD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelineD.html#directoryd-pipelined">directoryD ←→pipelineD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelineD.html#mobilityd-pipelined">mobilityD ←→pipelineD</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="accessD.html#call-flow">Call Flow</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html#registration-with-suci-as-mobile-identity">Registration with SUCI as Mobile Identity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html#registration-with-guti-as-mobile-identity">Registration with GUTI as Mobile Identity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html#pdu-session-establishment">PDU Session Establishment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html#pdu-session-modification">PDU Session Modification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html#service-request">Service Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html#ue-initiated-session-release">UE-Initiated Session Release</a></li>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html#ue-initiated-deregistration">UE-Initiated Deregistration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="accessD.html#idle-mode-and-paging">IDLE Mode and Paging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelineD.html#architecture-of-pipelined">Architecture of PipelineD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelineD.html#call-flow">Call Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipelineD.html#session-establishment">1. Session Establishment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelineD.html#session-modification">2. Session Modification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelineD.html#session-termination">3. Session Termination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelineD.html#paging-procedure">4. Paging Procedure</a></li>
 </ul>
 </li>
 </ul>
@@ -205,8 +204,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="accessD.html" class="btn btn-neutral float-right" title="AccessD Service [1]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../index.html" class="btn btn-neutral float-left" title="MAGMA 5G Core SA" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pipelineD.html" class="btn btn-neutral float-right" title="Magma PipelineD Service [0]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../SessionD/sessionD.html" class="btn btn-neutral float-left" title="Magma SessionD Service [0]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

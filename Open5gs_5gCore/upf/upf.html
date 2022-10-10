@@ -214,7 +214,7 @@
 <ul class="simple">
 <li><p>During PDU session establishment, SMF connects with UPF through PFCP(N4 Interface). This PFCP session carries SDF template which carries PDR, QFI, URR, FAR, etc. In the case of initial session establishment, Default QOS(Non GBR) flow is assigned.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/Establishment1.jpg" />
+<img alt="Alternative text" src="../../_images/Establishment2.jpg" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> N4 handle session establishment request</p></li>
 <li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> PFCP handle create PDR</p></li>
@@ -255,7 +255,7 @@
 <ul class="simple">
 <li><p>Dedicated QOS flow is assigned through PDU session modification process. Additional Dedicated QOS flows supports more QOS-demanding traffic such as voice, video, gaming traffic, etc.</p></li>
 </ul>
-<img alt="Alternative text" src="../../_images/Modification.jpg" />
+<img alt="Alternative text" src="../../_images/Modification1.jpg" />
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> N4 handle session modification request</p></li>
 <li><p><a class="reference external" href="https://github.com/open5gs/open5gs/blob/main/src/upf/n4-handler.c">[6]</a> Remove Existing PDR</p></li>
