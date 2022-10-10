@@ -6,4 +6,5 @@ MAGMA 5G Core SA
 
    AccessD/index
    SessionD/index
+   PipelineD/index
    
