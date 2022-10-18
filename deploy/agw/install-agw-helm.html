@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Install AGW Helm &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Magma 4G Virtual Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../services/index.html">Magma Services 5G</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore/index.html">5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OAI_5gCore/index.html">OAI 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Free5gc_5gCore/index.html">FREE5GC 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Open5gs_5gCore/index.html">OPEN5GS 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Magma_5gCore_SA/index.html">MAGMA 5G Core SA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Install AGW Helm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/deploy/agw/install-agw-helm.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="install-agw-helm">
+<h1>Install AGW Helm<a class="headerlink" href="#install-agw-helm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-access-gateway-on-ubuntu-bare-metal">
+<h2>Install Access Gateway on Ubuntu (Bare Metal)<a class="headerlink" href="#install-access-gateway-on-ubuntu-bare-metal" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>AGW Helm charts are currently in experimental state, therefore sometimes there are some issues in integrating it with orc8r.</p>
+</div>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>To setup a Magma Access Gateway, you will need a machine that satisfies the following requirements:</p>
+<ul class="simple">
+<li><p>64bit-X86 machine with ubuntu 20.</p></li>
+<li><p>2 ethernet ports.</p></li>
+<li><p>8 Gb Ram.</p></li>
+<li><p>4 Core CPU.</p></li>
+</ul>
+</div>
+<div class="section" id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="docker">
+<h3>1. Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h3>
+<p>Download the offical script to install and setup docker on ubuntu.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/magma/magma/master/lte/gateway/deploy/agw_install_docker.sh
+</pre></div>
+</div>
+<p>Make some changes in the script</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -i <span class="s2">&quot;113 a\sed -i &#39;s/debian/debian-test/&#39; /opt/magma/lte/gateway/deploy/roles/magma_deploy/vars/all.yaml\n\</span>
+<span class="s2">sed -i &#39;s/focal-1.7.0/focal-ci/&#39; /opt/magma/lte/gateway/deploy/roles/magma_deploy/vars/all.yaml\n\</span>
+<span class="s2">       &quot;</span> <span class="s2">&quot;agw_install_docker.sh&quot;</span>
+</pre></div>
+</div>
+<p>Execute the script</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./agw_install_docker.sh
+</pre></div>
+</div>
+<p>This script will automatically setup docker and configure related things and restart machine.</p>
+</div>
+<div class="section" id="create-a-k8s-cluster">
+<h3>2. Create a K8s Cluster<a class="headerlink" href="#create-a-k8s-cluster" title="Permalink to this headline">¶</a></h3>
+<p>we’ll only install the required components from this ansible-playbook.</p>
+<p>Clone repo on your local machine(Not AGW machine).</p>
+<p>Make changes to <code class="docutils literal notranslate"><span class="pre">deploy-orc8r.yml</span></code> file.</p>
+<a class="reference internal image-reference" href="../../_images/deploy-orc8r.png"><img alt="Alternative text" src="../../_images/deploy-orc8r.png" style="width: 800px;" /></a>
+<p>Make changes to <code class="docutils literal notranslate"><span class="pre">hosts.yml</span></code> file acc to your AGW host machine.</p>
+<p>Run playbook.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook config-orc8r.yml
+</pre></div>
+</div>
+<p>This playbook will take around 10 min to complete.</p>
+</div>
+<div class="section" id="deploy-agw">
+<h3>3. Deploy AGW<a class="headerlink" href="#deploy-agw" title="Permalink to this headline">¶</a></h3>
+<p>Files required</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rootCA.pem</span></code> certificate file from orc8r.</p></li>
+</ul>
+<p>place this file on the required location.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo mkdir -p /var/opt/magma/certs/
+sudo cp rootCA.pem /var/opt/magma/certs/
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gwChallenge.key</span></code> key file.</p></li>
+</ul>
+<p>To generate it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /var/opt/magma/certs
+
+<span class="c1"># Generate Private key</span>
+sudo openssl ecparam -name secp384r1 -genkey -noout -out gw_challenge.key
+sudo chmod <span class="m">644</span> gw_challenge.key
+
+<span class="c1"># Generate Public key</span>
+openssl ec -in gw_challenge.key -pubout -out gw_challenge.pem
+<span class="nv">GW_CHALLENGE</span><span class="o">=</span><span class="k">$(</span>cat gw_challenge.pem <span class="p">|</span> sed <span class="s1">&#39;5d&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;1d&#39;</span> <span class="p">|</span> tr -d <span class="s1">&#39;\n&#39;</span><span class="k">)</span>
+<span class="nb">echo</span> <span class="si">${</span><span class="nv">GW_CHALLENGE</span><span class="si">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">snowflake</span></code> file that contains the uuid.</p></li>
+</ul>
+<p>To generate this.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo uuidgen &gt; /etc/snowflake
+</pre></div>
+</div>
+<p>Make changes to hosts file</p>
+<p>open /etc/hosts in edit mode and Add the following lines in the file</p>
+<p>replace <code class="docutils literal notranslate"><span class="pre">192.168.100.102</span></code> with your orc8r address.</p>
+<p>Verify the sanity of rootCA.pem file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl x509 -text -noout -in /var/opt/magma/certs/rootCA.pem
+</pre></div>
+</div>
+<p>Create <code class="docutils literal notranslate"><span class="pre">/var/opt/magma/configs/control_proxy.yml</span></code> with your orc8r/controller details</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo mkdir -p /var/opt/magma/configs/
+sudo vim /var/opt/magma/configs/control_proxy.yml
+</pre></div>
+</div>
+<p>Insert the following lines.</p>
+<p>Verify connectivity between AGW and Orc8r</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>telnet bootstrapper-controller.&lt;Orc8rDomainName&gt;.com <span class="m">443</span>
+</pre></div>
+</div>
+<p>Will return this:</p>
+<p>Pull Docker images.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker pull public.ecr.aws/z2g3r6f7/agw_gateway_python:latest
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker pull public.ecr.aws/z2g3r6f7/agw_gateway_c:latest
+</pre></div>
+</div>
+<p>Clone Magma repo and go to docker directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/magma/magma.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> magma/lte/gateway/docker/
+</pre></div>
+</div>
+<p>Start docker containers</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose up
+</pre></div>
+</div>
+<p>Let’s check the docker containers</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker ps <span class="p">|</span> grep agw
+</pre></div>
+</div>
+<p>Every container is in healthy condition. Now, let’s delete them</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose down
+</pre></div>
+</div>
+<p>Go to helm directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ../deploy/agwc-helm-charts/
+</pre></div>
+</div>
+<p>Edit values.yaml file</p>
+<a class="reference internal image-reference" href="../../_images/values.png"><img alt="Alternative text" src="../../_images/values.png" style="width: 800px;" /></a>
+<p>Edit agwc-config.pod.yaml file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano templates/agwc-config.pod.yaml
+</pre></div>
+</div>
+<p>and change hostPath type from Directory to DirectoryOrCreate</p>
+<a class="reference internal image-reference" href="../../_images/Directory.png"><img alt="Alternative text" src="../../_images/Directory.png" style="width: 800px;" /></a>
+<p>Create magma namespace</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl create namespace magma
+</pre></div>
+</div>
+<p>Create rootca certificate secret needed to communicate with orc8r</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl create secret generic agwc-secret-certs --from-file<span class="o">=</span>rootCA.pem<span class="o">=</span>rootCA.pem --namespace magma
+</pre></div>
+</div>
+<p>make sure to execute this command on the directory where rootCA.pem file is present.</p>
+<p>Deploy an AGW after updating <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> lte/gateway/deploy/agwc-helm-charts
+helm --debug install agwc --namespace magma . --values<span class="o">=</span>values.yaml
+</pre></div>
+</div>
+<p>Make sure all pods are in running state.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>kubectl get pods -n magma
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/pods.png"><img alt="Alternative text" src="../../_images/pods.png" style="width: 800px;" /></a>
+<p>Now lets connect the orc8r with AGW.
+Open your orc8r dashboard and go to Equipment section.</p>
+<a class="reference internal image-reference" href="../../_images/equipment.png"><img alt="Alternative text" src="../../_images/equipment.png" style="width: 800px;" /></a>
+<p>Add a new AGW
+By entering the following details.</p>
+<a class="reference internal image-reference" href="../../_images/details.png"><img alt="Alternative text" src="../../_images/details.png" style="width: 800px;" /></a>
+<p>AGW added successfully.</p>
+<a class="reference internal image-reference" href="../../_images/successful.png"><img alt="Alternative text" src="../../_images/successful.png" style="width: 800px;" /></a>
+<p>Health will come to healthy state when the connection will be successful and agw service will synchronize themself.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
