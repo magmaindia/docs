@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Magma has 3 major components: &mdash; Magma India Documentation 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5G Virtual Lab" href="../5gLab/index.html" />
+    <link rel="prev" title="Magma Services 5G" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Magma India Documentation
+          
+
+          
+            
+            <img src="../_static/magma-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../labs/index.html">Magma 4G Virtual Labs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Magma Services 5G</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Magma has 3 major components:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#about-services">About Services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#control-proxy">1. <strong>Control proxy</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessd">2. <strong>Accessd</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sctpd">3. <strong>SctpD</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#smsd">4. <strong>SmsD</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#policydb">5. <strong>Policydb</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sessiond">6. <strong>SessionD</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#magmad">7. MagmaD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dnsd">8. DNSd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#health-checker">9. Health checker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enodebd">10. EnodebD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monitord">11. MonitorD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#redirectd">12. RedirectD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conntrackd">13. ConntrackD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#td-agent-bit">14. Td-agent-bit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#eventd">15. EventD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ctraced">16. CtraceD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipelined">17. PipelineD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dpid">18. DpiD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subscriberdb">19. Subscriberdb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#directoryd">20. DirectoryD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mobilityd">21. MobilityD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#other-components">Other components:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ovs">OVS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#srsran">srsRAN</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../5gLab/index.html">5G Virtual Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Magma_5gCore/index.html">5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OAI_5gCore/index.html">OAI 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Free5gc_5gCore/index.html">FREE5GC 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Open5gs_5gCore/index.html">OPEN5GS 5G Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Magma_5gCore_SA/index.html">MAGMA 5G Core SA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help.html">Help</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Magma India Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Magma Services 5G</a> &raquo;</li>
+        
+      <li>Magma has 3 major components:</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/magmaindia/docs/blob/master/docs/services/services.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="magma-has-3-major-components">
+<h1>Magma has 3 major components:<a class="headerlink" href="#magma-has-3-major-components" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line"><strong>1. Access Gateway(AGW)</strong> :</div>
+<div class="line">It is the Core part of magma, and provides the network services. For an LTE Network, it implements Evolved Packet Core(EPC) while for an NR Network, it implements a 5G Core. It works with both the LTE and NR RAN.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>2. Orchestrator</strong> :</div>
+<div class="line">It is a cloud service hosted on a cloud to configure and track the performance of the magma services and shows the traffic flow and analytics of numerous users through the Magma Web UI NMS(Network Management System).</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>3. Federation Gateway</strong> :</div>
+<div class="line">It acts as a proxy to connect the magma AGW with the existing network operator’s core component. The main motive to build this part is to expand the existing MNO(Mobile Network Operator) network with magma services. The MNO core services can be any services other than Magma AGW Services that add up more functionality to the network such as authentication, policy enforcement, data plans, etc for better performance.</div>
+</div>
+<a class="reference internal image-reference" href="../_images/service2.png"><img alt="Alternative text" src="../_images/service2.png" style="width: 800px;" /></a>
+<p>Source <a class="reference external" href="https://docs.magmaindia.org/_images/service1.png">[Magma services]</a></p>
+<div class="section" id="about-services">
+<h2>About Services<a class="headerlink" href="#about-services" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="control-proxy">
+<h3>1. <strong>Control proxy</strong><a class="headerlink" href="#control-proxy" title="Permalink to this headline">¶</a></h3>
+<p>It manages the network transport between the gateway(magmad) and the controller(Orchestrator). Messages sent by the control proxy are encrypted using TLS(Transport Layer Security) and sent over the HTTP/2 protocol with the service name encoded inside the header to identify which service it wants to address. It also transports the events and services logs from the td-agent-bit service to the orchestrator to display them on NMS.</p>
+</div>
+<div class="section" id="accessd">
+<h3>2. <strong>Accessd</strong><a class="headerlink" href="#accessd" title="Permalink to this headline">¶</a></h3>
+<p>It serves the functionality of the MME or AMF of the LTE or NR Core. It supports registration, mobility, authentication of UE, and some parts of the Session Management Control Plane(CP). It communicates with the Federation Gateway(FGW) through GRPC calls to support the NON-AGW Services such as network-initiated de-registration, retrieving authentication-related parameters, etc for the subscriber.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Accessd → Sctpd</p></li>
+</ul>
+<p>accessd uses the sctpd service to securely and efficiently communicate with the RAN as it provides the guaranteed and safe delivery of signaling messages.</p>
+<ul class="simple">
+<li><p>Accessd → Mobilityd</p></li>
+</ul>
+<p>Mobility of the UE is managed by the mobilityd service. It is initiated by the accessd service to do so.</p>
+<ul class="simple">
+<li><p>Accessd → Directoryd</p></li>
+</ul>
+<p>Accessd retrieves the different keys or IDs such as Subscriber Identity(IMSI, IP Address, MAC Address), Session ID, etc from the directoryd.</p>
+<ul class="simple">
+<li><p>Accessd → Subscriberdb</p></li>
+</ul>
+<p>Accessd retrieves the information to authenticate and authorize the UE in the network from subscriberdb.</p>
+<ul class="simple">
+<li><p>Accessd → Sessiond</p></li>
+</ul>
+<p>Accessd sends create, modify and delete session requests to sessiond and is also responsible for setting up session resources with RAN and UE.</p>
+<ul class="simple">
+<li><p>Accessd → FGW</p></li>
+</ul>
+<p>Accessd communicates with FGW for non-magma services like HSS/UDM, PCRF/PCF, etc.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="sctpd">
+<h3>3. <strong>SctpD</strong><a class="headerlink" href="#sctpd" title="Permalink to this headline">¶</a></h3>
+<p>SCTP(Stream Control Transmission Protocol) is a Control Plane(CP) signaling protocol that lies between MME and eNB in the LTE System. Similarly, the Sctpd service is a more intermediate between accessd and enodebd service to support the in-sequence transport of signaling messages in a secure way over the IP network.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>SctpD → AccessD</p></li>
+</ul>
+<p>Messages are transported in the SCTP packets from AccessD to the EnodebD service.</p>
+<ul class="simple">
+<li><p>SctpD → EnodebD</p></li>
+</ul>
+<p>Similarly, the messages from the EnodebD service are transported with the help of SctpD service.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="smsd">
+<h3>4. <strong>SmsD</strong><a class="headerlink" href="#smsd" title="Permalink to this headline">¶</a></h3>
+<p>SmsD manages all the SMS(Short Message Service) services with the orchestrator.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>SmsD → AccessD</p></li>
+</ul>
+<p>SmsD contacts EnodebD service through AccessD. For example, it sends the SMS to the EnodebD service through the AccessD.</p>
+<ul class="simple">
+<li><p>SmsD → DirectoryD</p></li>
+</ul>
+<p>SmsD service requests the DirectoryD for subscriber identity(e.g. IMSI) to identify the user in the network for a particular SMS.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="policydb">
+<h3>5. <strong>Policydb</strong><a class="headerlink" href="#policydb" title="Permalink to this headline">¶</a></h3>
+<p>policydb service manages the policy and billing decisions for subscriber sessions. This service runs on AGW and the orchestrator for its implementation in sessions and for adding policies from the controller side. It acts as the 4G System PCRF(Policy and Charging Rules Function) and OCS(Online Charging System) function.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Policydb → SessionD</p></li>
+</ul>
+<p>SessionD extracts the specified rules from the policydb to install them on a particular subscriber session.</p>
+<ul class="simple">
+<li><p>Policydb → orchestrator</p></li>
+</ul>
+<p>Policies added by the controller are implemented through policydb on the sessions.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="sessiond">
+<h3>6. <strong>SessionD</strong><a class="headerlink" href="#sessiond" title="Permalink to this headline">¶</a></h3>
+<p>SessionD service is responsible for session management. It retrieves the rules and credit from the policydb and implements them on the datapath through PipelineD for L2-L4 and DpiD for L4-L7. It acts as the PCEF(Policy and Charging Enforcement Function) of the 4G System.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>SessionD → policydb</p></li>
+</ul>
+<p>SessionD retrieves PCC(Policy and Charging Control) rules from the policydb to implement them on sessions.</p>
+<ul class="simple">
+<li><p>SessionD → PipelineD</p></li>
+</ul>
+<p>SessionD command the PipelineD to implement these rules on the sessions. Through PipelineD, it implements the rules on L2-L4 layers.</p>
+<ul class="simple">
+<li><p>SessionD → PipelineD → DpiD</p></li>
+</ul>
+<p>SessionD install the rules for L4-L7(application services) through DpiD.</p>
+<ul class="simple">
+<li><p>SessionD → MobilityD</p></li>
+</ul>
+<p>Interact with MobilityD to get Subscriber ID(IMSI) with respect to the IP address during paging request from UPF.</p>
+<ul class="simple">
+<li><p>SessionD → DirectoryD</p></li>
+</ul>
+<p>SessionD retrieve the IMSI’s IP address for sending the redirection request to PipelineD.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="magmad">
+<h3>7. MagmaD<a class="headerlink" href="#magmad" title="Permalink to this headline">¶</a></h3>
+<p>MagmaD service is the parent service of all the magma services. It starts all the services and also owns all the information to track the performance and progress of the services. It transfers the information to the orchestrator through the control proxy.</p>
+</div>
+<div class="section" id="dnsd">
+<h3>8. DNSd<a class="headerlink" href="#dnsd" title="Permalink to this headline">¶</a></h3>
+<p>This service provides a local DNS(Domain Name System) and DHCP(Dynamic Host Configuration Protocol) server to the EnodebD service. The DHCP server is responsible for assigning an IP address to a UE on a network so that they can communicate using IP and then it transmits this information to a DNS server which then automatically updates the DNS information.</p>
+</div>
+<div class="section" id="health-checker">
+<h3>9. Health checker<a class="headerlink" href="#health-checker" title="Permalink to this headline">¶</a></h3>
+<p>health checker service reports the AGW-specific health status such as the number of allocated IPs, registration success rate, subscriber table, etc, and some generic health statuses such as gateway-controller connectivity, the status of running services, number of restarts and errors per service, and DNS status, etc to the orchestrator.</p>
+</div>
+<div class="section" id="enodebd">
+<h3>10. EnodebD<a class="headerlink" href="#enodebd" title="Permalink to this headline">¶</a></h3>
+<p>This service is responsible for managing the eNodeB/RAN devices which are used to set up a connection with a simulator such as srsRAN(simulator for UE and RAN). In our case, the device used is TR-069 as a management interface. This is an optional service that is not used in the case of unmanaged eNBs(RAN).</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>EnodebD → SctpD</p></li>
+</ul>
+<p>EnodebD service sends the messages to AccessD through SctpD service.</p>
+<ul class="simple">
+<li><p>EnodebD → srsRAN</p></li>
+</ul>
+<p>EnodebD manages the responses from the srsRAN simulator and shows the logs and messages through NMS.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="monitord">
+<h3>11. MonitorD<a class="headerlink" href="#monitord" title="Permalink to this headline">¶</a></h3>
+<p>This service monitors the CPEs(Customer Premises Equipments) connected to the AGW. It sends ICMP(Internet Control Message Protocol) pings to the CPEs to check their connectivity to the gateway.</p>
+<p><em>For example</em>: Prometheus, Grafana etc.</p>
+</div>
+<div class="section" id="redirectd">
+<h3>12. RedirectD<a class="headerlink" href="#redirectd" title="Permalink to this headline">¶</a></h3>
+<p>The subscriber establishes a TCP(Transport Control Protocol) connection with the RedirectD service, to transfer the traffic to the redirection address to go through PipelineD.</p>
+<p>In other words, UE first setup a TCP handshake with the RedirectD service then it establishes a TCP connection with the redirection address provided in the response from the RedirectD. Then, the traffic to this address is allowed to go through PipelineD. The traffic can go straight to the redirected address without being changed in PipelineD.</p>
+</div>
+<div class="section" id="conntrackd">
+<h3>13. ConntrackD<a class="headerlink" href="#conntrackd" title="Permalink to this headline">¶</a></h3>
+<p>This service tracks the flows for the UE. This is an optional service, only used when there is a need to track the data flows.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>ConntrackD → PipelineD</p></li>
+</ul>
+<p>ConntrackD tracks the flows through PipelineD service.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="td-agent-bit">
+<h3>14. Td-agent-bit<a class="headerlink" href="#td-agent-bit" title="Permalink to this headline">¶</a></h3>
+<p>This service manages and transfers all the system and event logs to the orchestrator. The logs are received by Fluentd and then stored in Elasticsearch on the orchestrator.</p>
+<p><em>For example</em>: Fluentd and Elasticsearch Kibana</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Td-agent-bit → EventD</p></li>
+</ul>
+<p>It handles all the logs from the EventD service.</p>
+<ul class="simple">
+<li><p>Td-agent-bit → control-proxy</p></li>
+</ul>
+<p>Sends the logs to the orchestrator via control-proxy.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="eventd">
+<h3>15. EventD<a class="headerlink" href="#eventd" title="Permalink to this headline">¶</a></h3>
+<p>EventD service manages the events inside the AGW. Events are those tasks that are performed on the magma services. E.g. updating stored configuration, processing updates, etc.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>EventD → td-agent-bit</p></li>
+</ul>
+<p>EventD sends events-related logs to the td-agent-bit service to display them through NMS.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="ctraced">
+<h3>16. CtraceD<a class="headerlink" href="#ctraced" title="Permalink to this headline">¶</a></h3>
+<p>It traces the call on the AGW with the help of the TShark Tool. This tool is a network protocol analyzer that lets you capture packet data from a live network, decode those packets to the standard outputs, and can be seen through the NMS dashboard. The Tshark is a similar tool to Wireshark.</p>
+</div>
+<div class="section" id="pipelined">
+<h3>17. PipelineD<a class="headerlink" href="#pipelined" title="Permalink to this headline">¶</a></h3>
+<p>It serves a similar role to the user plane function of the 5G System in the AGW. It implements the OVS(Open vSwitch) rules to manage the user plane traffic.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>PipelineD → SessionD</p></li>
+</ul>
+<p>Through PipelineD, the SessionD service implements PCEF functionality in L2-L4 layers.</p>
+<ul class="simple">
+<li><p>PipelineD → DpiD</p></li>
+</ul>
+<p>DpiD implements its actions through PipelineD service on the datapath.</p>
+<ul class="simple">
+<li><p>PipelineD → DirectoryD</p></li>
+</ul>
+<p>PipelineD call DirectoryD service to associate IP for a given subscriber IMSI so that SessionD can properly send the redirection request to PipelineD.</p>
+<ul class="simple">
+<li><p>PipelineD → MobilityD</p></li>
+</ul>
+<p>PipelineD call MobilityD to get the gateway info and also retrieve information related to IP blocks.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="dpid">
+<h3>18. DpiD<a class="headerlink" href="#dpid" title="Permalink to this headline">¶</a></h3>
+<p>This service is used for policy enforcement on sessions/ datapath. DPI(Deep Packet Inspection) analyzes the traffic being sent over a network and identifies, prioritizes, redirects, or even blocks packets that meet certain criteria.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>DpiD → PipelineD</p></li>
+</ul>
+<p>DpiD implements rules on L4-L7 layers through PipelineD service.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="subscriberdb">
+<h3>19. Subscriberdb<a class="headerlink" href="#subscriberdb" title="Permalink to this headline">¶</a></h3>
+<p>subscriberdb stores authentication vectors, and subscriber information such as IMSI. OP, Secret Key(K), public and private keys, subscriber location, etc. This service is functional only when there is no connection with the federation gateway, mainly with an entity like HSS(Home Subscriber Server).</p>
+<p><em>For example</em>: Postgres</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Subscriberdb → AccessD</p></li>
+</ul>
+<p>Subscriberdb provides all the authentication parameters to the AccessD service to authenticate the subscriber-only in case of the absence of an HSS-like node through the FGW(Federation Gateway).</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="directoryd">
+<h3>20. DirectoryD<a class="headerlink" href="#directoryd" title="Permalink to this headline">¶</a></h3>
+<p>Different kinds of keys and attributes are added via the orchestrator to make it available for other services.
+Commonly used keys added are subscriber identity(IMSI, MAC Address, IP Address), session id, location(gateway hardware ID), etc.</p>
+<p><em>For example</em>: Postgres</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>DirectoryD → AccessD</p></li>
+</ul>
+<p>DirectoryD provides subscriber ID(e.g. IMSI) to the AccessD service.</p>
+<ul class="simple">
+<li><p>DirectoryD → SessionD</p></li>
+</ul>
+<p>Retrieve the Session ID from the SessionD service to update the subscriber record with the current session ID.</p>
+<ul class="simple">
+<li><p>DirectoryD → PipelineD</p></li>
+</ul>
+<p>DirectoryD provides the IMSI of the subscriber to PipelineD to associate the learned IP for a given subscriber which eases the SessionD for redirection procedure.</p>
+<ul class="simple">
+<li><p>DirectoryD → SmsD</p></li>
+</ul>
+<p>DirectoryD provides the IMSI to SmsD service to identify the SMS for a particular user.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="mobilityd">
+<h3>21. MobilityD<a class="headerlink" href="#mobilityd" title="Permalink to this headline">¶</a></h3>
+<p>It manages the IP address of the subscriber. It allocates and releases the IP address for the subscriber on the request from the SessionD service.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>MobilityD → AccessD</p></li>
+</ul>
+<p>It is initiated by the AccessD service and manages the IP address of the subscriber(mobility).</p>
+<ul class="simple">
+<li><p>MobilityD → SessionD</p></li>
+</ul>
+<p>Provides Subscriber ID(IMSI) to SessionD while paging request from UPF.</p>
+<ul class="simple">
+<li><p>MobilityD → PipelineD</p></li>
+</ul>
+<p>MobilityD provides the gateway info and information related to IP blocks to PipelineD service.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="other-components">
+<h2>Other components:<a class="headerlink" href="#other-components" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ovs">
+<h3>OVS<a class="headerlink" href="#ovs" title="Permalink to this headline">¶</a></h3>
+<p>Open vSwitch is a multilayer virtual switch in a virtual environment such as KVM, to interconnect virtual devices in the same host or between different hosts. OVS is used for implementing PCEF functionality(implementing QoS, blocking traffic, etc)  for user plane traffic. It also supports OpenFlow protocol and provides deep traffic visibility.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>OVS → PipelineD</p></li>
+</ul>
+<p>PipelineD implements all the functions through OVS.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="srsran">
+<h3>srsRAN<a class="headerlink" href="#srsran" title="Permalink to this headline">¶</a></h3>
+<p>This is a simulator for UE and RAN.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>srsRAN → EnodebD</p></li>
+</ul>
+<p>Response from the srsRAN is managed by the EnodebD service.</p>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../5gLab/index.html" class="btn btn-neutral float-right" title="5G Virtual Lab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Magma Services 5G" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Magma India.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
