@@ -5,3 +5,4 @@ Access Gateway
    :maxdepth: 10
 
    install-agw
+   install-agw-helm
