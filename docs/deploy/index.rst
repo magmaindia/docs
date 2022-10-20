@@ -1,7 +1,7 @@
-Deploy
-******
+Magma AGW Helm Deploy
+*********************
 
 .. toctree::
    :maxdepth: 10
 
-   agw/index
+   agw/install-agw-helm
