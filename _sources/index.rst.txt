@@ -7,7 +7,7 @@ Magma India Documentation!
    :caption: General
    :name: sec-general
 
-   .. deploy/index
+   deploy/index
    labs/index
    services/index
    5gLab/index
