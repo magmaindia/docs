@@ -222,9 +222,16 @@
 <h3>2. Create a K8s Cluster<a class="headerlink" href="#create-a-k8s-cluster" title="Permalink to this headline">¶</a></h3>
 <p>we’ll only install the required components from this ansible-playbook.</p>
 <p>Clone repo on your local machine(Not AGW machine).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/ShubhamTatvamasi/magma-galaxy.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> magma-galaxy
+</pre></div>
+</div>
 <p>Make changes to <code class="docutils literal notranslate"><span class="pre">deploy-orc8r.yml</span></code> file.</p>
 <a class="reference internal image-reference" href="../../_images/deploy-orc8r.png"><img alt="Alternative text" src="../../_images/deploy-orc8r.png" style="width: 800px;" /></a>
 <p>Make changes to <code class="docutils literal notranslate"><span class="pre">hosts.yml</span></code> file acc to your AGW host machine.</p>
+<p>Copy ssh id to remote machine(Agw) to have passwordless ssh.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-copy-id &lt;Hostname&gt;@&lt;ip-address&gt;
+</pre></div>
+</div>
 <p>Run playbook.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible-playbook config-orc8r.yml
 </pre></div>

@@ -54,6 +54,7 @@ we'll only install the required components from this ansible-playbook.
 Clone repo on your local machine(Not AGW machine).
 
 .. code-block:: bash
+
     git clone https://github.com/ShubhamTatvamasi/magma-galaxy.git && cd magma-galaxy
 
 Make changes to ``deploy-orc8r.yml`` file.
@@ -63,6 +64,12 @@ Make changes to ``deploy-orc8r.yml`` file.
   :alt: Alternative text
 
 Make changes to ``hosts.yml`` file acc to your AGW host machine.
+
+Copy ssh id to remote machine(Agw) to have passwordless ssh.
+
+.. code-block:: bash
+
+    ssh-copy-id <Hostname>@<ip-address>
 
 Run playbook.
 
