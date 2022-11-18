@@ -318,7 +318,11 @@ Other components:
 
 OVS
 ---------
+.. image:: photos/Fig1.png
+  :width: 400
+  :alt: Alternative text
 Open vSwitch is a multilayer virtual switch in a virtual environment such as KVM, to interconnect virtual devices in the same host or between different hosts. OVS is used for implementing PCEF functionality(implementing QoS, blocking traffic, etc)  for user plane traffic. It also supports OpenFlow protocol and provides deep traffic visibility.
+
 
 ------------------------------------------------------------------------------------------
 
@@ -327,6 +331,219 @@ PipelineD implements all the functions through OVS.
 
 ------------------------------------------------------------------------------------------
 
+**Basic Intro:**
+
+.. image:: photos/Fig2.png
+  :width: 600
+  :alt: Alternative text
+In OVS we have different segments performing specific tasks.
+Majorly we have three thing in an OVS:
+
+1. OpenFlow Controller
+2. OpenFlow Protocol
+3. OpenFlow Switch
+
+**OpenFlow:** is path of network packets across a network of switches. The OpenFlow protocol is layered on top of the Transmission Control Protocol (TCP) and prescribes the use of Transport Layer Security (TLS).
+
+An OpenFlow switch separates the data path from the control path. The data path portion resides on the switch itself; a separate controller makes high-level routing decisions. The switch and controller communicate by means of the OpenFlow protocol.
+
+An OpenFlow Switch consists of one or more flow tables and a group table, which perform packet lookups and forwarding, and an OpenFlow channel to an external controller.
+- Each flow table entry contains:
+	- match fields: to match against packets. These consist of the ingress port and packet headers, and optionally metadata specified by a previous table.
+	- priority: matching precedence of the flow entry.
+	- counters: updated when packets are matched.
+	- instructions: to modify the action set or pipeline processing.
+	- timeouts: maximum amount of time or idle time before flow is expired by the switch.
+	- cookie: opaque data value chosen by the controller. May be used by the controller to filter flow statistics, flow modification and flow deletion. Not used when processing packets.	
+
+
+**Packet Flow:**
+
+.. image:: photos/Fig3.png
+  :width: 600
+  :alt: Alternative text
+ 
+Source `[MatchingFlow] <https://www.researchgate.net/figure/Packet-forwarding-in-the-SDN-switch_fig1_361417649>`_ 
+- `[SDN] <https://www.opennetworking.org/wp-content/uploads/2014/10/openflow-spec-v1.4.0.pdf>`_
+
+**[1]**
+
+So starting with the base part, we have a physical network data packet transmitted with the help of ethernet through physical ports. So from the ports the network data packet will flow to the ovs passing through ovs kernel module in kernel space. So after entering into the ovs the main function of ovs occur.
+
+**[2]**
+
+This is kernel space in which OVS kernel module plays it role. We need not to do anything in this section right now. At this place we can add eBPF to increase the efficiency of data packet flow.
+
+**[3]**
+
+Here is our user plane.
+At this stage, the network data packet had reached to it, now we have 3 major components in OvS, i.e
+The controller, the openflow protocol and the openflow switch as shown in the diagram.
+
+**[3(i)]**
+
+Here it is also attached to a remote database( redis). It is the data storage hub of OVS.
+
+**[3(ii)]**
+
+Now in the openflow switch we have different sections(OpenFlow Channel, Group Tables and Flow Tables) that play an important role in the transmission of our data packets but the most significant are flow tables. This sections forms the data path and pipeline part of OVS.
+So let’s understand the flow with the flow tables i.e how data packets are allowed to pass, checked, verified in them.
+
+**[3(iii)]**
+
+Here we came to the flow tables.
+So this the the place where all the packet transmission took place.
+So when initially a packet is transmitted into the first flow table i.e table 0 it is containing of header, action and counter part within itself and when the packet tries to transmit from one table to other it have to go through some matching protocols within which match field devotes its work. Before forwarding the packet to the another table it has to check whether the match field of this table match with the matchfiled of next table or not( like ingress port, metadata, packet headers etc) and it tires to:
+
+1. Find the highest-priority matching flow entry.
+2. Apply instructions:
+	- modify packet & update match fields(apply actions instructions).
+	- Update action set(clear actions and/or write actions instructions).
+	- Update metadata
+3. Send match data and action set to next table.
+ 
+Now after all this, the data packets moves to the OpenFlow Controller for further procedure. 
+
+.. image:: photos/openflow-pipeline.png
+  :width: 400
+  :alt: Alternative text
+Source `[Matching Flow] <https://raw.githubusercontent.com/magma/magma/master/docs/readmes/assets/openflow-pipeline.png>`_
+
+
+**[4]**
+
+The OpenFlow Controller is connected to the OpenFlow Switch by means of OpenFlow Protocol. The OpenFlow protocol is layered on top of the Transmission Control Protocol (TCP) and prescribes the use of Transport Layer Security (TLS).
+Then the OpenFlow controller is connected to the RYU SDN.
+
+**[5]**
+
+Here came the final service which will receive the data packet from the ovs.
+Now from this service all the other service will use these data packets for performng several tasks.
+
+**OVS Analysis:**
+
+When the data packet reach at vswitch, then some protocols/rules were implemented on data packets, so let’s discuss them:
+
+------------------------------------------------------------------------------------------
+
+*Adding flows to the ovs:*
+
+Source `[Flow] <https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/openflow/flows.py>`_
+
+.. image:: photos/11.png
+  :width: 400
+  :alt: Alternative text
+A table flow will be added that drops the packet and take arguments as: datapath, table, match, actions, instructions, priority, retrires and cookies.
+Also raise an error if flow can’t be added.
+Here the flow means the data flow of packets.
+
+.. image:: photos/10.png
+  :width: 400
+  :alt: Alternative text
+So in order to get the output through that flow table we need to add an output flow to get the data to a specified port using add_output_flow function. Also raises an error if the flow can’t be added.
+
+.. image:: photos/09.png
+  :width: 400
+  :alt: Alternative text
+.. image:: photos/08.png
+  :width: 400
+  :alt: Alternative text
+Now adding a flow to the table to resummit the current/next data to another service using add_resubmit_next_service_flow and add_resubmit_current_service_flow.
+
+
+.. image:: photos/07.png
+  :width: 400
+  :alt: Alternative text
+Now adding a message function to get an add flow modification message that drops the packet and it returns OFPFlowMod and also raises error If the actions contain NXActionResubmitTable.
+
+In order to push all the previous flows we need to add a barrier to the specified datapath using set_barrier function.
+
+.. image:: photos/06.png
+  :width: 400
+  :alt: Alternative text
+Also to delete a flow → get_delete_flow_msg function.
+
+------------------------------------------------------------------------------------------
+
+*Messaging in OVS:*
+
+Source `[Messanging Flow from magma] <https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/openflow/messages.py>`_
+
+.. image:: photos/05.png
+  :width: 400
+  :alt: Alternative text
+In order to talk with ovs datapath we define send_msg function. Raises error if message fails to send in the specified no of attempts.
+
+.. image:: photos/04.png
+  :width: 400
+  :alt: Alternative text
+Also defining MsgReply function to reply for a single message send to ovs from the above function.
+
+Now to send some flow modification requests we define MessageHub function which returns a channel to synchronously wait for any results/updatioon.
+
+
+.. image:: photos/03.png
+  :width: 400
+  :alt: Alternative text
+To send a message to ovs we defined a send function in OVS that tracks the result asynchronously. Multiple messages can be tracked using transaction id (txn_id).
+
+.. image:: photos/02.png
+  :width: 400
+  :alt: Alternative text
+To maintain the completion of messages before a certain boundary we use handle_barrier function and similarly we define handle_error function to get an error if a message sent to OVS is unsuccessful.
+
+------------------------------------------------------------------------------------------
+
+*OVS metering:*
+
+Source `[Metering in ovs] <https://github.com/magma/magma/blob/master/lte/gateway/python/magma/pipelined/openflow/meters.py>`_
+
+Added a common QOS manager with two implementations of QOS including linux tc and ovs metering mechanism. The implementation can be chosen based on the knob configured in pipelined.yml. Added unit tests to verify the behavior. The Qos integration tests also seem to be passing.
+
+.. image:: photos/01.png
+  :width: 400
+  :alt: Alternative text
+Defining  a MeterClass class for adding different metering functions:
+
+- add_meter → adding meter for monitoring usage.
+- Del_meter → deleting meter as defined in above case.
+
+------------------------------------------------------------------------------------------
+
+**RYU SDN:**
+
+| It is python based SDN.
+| RYU SDN Controller has three layers.
+
+1. Application Layer: consists of business and network logic applications
+2. Control Layer/SDN Framework: r consists of network services
+3. Infrastructure Layer: consists of physical and virtual devices.
+
+
+.. image:: photos/Fig4.png
+  :width: 300
+  :alt: Alternative text
+  
+Source `[SDN] <https://www.researchgate.net/profile/Nazrul-Islam-3/publication/338703576/figure/fig1/AS:882078891659265@1587315404943/RYU-SDN-controller-architecture.ppm>`_
+
+
+- The middle layer hosts northbound APIs and southbound APIs.
+- The controller exposes open northbound APIs such as a Restful management API, REST, API for Quantum, User-defned API via REST or RPC, which are used by applications.
+- The southbound interface is capable of supporting multiple protocols such as OpenFlow, Netconf, OF-confg, etc.
+- RYU uses OpenFlow to interact with the forwarding plane (switches and routers) to modify how the network will handle traffic flows.
+
+*Functioning:*
+
+To implement a SDN architecture, – 3 things needed.
+
+1. SDN applications: programs that communicate behaviors and needed resources with the SDN Controller via APIs.
+2. SDN Controller: logical entity that receives instructions or requirements from the SDN Application layer and relays them to the networking components.
+3. SDN Networking Devices:  control the forwarding and data processing capabilities of the network. It includes forwarding and processing of the data path.
+
+
+Simulators to create sdn architecture: OMNET++ , EstiNet , OFNet , MaxiNet , NS-3 and Mininet.
+
+------------------------------------------------------------------------------------------
 
 
 srsRAN
